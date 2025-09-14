@@ -2,8 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Import BuildwellAI brand fonts */
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,200..900;1,200..900&display=swap'); /* RoxboroughCF alternative */
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Courier Prime', monospace;
 }
 
 @layer utilities {
@@ -14,73 +19,90 @@ body {
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 3.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 3.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 3.9%;
-    --primary: 0 0% 9%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 0 0% 96.1%;
-    --secondary-foreground: 0 0% 9%;
-    --muted: 0 0% 96.1%;
-    --muted-foreground: 0 0% 45.1%;
-    --accent: 0 0% 96.1%;
-    --accent-foreground: 0 0% 9%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 89.8%;
-    --input: 0 0% 89.8%;
-    --ring: 0 0% 3.9%;
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
+    /* BuildwellAI Brand Colors */
+    --bw-grad-start: #F77E4D;
+    --bw-grad-end: #F6567B;
+    --bw-black: #000000;
+    --bw-graphite: #333333;
+    --bw-sand: #EBE9E3;
+    --bw-white: #FFFFFF;
+    --bw-success: #36C98E;
+    --bw-warning: #FFB020;
+    --bw-danger: #FF5A5A;
+    --bw-border: #333333;
+    --bw-focus: #F6567B;
+    --bw-overlay: rgba(0,0,0,0.6);
+
+    /* Tailwind/shadcn compatibility - mapped to BuildwellAI colors */
+    --background: 0 0% 0%; /* Onyx Black */
+    --foreground: 0 0% 100%; /* Pure White */
+    --card: 0 0% 0%; /* Onyx Black */
+    --card-foreground: 0 0% 100%; /* Pure White */
+    --popover: 0 0% 0%; /* Onyx Black */
+    --popover-foreground: 0 0% 100%; /* Pure White */
+    --primary: 247 51% 62%; /* Buildwell Gradient Start */
+    --primary-foreground: 0 0% 100%; /* Pure White */
+    --secondary: 30 9% 92%; /* Soft Sand */
+    --secondary-foreground: 0 0% 20%; /* Graphite Grey */
+    --muted: 30 9% 92%; /* Soft Sand */
+    --muted-foreground: 0 0% 20%; /* Graphite Grey */
+    --accent: 247 51% 62%; /* Buildwell Gradient Start */
+    --accent-foreground: 0 0% 100%; /* Pure White */
+    --destructive: 0 100% 67%; /* Danger Red */
+    --destructive-foreground: 0 0% 100%; /* Pure White */
+    --border: 0 0% 20%; /* Graphite Grey */
+    --input: 30 9% 92%; /* Soft Sand */
+    --ring: 346 80% 61%; /* Buildwell Gradient End */
+    --chart-1: 247 51% 62%; /* Buildwell Gradient Start */
+    --chart-2: 346 80% 61%; /* Buildwell Gradient End */
+    --chart-3: 156 60% 51%; /* Success Green */
+    --chart-4: 37 100% 56%; /* Warning Amber */
+    --chart-5: 0 100% 67%; /* Danger Red */
     --radius: 0.5rem;
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 0 0% 0%; /* Onyx Black */
+    --sidebar-foreground: 0 0% 100%; /* Pure White */
+    --sidebar-primary: 247 51% 62%; /* Buildwell Gradient Start */
+    --sidebar-primary-foreground: 0 0% 100%; /* Pure White */
+    --sidebar-accent: 0 0% 20%; /* Graphite Grey */
+    --sidebar-accent-foreground: 0 0% 100%; /* Pure White */
+    --sidebar-border: 0 0% 20%; /* Graphite Grey */
+    --sidebar-ring: 346 80% 61%; /* Buildwell Gradient End */
   }
+  
   .dark {
-    --background: 0 0% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 0 0% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 0 0% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 9%;
-    --secondary: 0 0% 14.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 14.9%;
-    --muted-foreground: 0 0% 63.9%;
-    --accent: 0 0% 14.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
-    --ring: 0 0% 83.1%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Dark mode uses same BuildwellAI colors */
+    --background: 0 0% 0%; /* Onyx Black */
+    --foreground: 0 0% 100%; /* Pure White */
+    --card: 0 0% 0%; /* Onyx Black */
+    --card-foreground: 0 0% 100%; /* Pure White */
+    --popover: 0 0% 0%; /* Onyx Black */
+    --popover-foreground: 0 0% 100%; /* Pure White */
+    --primary: 247 51% 62%; /* Buildwell Gradient Start */
+    --primary-foreground: 0 0% 100%; /* Pure White */
+    --secondary: 0 0% 20%; /* Graphite Grey */
+    --secondary-foreground: 0 0% 100%; /* Pure White */
+    --muted: 0 0% 20%; /* Graphite Grey */
+    --muted-foreground: 30 9% 92%; /* Soft Sand */
+    --accent: 247 51% 62%; /* Buildwell Gradient Start */
+    --accent-foreground: 0 0% 100%; /* Pure White */
+    --destructive: 0 100% 67%; /* Danger Red */
+    --destructive-foreground: 0 0% 100%; /* Pure White */
+    --border: 0 0% 20%; /* Graphite Grey */
+    --input: 0 0% 20%; /* Graphite Grey */
+    --ring: 346 80% 61%; /* Buildwell Gradient End */
+    --chart-1: 247 51% 62%; /* Buildwell Gradient Start */
+    --chart-2: 346 80% 61%; /* Buildwell Gradient End */
+    --chart-3: 156 60% 51%; /* Success Green */
+    --chart-4: 37 100% 56%; /* Warning Amber */
+    --chart-5: 0 100% 67%; /* Danger Red */
+    --sidebar-background: 0 0% 0%; /* Onyx Black */
+    --sidebar-foreground: 0 0% 100%; /* Pure White */
+    --sidebar-primary: 247 51% 62%; /* Buildwell Gradient Start */
+    --sidebar-primary-foreground: 0 0% 100%; /* Pure White */
+    --sidebar-accent: 0 0% 20%; /* Graphite Grey */
+    --sidebar-accent-foreground: 0 0% 100%; /* Pure White */
+    --sidebar-border: 0 0% 20%; /* Graphite Grey */
+    --sidebar-ring: 346 80% 61%; /* Buildwell Gradient End */
   }
 }
 
@@ -90,5 +112,187 @@ body {
   }
   body {
     @apply bg-background text-foreground;
+  }
+  
+  /* BuildwellAI Typography Hierarchy */
+  .bw-title {
+    font-family: 'Big Shoulders Display', sans-serif;
+    font-weight: 700;
+    font-size: 2.625rem; /* 42pt equivalent */
+    line-height: 1.1;
+  }
+  
+  .bw-subtitle {
+    font-family: 'Source Serif Pro', serif; /* RoxboroughCF alternative */
+    font-weight: 600;
+    font-size: 2.25rem; /* 36pt equivalent */
+    line-height: 1.2;
+  }
+  
+  .bw-heading-lg {
+    font-family: 'Source Serif Pro', serif;
+    font-weight: 600;
+    font-size: 2rem; /* 32pt equivalent */
+    line-height: 1.2;
+  }
+  
+  .bw-heading-md {
+    font-family: 'Source Serif Pro', serif;
+    font-weight: 500;
+    font-size: 1.75rem; /* 28pt equivalent */
+    line-height: 1.2;
+  }
+  
+  .bw-heading-sm {
+    font-family: 'Source Serif Pro', serif;
+    font-weight: 500;
+    font-size: 1.25rem; /* 20pt equivalent */
+    line-height: 1.2;
+  }
+  
+  .bw-body {
+    font-family: 'Courier Prime', monospace;
+    font-weight: 400;
+    font-size: 1rem; /* 16pt equivalent */
+    line-height: 1.5;
+    color: var(--bw-graphite);
+  }
+  
+  .bw-body-light {
+    font-family: 'Courier Prime', monospace;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--bw-white);
+  }
+  
+  .bw-quote {
+    font-family: 'Courier Prime', monospace;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  
+  .bw-caption {
+    font-family: 'Courier Prime', monospace;
+    font-weight: 400;
+    font-size: 0.875rem; /* 14pt equivalent */
+    line-height: 1.4;
+  }
+}
+
+@layer components {
+  /* BuildwellAI Brand Components */
+  .bw-gradient {
+    background: linear-gradient(102deg, var(--bw-grad-start) 0%, var(--bw-grad-end) 100%);
+  }
+  
+  .btn-primary {
+    color: var(--bw-white);
+    background: var(--bw-black);
+    border: 1px solid var(--bw-border);
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-family: 'Courier Prime', monospace;
+    font-weight: 400;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .btn-primary:hover {
+    background: var(--bw-graphite);
+  }
+  
+  .btn-gradient {
+    color: var(--bw-white);
+    background: linear-gradient(102deg, var(--bw-grad-start) 0%, var(--bw-grad-end) 100%);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-family: 'Courier Prime', monospace;
+    font-weight: 400;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .btn-gradient:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+  }
+  
+  .btn-secondary {
+    color: var(--bw-white);
+    background: var(--bw-graphite);
+    border: 1px solid var(--bw-border);
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-family: 'Courier Prime', monospace;
+    font-weight: 400;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .btn-secondary:hover {
+    background: var(--bw-black);
+  }
+  
+  .card-dark {
+    background: var(--bw-black);
+    color: var(--bw-white);
+    border: 1px solid var(--bw-border);
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+  }
+  
+  .card-sand {
+    background: var(--bw-sand);
+    color: var(--bw-black);
+    border: 1px solid var(--bw-graphite);
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+  }
+  
+  .panel-sand {
+    background: var(--bw-sand);
+    color: var(--bw-black);
+    border-radius: 0.5rem;
+    padding: 1rem;
+  }
+  
+  /* Focus states for accessibility */
+  :focus {
+    outline: 3px solid var(--bw-focus);
+    outline-offset: 2px;
+  }
+  
+  /* Status indicators */
+  .status-success {
+    color: var(--bw-success);
+  }
+  
+  .status-warning {
+    color: var(--bw-warning);
+  }
+  
+  .status-danger {
+    color: var(--bw-danger);
+  }
+  
+  .bg-success {
+    background-color: var(--bw-success);
+    color: var(--bw-white);
+  }
+  
+  .bg-warning {
+    background-color: var(--bw-warning);
+    color: var(--bw-black);
+  }
+  
+  .bg-danger {
+    background-color: var(--bw-danger);
+    color: var(--bw-white);
+  }
+  
+  /* Overlay utility */
+  .overlay {
+    background: var(--bw-overlay);
   }
 }
