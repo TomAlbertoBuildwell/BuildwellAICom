@@ -14,32 +14,32 @@ export function Header() {
         </button>
         {/* Desktop navigation */}
         <nav className="hidden md:flex space-x-8">
-          <a href="#" className="text-gray-600 hover:text-orange-500 transition-colors">
+          <a href="/" className="text-gray-600 hover:text-orange-500 transition-colors">
             Home
           </a>
-          <a href="#solutions" className="text-gray-600 hover:text-orange-500 transition-colors">
+          <a href="/#solutions" className="text-gray-600 hover:text-orange-500 transition-colors">
             Solutions
           </a>
-          <a href="#about" className="text-gray-600 hover:text-orange-500 transition-colors">
+          <a href="/about" className="text-gray-600 hover:text-orange-500 transition-colors">
             About
           </a>
-          <a href="#contact" className="text-gray-600 hover:text-orange-500 transition-colors">
+          <a href="/contact" className="text-gray-600 hover:text-orange-500 transition-colors">
             Contact
           </a>
         </nav>
         {/* Mobile menu */}
         {isMenuOpen && <div className="absolute top-16 left-0 right-0 bg-white shadow-md z-50 md:hidden">
             <div className="flex flex-col p-4 space-y-4">
-              <a href="#" className="text-gray-600 hover:text-orange-500 transition-colors">
+              <a href="/" className="text-gray-600 hover:text-orange-500 transition-colors" onClick={() => setIsMenuOpen(false)}>
                 Home
               </a>
-              <a href="#solutions" className="text-gray-600 hover:text-orange-500 transition-colors">
+              <a href="/#solutions" className="text-gray-600 hover:text-orange-500 transition-colors" onClick={() => setIsMenuOpen(false)}>
                 Solutions
               </a>
-              <a href="#about" className="text-gray-600 hover:text-orange-500 transition-colors">
+              <a href="/about" className="text-gray-600 hover:text-orange-500 transition-colors" onClick={() => setIsMenuOpen(false)}>
                 About
               </a>
-              <a href="#contact" className="text-gray-600 hover:text-orange-500 transition-colors">
+              <a href="/contact" className="text-gray-600 hover:text-orange-500 transition-colors" onClick={() => setIsMenuOpen(false)}>
                 Contact
               </a>
             </div>

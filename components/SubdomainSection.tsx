@@ -13,19 +13,19 @@ export function SubdomainSection() {
     description: 'Visual inspection and monitoring solutions for construction sites and projects.',
     icon: <EyeIcon className="h-6 w-6" />,
     url: 'https://eye.buildwellai.com',
-    imageUrl: 'https://images.unsplash.com/photo-1590486803833-1c5dc8ddd4c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80'
+    imageUrl: '/AI Hardhat.png'
   }, {
     title: 'News Hub',
     description: 'Stay updated with the latest trends and news in the UK construction industry.',
     icon: <NewspaperIcon className="h-6 w-6" />,
     url: 'https://news.buildwellai.com',
-    imageUrl: 'https://images.unsplash.com/photo-1512187849-463fdb898f21?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80'
+    imageUrl: '/Buildwell News.png'
   }, {
     title: 'Inspect Tool',
     description: 'Advanced inspection tools for quality assurance and compliance in construction.',
     icon: <SearchIcon className="h-6 w-6" />,
     url: 'https://inspect.buildwellai.com',
-    imageUrl: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80'
+    imageUrl: '/Buildwell Inspect.png'
   }, {
     title: 'Thread Collaboration',
     description: 'Collaborative platform for project threads, discussions, and documentation.',

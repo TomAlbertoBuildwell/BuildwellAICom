@@ -60,7 +60,7 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="https://buildwellai.com/about"
+                  href="/about"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-300 hover:text-orange-500 transition-colors"
@@ -70,7 +70,7 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="https://buildwellai.com/contact"
+                  href="/contact"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-300 hover:text-orange-500 transition-colors"
@@ -97,7 +97,7 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="https://buildwellai.com/api"
+                  href="/api_documentation"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-300 hover:text-orange-500 transition-colors"
@@ -107,7 +107,7 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="https://buildwellai.com/help"
+                  href="/help"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-300 hover:text-orange-500 transition-colors"
@@ -117,7 +117,7 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="https://buildwellai.com/privacy"
+                  href="/privacy"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-300 hover:text-orange-500 transition-colors"
