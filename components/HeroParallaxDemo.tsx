@@ -14,33 +14,33 @@ export const products = [
   {
     title: "BuildwellAI Chat",
     link: "https://chat.buildwellai.com",
-    thumbnail: "/screenshots/im1.png",
+    thumbnail: "/screenshots/im6.png",
   },
   {
     title: "BuildwellEYE",
     link: "https://eye.buildwellai.com",
-    thumbnail: "/screenshots/im2.png",
+    thumbnail: "/screenshots/im3.png",
   },
   {
     title: "BuildwellNEWS",
     link: "https://news.buildwellai.com",
-    thumbnail: "/screenshots/im3.png",
+    thumbnail: "/screenshots/im2.png",
   },
   {
     title: "BuildwellINSPECT",
     link: "https://inspect.buildwellai.com",
-    thumbnail: "/screenshots/im4.png",
+    thumbnail: "/screenshots/im5.png",
   },
   {
     title: "BuildwellTHREAD",
     link: "https://thread.buildwellai.com",
-    thumbnail: "/screenshots/im5.png",
+    thumbnail: "/screenshots/im1.png",
   },
   // Second row
   {
-    title: "AI Safety Monitoring",
-    link: "https://eye.buildwellai.com",
-    thumbnail: "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=600&h=400&fit=crop",
+    title: "BuildwellAI",
+    link: "https://www.buildwellai.com",
+    thumbnail: "/screenshots/im4.png",
   },
   {
     title: "Compliance Documentation",

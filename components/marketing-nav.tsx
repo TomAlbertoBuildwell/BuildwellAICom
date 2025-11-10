@@ -94,7 +94,7 @@ export function MarketingNav({ hideUntilScroll = false }: { hideUntilScroll?: bo
               </div>
             )}
           </div>
-          <Link href="/#features" className="text-sm font-medium transition-colors hover:text-primary">
+          <Link href="/features" className="text-sm font-medium transition-colors hover:text-primary">
             Features
           </Link>
           <Link href="/pricing" className="text-sm font-medium transition-colors hover:text-primary">

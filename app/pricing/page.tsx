@@ -1,444 +1,329 @@
-"use client"
+﻿"use client"
 
-import React, { useState } from "react"
+import { useState } from "react"
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
 import { MarketingNav } from "@/components/marketing-nav"
 import { MarketingFooter } from "@/components/marketing-footer"
-import { Check, X, Star, Zap, Shield, Users, BarChart, HeadphonesIcon, Clock, Globe } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import Image from "next/image"
+import { CheckCircle, ArrowRight, ChevronDown } from "lucide-react"
 
 export default function PricingPage() {
-  const [billingPeriod, setBillingPeriod] = useState<'monthly' | 'annual'>('monthly')
+  const [openFaq, setOpenFaq] = useState<number | null>(null)
 
-  const plans = {
-    trial: {
-      name: "Trial",
-      description: "Perfect for trying out BuildwellAI",
-      price: { monthly: 0, annual: 0 },
-      features: [
-        "100 API requests/month",
-        "Basic news feed access",
-        "Email support",
-        "7-day trial period",
-        "Basic documentation",
-      ],
-      limitations: [
-        "No safety alerts",
-        "No compliance checking",
-        "Limited to 1 user",
-        "No phone support",
-        "No SLA guarantee"
-      ],
-      popular: false,
-      cta: "Start Free Trial"
-    },
-    standard: {
-      name: "Standard",
-      description: "Ideal for small to medium construction companies",
-      price: { monthly: 49, annual: 490 },
-      features: [
-        "5,000 API requests/month",
-        "Full news feed access",
-        "Safety alerts & notifications",
-        "Basic compliance checking",
-        "Email & chat support",
-        "Up to 5 users",
-        "Standard documentation",
-        "Basic analytics dashboard"
-      ],
-      limitations: [
-        "No advanced AI features",
-        "No phone support",
-        "Standard SLA (99% uptime)"
-      ],
-      popular: true,
-      cta: "Get Started"
-    },
-    pro: {
-      name: "Pro",
-      description: "Advanced features for large construction enterprises",
-      price: { monthly: 149, annual: 1490 },
-      features: [
-        "25,000 API requests/month",
-        "Full news feed access",
-        "Priority safety alerts",
-        "Advanced AI compliance checking",
-        "Custom compliance rules",
-        "Priority support (email, chat, phone)",
-        "Unlimited users",
-        "Advanced analytics & reporting",
-        "Custom integrations",
-        "Dedicated account manager",
-        "White-label options",
-        "Advanced security features"
-      ],
-      limitations: [],
-      popular: false,
-      cta: "Contact Sales"
-    }
+  const toggleFaq = (index: number) => {
+    setOpenFaq(openFaq === index ? null : index)
   }
 
-  const comparisonFeatures = [
+  const plans = [
     {
-      category: "API Access",
+      name: "Starter",
+      price: "On Enquiry",
+      description: "Perfect for small projects and independent inspectors",
       features: [
-        { name: "Monthly API Requests", trial: "100", standard: "5,000", pro: "25,000" },
-        { name: "Rate Limiting", trial: "10/min", standard: "100/min", pro: "500/min" },
-        { name: "API Documentation", trial: "Basic", standard: "Standard", pro: "Advanced + Custom" },
-      ]
+        "Up to 5 active projects",
+        "BuildwellTHREAD access (1,000 docs/month)",
+        "BuildwellEYE basic plan checking",
+        "BuildwellINSPECT certification tracking",
+        "BuildwellCHAT AI assistant (100 queries/month)",
+        "BuildwellNEWS alerts",
+        "PDF report generation",
+        "Email support",
+        "Mobile app access",
+      ],
+      cta: "Book a Demo",
+      popular: false,
     },
     {
-      category: "News & Alerts",
+      name: "Professional",
+      price: "On Enquiry",
+      description: "Ideal for growing teams and multiple projects",
       features: [
-        { name: "Construction News Feed", trial: true, standard: true, pro: true },
-        { name: "Safety Alerts", trial: false, standard: true, pro: true },
-        { name: "Priority Alerts", trial: false, standard: false, pro: true },
-        { name: "Custom Alert Filters", trial: false, standard: "Basic", pro: "Advanced" },
-      ]
+        "Up to 25 active projects",
+        "BuildwellTHREAD unlimited docs",
+        "BuildwellEYE advanced plan checking",
+        "BuildwellINSPECT AI verification",
+        "BuildwellCHAT unlimited queries",
+        "BuildwellNEWS priority alerts",
+        "Golden thread linking",
+        "Team collaboration tools",
+        "Priority support",
+        "API access",
+        "Custom branding",
+      ],
+      cta: "Book a Demo",
+      popular: true,
     },
     {
-      category: "AI Features",
+      name: "Enterprise",
+      price: "On Enquiry",
+      description: "For large organizations with complex needs",
       features: [
-        { name: "Basic Compliance Checking", trial: false, standard: true, pro: true },
-        { name: "Advanced AI Analysis", trial: false, standard: false, pro: true },
-        { name: "Custom Compliance Rules", trial: false, standard: false, pro: true },
-        { name: "Predictive Analytics", trial: false, standard: false, pro: true },
-      ]
+        "Unlimited projects across all products",
+        "Full BuildwellAI suite access",
+        "Custom AI training for your projects",
+        "Dedicated account manager",
+        "Custom integrations",
+        "SLA guarantee (99.9% uptime)",
+        "On-premise deployment option",
+        "Advanced security features",
+        "White-label options",
+        "24/7 priority support",
+      ],
+      cta: "Book a Meeting",
+      popular: false,
     },
-    {
-      category: "Support & Users",
-      features: [
-        { name: "Users Included", trial: "1", standard: "5", pro: "Unlimited" },
-        { name: "Email Support", trial: true, standard: true, pro: true },
-        { name: "Chat Support", trial: false, standard: true, pro: true },
-        { name: "Phone Support", trial: false, standard: false, pro: true },
-        { name: "Dedicated Account Manager", trial: false, standard: false, pro: true },
-      ]
-    },
-    {
-      category: "Analytics & Reporting",
-      features: [
-        { name: "Basic Analytics", trial: false, standard: true, pro: true },
-        { name: "Advanced Reporting", trial: false, standard: false, pro: true },
-        { name: "Custom Dashboards", trial: false, standard: false, pro: true },
-        { name: "Data Export", trial: false, standard: "CSV", pro: "CSV, JSON, API" },
-      ]
-    }
   ]
 
-  const formatPrice = (price: number) => {
-    if (price === 0) return "Free"
-    return billingPeriod === 'annual' ? `£${price}` : `£${price}`
-  }
-
-  const getSavings = (plan: typeof plans.standard) => {
-    if (plan.price.monthly === 0) return null
-    const monthlyCost = plan.price.monthly * 12
-    const annualCost = plan.price.annual
-    const savings = monthlyCost - annualCost
-    const percentage = Math.round((savings / monthlyCost) * 100)
-    return { amount: savings, percentage }
-  }
+  const faqs = [
+    {
+      question: "How does AI enhance my team's work across all BuildwellAI products?",
+      answer: "Our AI handles time-consuming tasks like document sorting (BuildwellTHREAD), plan checking (BuildwellEYE), and certification verification (BuildwellINSPECT), but your team always makes the final decisions. BuildwellCHAT provides instant answers while BuildwellNEWS keeps you updated on industry changes.",
+    },
+    {
+      question: "Can I use individual products or do I need the full suite?",
+      answer: "You can start with individual products or choose a package that includes multiple solutions. Professional and Enterprise plans give you access to the full suite at better value. Book a demo to discuss what combination works best for your needs.",
+    },
+    {
+      question: "What's included in BuildwellTHREAD document processing?",
+      answer: "BuildwellTHREAD includes automatic classification, tagging, metadata extraction, duplicate detection, and golden thread linking. It organizes all your construction documentation intelligently, making compliance tracking effortless.",
+    },
+    {
+      question: "How does BuildwellEYE plan checking work?",
+      answer: "BuildwellEYE uses AI to compare as-built conditions against approved plans, identifying discrepancies automatically. Your inspectors review and validate findings, ensuring accuracy while saving hours of manual comparison work.",
+    },
+    {
+      question: "What can BuildwellINSPECT verify?",
+      answer: "BuildwellINSPECT automatically verifies product certifications, fire safety documentation, and compliance certificates. It cross-references databases and flags expired or missing certifications, with human oversight for all critical decisions.",
+    },
+    {
+      question: "How is BuildwellCHAT different from other AI chatbots?",
+      answer: "BuildwellCHAT is trained specifically on UK building regulations, construction standards, and your project documentation. It provides contextual answers with source references, helping your team find information instantly without leaving the platform.",
+    },
+    {
+      question: "What type of alerts does BuildwellNEWS provide?",
+      answer: "BuildwellNEWS monitors regulatory changes, safety notices, product recalls, and industry updates relevant to your projects. You receive prioritized alerts based on your active projects and can customize notification preferences.",
+    },
+    {
+      question: "Do you offer training for my team?",
+      answer: "Yes! All plans include comprehensive onboarding training for each product you use. Professional and Enterprise plans include ongoing training sessions, documentation, and dedicated support to ensure your team maximizes platform benefits.",
+    },
+    {
+      question: "Can I change plans later?",
+      answer: "Yes, you can upgrade or downgrade your plan at any time. Changes take effect immediately, and we'll prorate any charges. Book a meeting to discuss the best plan for your evolving needs.",
+    },
+    {
+      question: "What happens to my data if I cancel?",
+      answer: "You can export all your data at any time in standard formats (PDF, CSV, JSON). After cancellation, we retain your data for 90 days before permanent deletion, giving you plenty of time to migrate if needed.",
+    },
+    {
+      question: "Is there a minimum contract period?",
+      answer: "Starter and Professional plans are month-to-month with no long-term commitment. Enterprise plans typically include annual contracts with better pricing and dedicated support. Contact us to discuss flexible options.",
+    },
+    {
+      question: "How secure is my project data across all products?",
+      answer: "We use bank-level encryption for data in transit and at rest. All data is stored in ISO 27001 certified UK data centers with regular security audits. You maintain full ownership and can control access through role-based permissions across all products.",
+    },
+    {
+      question: "Can I integrate BuildwellAI products with my existing tools?",
+      answer: "Yes! Professional and Enterprise plans include API access for integrations with popular construction management platforms like Procore, BIM 360, Aconex, and Viewpoint. We also offer custom integrations for Enterprise clients.",
+    },
+    {
+      question: "Do you offer discounts for multiple users or annual contracts?",
+      answer: "Absolutely! We offer a 20% discount on annual billing for all plans. Volume discounts are available for teams with 10+ users. Enterprise plans include custom pricing based on your specific requirements and scale.",
+    },
+    {
+      question: "What's the difference between Basic and Advanced plan checking in BuildwellEYE?",
+      answer: "Basic plan checking handles standard comparisons and measurements. Advanced includes 3D model analysis, automated dimension verification, material specification checking, and integration with BIM workflows for complex projects.",
+    },
+    {
+      question: "Can BuildwellTHREAD handle legacy documentation from past projects?",
+      answer: "Yes! BuildwellTHREAD can process and organize historical documentation. We offer bulk upload and AI-assisted classification for legacy files. Enterprise plans include migration support for large document libraries.",
+    },
+  ]
 
   return (
-    <div className="min-h-screen bg-background dark:bg-background">
+    <div className="flex min-h-screen flex-col bg-white dark:bg-[#0a1929]">
       <MarketingNav />
-      <main className="pt-16">
-        {/* Hero Section */}
-        <section className="relative bg-gradient-to-r from-[#FBB429] to-[#F87866] py-24 md:py-32">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto text-center">
-              <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6">
-                Simple, Transparent Pricing
-              </h1>
-              <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed mb-8">
-                Choose the perfect plan for your construction business. Start with our free trial 
-                and scale as you grow.
-              </p>
-              
-              {/* Billing Toggle */}
-              <div className="flex items-center justify-center space-x-4 mb-8">
-                <span className={`bw-body ${billingPeriod === 'monthly' ? 'text-white' : 'text-gray-400'}`}>
-                  Monthly
-                </span>
+
+      {/* Hero Section */}
+      <section className="container mx-auto px-4 pt-32 pb-20">
+        <div className="mx-auto max-w-3xl text-center">
+          <h1 className="font-display text-5xl font-bold leading-tight tracking-tight md:text-6xl">
+            Transparent <span className="text-gradient-orange">Pricing</span> for Every Team Size
+          </h1>
+          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+            Choose the plan that fits your needs. Book a demo to see how our complete AI suite can enhance your team's compliance workflow. 
+            All plans include human-in-the-loop AI features with professional verification from our compliance team.
+          </p>
+        </div>
+      </section>
+
+      {/* Pricing Cards */}
+      <section className="container mx-auto px-4 pb-20">
+        <div className="grid gap-8 lg:grid-cols-3">
+          {plans.map((plan, index) => (
+            <Card
+              key={index}
+              className={`relative flex flex-col border-border $  {plan.popular ? "border-primary shadow-lg scale-105" : ""}`}
+            >
+              {plan.popular && (
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2">
+                  <Badge className="bg-gradient-orange text-white">Most Popular</Badge>
+                </div>
+              )}
+              <CardHeader className="text-center">
+                <CardTitle className="text-2xl">{plan.name}</CardTitle>
+                <CardDescription className="mt-2">{plan.description}</CardDescription>
+                <div className="mt-6">
+                  <div className="font-display text-4xl font-bold">{plan.price}</div>
+                </div>
+              </CardHeader>
+              <CardContent className="flex flex-1 flex-col space-y-6">
+                <ul className="flex-1 space-y-3">
+                  {plan.features.map((feature, featureIndex) => (
+                    <li key={featureIndex} className="flex items-start gap-3">
+                      <CheckCircle className="h-5 w-5 shrink-0 text-success-green mt-0.5" />
+                      <span className="text-sm">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+                <Link href="/contact" className="block">
+                  <Button
+                    className={`w-full ${
+                      plan.popular ? "bg-gradient-orange text-white hover:brightness-110" : "bg-transparent"
+                    }`}
+                    variant={plan.popular ? "default" : "outline"}
+                    size="lg"
+                  >
+                    {plan.cta}
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+
+        <div className="mt-12 text-center">
+          <p className="text-sm text-muted-foreground">
+            All prices exclude VAT. Annual billing available with 20% discount. Custom pricing for large deployments.
+          </p>
+        </div>
+      </section>
+
+      {/* Product Suite Features */}
+      <section className="border-t border-border bg-muted/30 py-20">
+        <div className="container mx-auto px-4">
+          <div className="mx-auto max-w-3xl text-center mb-12">
+            <h2 className="font-display text-3xl font-bold tracking-tight md:text-4xl">
+              Complete <span className="text-gradient-orange">BuildwellAI Suite</span>
+            </h2>
+            <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
+              All plans include human-in-the-loop AI across our product range
+            </p>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
+            {[
+              {
+                title: "BuildwellTHREAD",
+                description: "AI document sorting and golden thread management with human review",
+              },
+              {
+                title: "BuildwellEYE",
+                description: "Automated plan checking with inspector validation",
+              },
+              {
+                title: "BuildwellINSPECT",
+                description: "Certification verification with compliance officer approval",
+              },
+              {
+                title: "BuildwellCHAT",
+                description: "AI assistant trained on UK regulations with source references",
+              },
+              {
+                title: "BuildwellNEWS",
+                description: "Real-time alerts on regulations, safety, and industry updates",
+              },
+              {
+                title: "API Access",
+                description: "Integrate with your existing construction management tools",
+              },
+            ].map((feature, index) => (
+              <Card key={index} className="border-border text-center">
+                <CardContent className="pt-6">
+                  <CheckCircle className="h-12 w-12 text-success-green mx-auto mb-4" />
+                  <h3 className="font-semibold mb-2">{feature.title}</h3>
+                  <p className="text-sm text-muted-foreground">{feature.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="container mx-auto px-4 py-20">
+        <div className="mx-auto max-w-3xl">
+          <h2 className="text-center font-display text-3xl font-bold tracking-tight md:text-4xl mb-12">
+            Frequently Asked <span className="text-gradient-orange">Questions</span>
+          </h2>
+          <div className="space-y-3">
+            {faqs.map((faq, index) => (
+              <Card key={index} className="border-border overflow-hidden">
                 <button
-                  onClick={() => setBillingPeriod(billingPeriod === 'monthly' ? 'annual' : 'monthly')}
-                  className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                    billingPeriod === 'annual' ? 'bg-orange-500' : 'bg-gray-600'
-                  }`}
+                  onClick={() => toggleFaq(index)}
+                  className="w-full text-left px-6 py-4 flex items-center justify-between transition-colors hover:bg-muted/50"
                 >
-                  <span
-                    className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
-                      billingPeriod === 'annual' ? 'translate-x-6' : 'translate-x-1'
+                  <h3 className="font-semibold text-base pr-4">{faq.question}</h3>
+                  <ChevronDown
+                    className={`h-5 w-5 shrink-0 transition-transform duration-300 ${
+                      openFaq === index ? "rotate-180" : ""
                     }`}
                   />
                 </button>
-                <span className={`bw-body ${billingPeriod === 'annual' ? 'text-white' : 'text-gray-400'}`}>
-                  Annual
-                </span>
-                {billingPeriod === 'annual' && (
-                  <Badge className="bg-orange-500 text-white ml-2">Save up to 17%</Badge>
-                )}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Pricing Cards */}
-        <section className="py-16">
-          <div className="container mx-auto px-4">
-            <div className="max-w-6xl mx-auto">
-              <div className="grid lg:grid-cols-3 gap-8">
-                {Object.entries(plans).map(([key, plan]) => {
-                  const savings = getSavings(plan)
-                  return (
-                    <div
-                      key={key}
-                      className={`relative bg-white rounded-lg shadow-lg overflow-hidden ${
-                        plan.popular ? 'ring-2 ring-orange-500 scale-105' : ''
-                      }`}
-                    >
-                      {plan.popular && (
-                        <div className="absolute top-0 left-0 right-0 bg-orange-500 text-white text-center py-2">
-                          <span className="bw-caption font-medium">Most Popular</span>
-                        </div>
-                      )}
-                      
-                      <div className={`p-8 ${plan.popular ? 'pt-12' : ''}`}>
-                        <div className="text-center mb-8">
-                          <h3 className="bw-heading-lg text-gray-900 mb-2">{plan.name}</h3>
-                          <p className="bw-body text-gray-600 mb-6">{plan.description}</p>
-                          
-                          <div className="mb-6">
-                            <span className="text-4xl font-bold text-gray-900">
-                              {formatPrice(plan.price[billingPeriod])}
-                            </span>
-                            {plan.price[billingPeriod] > 0 && (
-                              <span className="bw-body text-gray-500">
-                                /{billingPeriod === 'monthly' ? 'month' : 'year'}
-                              </span>
-                            )}
-                          </div>
-                          
-                          {savings && billingPeriod === 'annual' && (
-                            <div className="mb-6">
-                              <Badge variant="outline" className="bg-green-50 text-green-700 border-green-200">
-                                Save £{savings.amount}/year ({savings.percentage}% off)
-                              </Badge>
-                            </div>
-                          )}
-                          
-                          <Button 
-                            className={`w-full ${
-                              plan.popular 
-                                ? 'btn-gradient' 
-                                : 'bg-orange-50/50 text-orange-600 border-orange-200 hover:bg-orange-100/70 hover:border-orange-300 hover:text-orange-700'
-                            }`}
-                          >
-                            {plan.cta}
-                          </Button>
-                        </div>
-                        
-                        <div className="space-y-4">
-                          <h4 className="bw-heading-sm text-gray-900 mb-4">Features included:</h4>
-                          <ul className="space-y-3">
-                            {plan.features.map((feature, index) => (
-                              <li key={index} className="flex items-start space-x-3">
-                                <Check className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
-                                <span className="bw-body text-gray-600">{feature}</span>
-                              </li>
-                            ))}
-                          </ul>
-                          
-                          {plan.limitations.length > 0 && (
-                            <div className="mt-6 pt-6 border-t border-gray-200">
-                              <ul className="space-y-3">
-                                {plan.limitations.map((limitation, index) => (
-                                  <li key={index} className="flex items-start space-x-3">
-                                    <X className="h-5 w-5 text-gray-400 mt-0.5 flex-shrink-0" />
-                                    <span className="bw-body text-gray-500">{limitation}</span>
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-                          )}
-                        </div>
-                      </div>
+                <div
+                  className={`grid transition-all duration-300 ease-in-out ${
+                    openFaq === index ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                  }`}
+                >
+                  <div className="overflow-hidden">
+                    <div className="px-6 pb-4 pt-0">
+                      <p className="text-sm text-muted-foreground leading-relaxed">{faq.answer}</p>
                     </div>
-                  )
-                })}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Feature Comparison Table */}
-        <section className="py-16 bg-white">
-          <div className="container mx-auto px-4">
-            <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-12">
-                <h2 className="bw-subtitle text-gray-900 mb-6">Detailed Feature Comparison</h2>
-                <p className="bw-body text-lg text-gray-600">
-                  Compare all features across our pricing tiers to find the perfect fit
-                </p>
-              </div>
-
-              <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-                <div className="overflow-x-auto">
-                  <table className="w-full">
-                    <thead className="bg-gray-50">
-                      <tr>
-                        <th className="px-6 py-4 text-left bw-heading-sm text-gray-900">Features</th>
-                        <th className="px-6 py-4 text-center bw-heading-sm text-gray-900">Trial</th>
-                        <th className="px-6 py-4 text-center bw-heading-sm text-gray-900 bg-orange-50">
-                          Standard
-                          <Badge className="bg-orange-500 text-white ml-2 text-xs">Popular</Badge>
-                        </th>
-                        <th className="px-6 py-4 text-center bw-heading-sm text-gray-900">Pro</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {comparisonFeatures.map((category, categoryIndex) => (
-                        <React.Fragment key={categoryIndex}>
-                          <tr className="bg-orange-50">
-                            <td colSpan={4} className="px-6 py-3 bw-heading-sm text-orange-700">
-                              {category.category}
-                            </td>
-                          </tr>
-                          {category.features.map((feature, featureIndex) => (
-                            <tr key={featureIndex} className="border-b border-gray-200 hover:bg-gray-50">
-                              <td className="px-6 py-4 bw-body text-gray-900">{feature.name}</td>
-                              <td className="px-6 py-4 text-center">
-                                {typeof feature.trial === 'boolean' ? (
-                                  feature.trial ? (
-                                    <Check className="h-5 w-5 text-green-500 mx-auto" />
-                                  ) : (
-                                    <X className="h-5 w-5 text-gray-400 mx-auto" />
-                                  )
-                                ) : (
-                                  <span className="bw-body text-gray-600">{feature.trial}</span>
-                                )}
-                              </td>
-                              <td className="px-6 py-4 text-center bg-orange-50/30">
-                                {typeof feature.standard === 'boolean' ? (
-                                  feature.standard ? (
-                                    <Check className="h-5 w-5 text-green-500 mx-auto" />
-                                  ) : (
-                                    <X className="h-5 w-5 text-gray-400 mx-auto" />
-                                  )
-                                ) : (
-                                  <span className="bw-body text-gray-600">{feature.standard}</span>
-                                )}
-                              </td>
-                              <td className="px-6 py-4 text-center">
-                                {typeof feature.pro === 'boolean' ? (
-                                  feature.pro ? (
-                                    <Check className="h-5 w-5 text-green-500 mx-auto" />
-                                  ) : (
-                                    <X className="h-5 w-5 text-gray-400 mx-auto" />
-                                  )
-                                ) : (
-                                  <span className="bw-body text-gray-600">{feature.pro}</span>
-                                )}
-                              </td>
-                            </tr>
-                          ))}
-                        </React.Fragment>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* FAQ Section */}
-        <section className="py-16">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto">
-              <div className="text-center mb-12">
-                <h2 className="bw-subtitle text-gray-900 mb-6">Frequently Asked Questions</h2>
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-8">
-                <div className="space-y-6">
-                  <div>
-                    <h4 className="bw-heading-sm text-gray-900 mb-3">Can I change plans anytime?</h4>
-                    <p className="bw-body text-gray-600">
-                      Yes, you can upgrade or downgrade your plan at any time. Changes take effect 
-                      at your next billing cycle.
-                    </p>
-                  </div>
-                  
-                  <div>
-                    <h4 className="bw-heading-sm text-gray-900 mb-3">What happens if I exceed my API limits?</h4>
-                    <p className="bw-body text-gray-600">
-                      We'll notify you when you're approaching your limits. You can upgrade your plan 
-                      or purchase additional API calls as needed.
-                    </p>
-                  </div>
-                  
-                  <div>
-                    <h4 className="bw-heading-sm text-gray-900 mb-3">Is there a setup fee?</h4>
-                    <p className="bw-body text-gray-600">
-                      No setup fees for any plan. You only pay the monthly or annual subscription fee.
-                    </p>
                   </div>
                 </div>
-                
-                <div className="space-y-6">
-                  <div>
-                    <h4 className="bw-heading-sm text-gray-900 mb-3">Do you offer custom enterprise plans?</h4>
-                    <p className="bw-body text-gray-600">
-                      Yes, we offer custom enterprise solutions with dedicated support, 
-                      custom integrations, and volume pricing.
-                    </p>
-                  </div>
-                  
-                  <div>
-                    <h4 className="bw-heading-sm text-gray-900 mb-3">What payment methods do you accept?</h4>
-                    <p className="bw-body text-gray-600">
-                      We accept all major credit cards, bank transfers, and can arrange 
-                      invoicing for annual plans.
-                    </p>
-                  </div>
-                  
-                  <div>
-                    <h4 className="bw-heading-sm text-gray-900 mb-3">Is there a money-back guarantee?</h4>
-                    <p className="bw-body text-gray-600">
-                      Yes, we offer a 30-day money-back guarantee on all paid plans. 
-                      No questions asked.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
+              </Card>
+            ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* CTA Section */}
-        <section className="py-16 bg-gradient-to-r from-orange-500 to-red-500">
-          <div className="container mx-auto px-4 text-center">
-            <div className="max-w-2xl mx-auto">
-              <h2 className="bw-subtitle text-white mb-6">Ready to Get Started?</h2>
-              <p className="bw-body-light text-lg mb-8">
-                Join hundreds of construction professionals who trust BuildwellAI to 
-                streamline their operations and ensure compliance.
-              </p>
-              <div className="flex flex-wrap justify-center gap-4">
-                <Button className="btn-primary bg-white text-gray-900 hover:bg-gray-100">
-                  Start Free Trial
+      {/* CTA Section */}
+      <section className="border-t border-border bg-muted/30 py-20">
+        <div className="container mx-auto px-4">
+          <div className="mx-auto max-w-3xl text-center">
+            <h2 className="font-display text-3xl font-bold tracking-tight md:text-4xl">
+              Ready to See BuildwellAI in Action?
+            </h2>
+            <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
+              Book a personalized demo to see how our AI-powered suite can enhance your team's compliance workflow. 
+              We'll discuss your specific needs and help you choose the right plan.
+            </p>
+            <div className="mt-8">
+              <Link href="/contact">
+                <Button size="lg" className="bg-gradient-orange text-white hover:brightness-110">
+                  Book Your Demo
+                  <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
-                <Button variant="outline" className="border-white text-white hover:bg-white hover:text-gray-900">
-                  Contact Sales
-                </Button>
-              </div>
+              </Link>
             </div>
           </div>
-        </section>
-      </main>
+        </div>
+      </section>
+
       <MarketingFooter />
     </div>
   )
