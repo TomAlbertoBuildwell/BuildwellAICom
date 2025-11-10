@@ -139,7 +139,7 @@ export default function FeaturesPage() {
               AI-Powered Vision
             </div>
             <h2 className="font-display text-4xl md:text-5xl font-bold mb-4">
-              <span className="text-gradient-orange">BuildwellEYE</span>
+              Buildwell<span className="text-gradient-orange">EYE</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Real-time defect detection and safety monitoring with AI-powered computer vision
@@ -372,7 +372,7 @@ export default function FeaturesPage() {
               AI-Powered Documentation
             </div>
             <h2 className="font-display text-4xl md:text-5xl font-bold mb-4">
-              <span className="text-gradient-orange">BuildwellTHREAD</span>
+              Buildwell<span className="text-gradient-orange">THREAD</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Complete Golden Thread Documentation Management
@@ -540,7 +540,7 @@ export default function FeaturesPage() {
               Coming Soon
             </div>
             <h2 className="font-display text-4xl md:text-5xl font-bold mb-4">
-              <span className="text-gradient-orange">BuildwellCHAT</span>
+              Buildwell<span className="text-gradient-orange">CHAT</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               AI Assistant for Building Documentation
@@ -615,7 +615,7 @@ export default function FeaturesPage() {
               Mobile-First Inspections
             </div>
             <h2 className="font-display text-4xl md:text-5xl font-bold mb-4">
-              <span className="text-gradient-orange">BuildwellINSPECT</span>
+              Buildwell<span className="text-gradient-orange">INSPECT</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Simple, Powerful Site Inspections
@@ -723,7 +723,7 @@ export default function FeaturesPage() {
               Industry Intelligence
             </div>
             <h2 className="font-display text-4xl md:text-5xl font-bold mb-4">
-              <span className="text-gradient-orange">BuildwellNEWS</span>
+              Buildwell<span className="text-gradient-orange">NEWS</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               UK Construction Industry Intelligence Hub
@@ -741,7 +741,7 @@ export default function FeaturesPage() {
                   playsInline
                   autoPlay
                 >
-                  <source src="https://res.cloudinary.com/drzxliqyz/video/upload/v1762606241/WhatsApp_Video_2025-11-07_at_18.14.45_6913d34a_wrpesi.mp4" type="video/mp4" />
+                  <source src="https://res.cloudinary.com/drzxliqyz/video/upload/v1762797262/showcasenews_peihce.mp4" type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
                 
