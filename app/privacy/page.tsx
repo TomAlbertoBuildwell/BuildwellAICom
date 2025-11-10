@@ -1,29 +1,30 @@
 "use client"
 
-import { Footer } from "@/components/footer"
-import { Header } from "@/components/Header"
+import { MarketingNav } from "@/components/marketing-nav"
+import { MarketingFooter } from "@/components/marketing-footer"
 import { Shield, Lock, Eye, FileText, Mail, Clock } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import Image from "next/image"
 
 export default function PrivacyPage() {
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Header />
-      <main>
+    <div className="min-h-screen bg-background dark:bg-background">
+      <MarketingNav />
+      <main className="pt-16">
         {/* Hero Section */}
-        <section className="relative bg-gradient-to-r from-gray-900 to-gray-800 py-20">
+        <section className="relative bg-gradient-to-r from-[#FBB429] to-[#F87866] py-24 md:py-32">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center">
-              <h1 className="bw-title text-white mb-6">
+              <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6">
                 Privacy Policy
               </h1>
-              <p className="bw-body-light text-xl mb-8 max-w-2xl mx-auto">
+              <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed mb-4">
                 Your privacy is important to us. This policy explains how we collect, 
                 use, and protect your personal information.
               </p>
               <div className="flex items-center justify-center space-x-2 text-white/80">
                 <Clock className="h-4 w-4" />
-                <span className="bw-caption">Last updated: January 2024</span>
+                <span className="text-sm">Last updated: January 2024</span>
               </div>
             </div>
           </div>
@@ -320,7 +321,7 @@ export default function PrivacyPage() {
           </div>
         </section>
       </main>
-      <Footer />
+      <MarketingFooter />
     </div>
   )
 }

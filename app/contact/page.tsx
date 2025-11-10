@@ -1,25 +1,40 @@
 "use client"
 
-import { Footer } from "@/components/footer"
-import { Header } from "@/components/Header"
+import { MarketingNav } from "@/components/marketing-nav"
+import { MarketingFooter } from "@/components/marketing-footer"
 import { Mail, Phone, MapPin, Clock, MessageSquare, Send } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
+import Image from "next/image"
 
 export default function ContactPage() {
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Header />
-      <main>
-        {/* Hero Section */}
-        <section className="relative bg-gradient-to-r from-gray-900 to-gray-800 py-20">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto text-center">
-              <h1 className="bw-title text-white mb-6">
+    <div className="min-h-screen bg-background dark:bg-background">
+      <MarketingNav />
+      <main className="pt-16">
+        {/* Hero Section with Image */}
+        <section className="relative min-h-[400px] flex items-center bg-background dark:bg-[#0a1929]">
+          <div className="absolute inset-0 z-0">
+            <Image
+              src="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=1920&q=80"
+              alt="Contact Us"
+              fill
+              className="object-cover"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/70 to-black/60" />
+          </div>
+          
+          <div className="container mx-auto px-4 relative z-10">
+            <div className="max-w-3xl">
+              <span className="text-sm font-semibold text-[#FBB429] uppercase tracking-wider">
+                Contact Us
+              </span>
+              <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-white mt-4 mb-6">
                 Get In Touch
               </h1>
-              <p className="bw-body-light text-xl mb-8 max-w-2xl mx-auto">
+              <p className="text-xl md:text-2xl text-white/90 leading-relaxed">
                 Ready to transform your construction projects with AI? We'd love to hear from you. 
                 Our team is here to help you find the perfect solution.
               </p>
@@ -28,13 +43,13 @@ export default function ContactPage() {
         </section>
 
         {/* Contact Information */}
-        <section className="py-16">
+        <section className="py-20 bg-background dark:bg-background">
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
               <div className="grid lg:grid-cols-2 gap-12">
                 {/* Contact Form */}
-                <div className="bg-white rounded-lg shadow-lg p-8">
-                  <h2 className="bw-heading-lg text-gray-900 mb-6">Send us a Message</h2>
+                <div className="bg-background dark:bg-[#0a1929] rounded-[5px] border border-border shadow-lg p-8">
+                  <h2 className="font-display text-3xl font-bold text-foreground dark:text-white mb-6">Send us a Message</h2>
                   <form className="space-y-6">
                     <div className="grid md:grid-cols-2 gap-4">
                       <div>
@@ -320,7 +335,7 @@ export default function ContactPage() {
           </div>
         </section>
       </main>
-      <Footer />
+      <MarketingFooter />
     </div>
   )
 }
