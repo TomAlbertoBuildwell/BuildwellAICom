@@ -14,9 +14,8 @@ export function MarketingFooter() {
                 alt="BuildwellAI"
                 width={32}
                 height={32}
-                className="h-8 w-8"
+                className="h-8 w-auto"
               />
-              <span className="font-display text-lg font-bold">BuildwellAI</span>
             </div>
             <p className="text-sm text-muted-foreground">
               AI-powered solutions for the UK construction industry. Building safety, compliance, and innovation.
@@ -72,6 +71,11 @@ export function MarketingFooter() {
               <li>
                 <a href="https://chat.buildwellai.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground transition-colors hover:text-foreground">
                   BuildwellAI Chat
+                </a>
+              </li>
+              <li>
+                 <a href="https://news.buildwellai.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground transition-colors hover:text-foreground">
+                  BuildwellAI News
                 </a>
               </li>
             </ul>

@@ -27,17 +27,18 @@ export function VideoShowcase({
 
   return (
     <div className={`w-full ${className}`}>
-      <div className="grid lg:grid-cols-5 gap-8 lg:gap-12 items-center">
-        {/* Left Column - Text Content (2 columns) */}
-        <div className="lg:col-span-2 space-y-4">
-          <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white">
+      <div className="flex flex-col lg:grid lg:grid-cols-5 gap-8 lg:gap-12 lg:items-center">
+        {/* Left Column - Text Content (2 columns on desktop) */}
+        <div className="lg:col-span-2 space-y-4 order-2 lg:order-1">
+          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 dark:text-white">
             {title}
           </h2>
-          <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
+          <p className="text-base sm:text-lg lg:text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
             {description}
           </p>
           
-          <div className="space-y-3 pt-2">
+          {/* Desktop only features list */}
+          <div className="space-y-3 pt-2 hidden lg:block">
             <h3 className="font-display text-2xl font-bold text-gray-900 dark:text-white">
               Key Features
             </h3>
@@ -73,10 +74,26 @@ export function VideoShowcase({
               </div>
             </div>
           </div>
+
+          {/* Mobile only: Compact feature badges */}
+          <div className="flex flex-wrap gap-2 lg:hidden pt-4">
+            <span className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-gradient-to-r from-[#FBB429]/10 to-[#F87866]/10 text-xs font-semibold text-foreground dark:text-white border border-[#FBB429]/20">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#FBB429]"></span>
+              AI Detection
+            </span>
+            <span className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-gradient-to-r from-[#FBB429]/10 to-[#F87866]/10 text-xs font-semibold text-foreground dark:text-white border border-[#FBB429]/20">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#FBB429]"></span>
+              Analytics
+            </span>
+            <span className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-gradient-to-r from-[#FBB429]/10 to-[#F87866]/10 text-xs font-semibold text-foreground dark:text-white border border-[#FBB429]/20">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#FBB429]"></span>
+              24/7 Monitoring
+            </span>
+          </div>
         </div>
 
-        {/* Right Column - Video (3 columns - larger) */}
-        <div className="lg:col-span-3 relative">
+        {/* Right Column - Video (3 columns on desktop - larger) */}
+        <div className="lg:col-span-3 relative order-1 lg:order-2">
           {/* Video Container */}
           <div className="relative overflow-hidden rounded-lg bg-[#0a1929] shadow-lg">
             {/* Video Element - Auto-playing, looping, muted, no controls */}

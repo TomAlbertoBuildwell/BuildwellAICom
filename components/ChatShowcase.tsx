@@ -55,10 +55,10 @@ export function ChatShowcase() {
           </div>
 
           {/* Video and Features Grid */}
-          <div className="grid lg:grid-cols-5 gap-12 items-center">
-            {/* Video - Takes 3 columns */}
-            <div className="lg:col-span-3 order-2 lg:order-1">
-              <div className="relative aspect-video rounded-[5px] overflow-hidden shadow-2xl border border-border">
+          <div className="space-y-8 lg:space-y-0 lg:grid lg:grid-cols-5 lg:gap-12 lg:items-center">
+            {/* Video - Takes 3 columns on desktop, full width on mobile */}
+            <div className="lg:col-span-3 lg:order-1">
+              <div className="relative aspect-video rounded-xl overflow-hidden shadow-2xl border-2 border-[#FBB429]/20">
                 <video
                   ref={videoRef}
                   className="w-full h-full object-cover"
@@ -67,32 +67,37 @@ export function ChatShowcase() {
                   playsInline
                   autoPlay
                 >
-                  <source src="https://res.cloudinary.com/drzxliqyz/video/upload/v1762606241/WhatsApp_Video_2025-11-07_at_18.14.45_6913d34a_wrpesi.mp4" type="video/mp4" />
+                  <source src="https://res.cloudinary.com/drzxliqyz/video/upload/v1762797262/showcasenews_peihce.mp4" type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
+                {/* Mobile-only gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent lg:hidden" />
               </div>
             </div>
 
-            {/* Features - Takes 2 columns */}
-            <div className="lg:col-span-2 space-y-6 order-1 lg:order-2">
-              {features.map((feature, index) => (
-                <div 
-                  key={index}
-                  className="flex gap-4 group"
-                >
-                  <div className="flex-shrink-0 w-12 h-12 rounded-[5px] bg-gradient-to-r from-[#FBB429]/10 to-[#F87866]/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <feature.icon className="h-6 w-6 text-[#FBB429]" />
+            {/* Features - Takes 2 columns on desktop, grid on mobile */}
+            <div className="lg:col-span-2 lg:order-2">
+              {/* Mobile: 2-column grid */}
+              <div className="grid grid-cols-2 gap-4 lg:space-y-6 lg:grid-cols-1 lg:gap-0">
+                {features.map((feature, index) => (
+                  <div 
+                    key={index}
+                    className="flex flex-col items-center text-center lg:flex-row lg:items-start lg:text-left gap-3 lg:gap-4 p-4 lg:p-0 bg-background dark:bg-[#0a1929] lg:bg-transparent rounded-lg lg:rounded-none border border-border lg:border-0 group"
+                  >
+                    <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-gradient-to-r from-[#FBB429]/10 to-[#F87866]/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <feature.icon className="h-6 w-6 text-[#FBB429]" />
+                    </div>
+                    <div>
+                      <h3 className="font-display text-base lg:text-lg font-bold text-foreground dark:text-white mb-1">
+                        {feature.title}
+                      </h3>
+                      <p className="text-xs lg:text-sm text-muted-foreground dark:text-neutral-300">
+                        {feature.description}
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="font-display text-lg font-bold text-foreground dark:text-white mb-1">
-                      {feature.title}
-                    </h3>
-                    <p className="text-sm text-muted-foreground dark:text-neutral-300">
-                      {feature.description}
-                    </p>
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </div>
