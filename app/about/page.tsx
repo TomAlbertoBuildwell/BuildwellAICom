@@ -1,22 +1,39 @@
 "use client"
 
-import { Footer } from "@/components/footer"
-import { Header } from "@/components/Header"
-import { Building, Users, Target, Award, CheckCircle } from "lucide-react"
+import { MarketingNav } from "@/components/marketing-nav"
+import { MarketingFooter } from "@/components/marketing-footer"
+import { Building, Users, Target, Award, CheckCircle, Zap, Shield, TrendingUp } from "lucide-react"
+import Image from "next/image"
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Header />
-      <main>
-        {/* Hero Section */}
-        <section className="relative bg-gradient-to-r from-gray-900 to-gray-800 py-20">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto text-center">
-              <h1 className="bw-title text-white mb-6">
-                About BuildwellAI
+    <div className="min-h-screen bg-background dark:bg-background">
+      <MarketingNav />
+      <main className="pt-16">
+        {/* Hero Section with Image */}
+        <section className="relative min-h-[600px] flex items-center bg-background dark:bg-[#0a1929]">
+          {/* Background Image */}
+          <div className="absolute inset-0 z-0">
+            <Image
+              src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1920&q=80"
+              alt="BuildwellAI Team"
+              fill
+              className="object-cover"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/70 to-black/60" />
+          </div>
+          
+          {/* Content */}
+          <div className="container mx-auto px-4 relative z-10">
+            <div className="max-w-3xl">
+              <span className="text-sm font-semibold text-[#FBB429] uppercase tracking-wider">
+                About Us
+              </span>
+              <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-white mt-4 mb-6">
+                Building the Future of UK Construction
               </h1>
-              <p className="bw-body-light text-xl mb-8 max-w-2xl mx-auto">
+              <p className="text-xl md:text-2xl text-white/90 leading-relaxed">
                 Transforming the UK construction industry through intelligent automation, 
                 safety innovation, and data-driven insights.
               </p>
@@ -25,12 +42,17 @@ export default function AboutPage() {
         </section>
 
         {/* Mission Section */}
-        <section className="py-16">
+        <section className="py-20 bg-background dark:bg-background">
           <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto">
-              <div className="text-center mb-12">
-                <h2 className="bw-subtitle text-gray-900 mb-6">Our Mission</h2>
-                <p className="bw-body text-lg">
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center mb-16">
+                <span className="text-sm font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866] uppercase tracking-wider">
+                  Our Mission
+                </span>
+                <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground dark:text-white mt-4 mb-6">
+                  Building the Future Together
+                </h2>
+                <p className="text-lg text-muted-foreground dark:text-neutral-300 max-w-3xl mx-auto">
                   We're dedicated to revolutionising the construction industry by providing 
                   AI-powered solutions that enhance safety, efficiency, and productivity 
                   across all phases of building projects.
@@ -38,24 +60,30 @@ export default function AboutPage() {
               </div>
 
               <div className="grid md:grid-cols-3 gap-8">
-                <div className="card-sand text-center">
-                  <Building className="h-12 w-12 text-orange-500 mx-auto mb-4" />
-                  <h3 className="bw-heading-sm mb-3">Innovation</h3>
-                  <p className="bw-body">
+                <div className="bg-background dark:bg-[#0a1929] p-8 rounded-[5px] border border-border hover:border-[#FBB429] transition-all duration-300 hover:shadow-xl text-center group">
+                  <div className="w-16 h-16 mx-auto rounded-[5px] bg-gradient-to-r from-[#FBB429]/10 to-[#F87866]/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <Building className="h-8 w-8 text-[#FBB429]" />
+                  </div>
+                  <h3 className="font-display text-xl font-bold text-foreground dark:text-white mb-3">Innovation</h3>
+                  <p className="text-muted-foreground dark:text-neutral-300">
                     Pioneering cutting-edge AI technologies to solve complex construction challenges.
                   </p>
                 </div>
-                <div className="card-sand text-center">
-                  <Users className="h-12 w-12 text-orange-500 mx-auto mb-4" />
-                  <h3 className="bw-heading-sm mb-3">Collaboration</h3>
-                  <p className="bw-body">
+                <div className="bg-background dark:bg-[#0a1929] p-8 rounded-[5px] border border-border hover:border-[#FBB429] transition-all duration-300 hover:shadow-xl text-center group">
+                  <div className="w-16 h-16 mx-auto rounded-[5px] bg-gradient-to-r from-[#FBB429]/10 to-[#F87866]/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <Users className="h-8 w-8 text-[#FBB429]" />
+                  </div>
+                  <h3 className="font-display text-xl font-bold text-foreground dark:text-white mb-3">Collaboration</h3>
+                  <p className="text-muted-foreground dark:text-neutral-300">
                     Working closely with industry professionals to understand real-world needs.
                   </p>
                 </div>
-                <div className="card-sand text-center">
-                  <Target className="h-12 w-12 text-orange-500 mx-auto mb-4" />
-                  <h3 className="bw-heading-sm mb-3">Excellence</h3>
-                  <p className="bw-body">
+                <div className="bg-background dark:bg-[#0a1929] p-8 rounded-[5px] border border-border hover:border-[#FBB429] transition-all duration-300 hover:shadow-xl text-center group">
+                  <div className="w-16 h-16 mx-auto rounded-[5px] bg-gradient-to-r from-[#FBB429]/10 to-[#F87866]/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <Target className="h-8 w-8 text-[#FBB429]" />
+                  </div>
+                  <h3 className="font-display text-xl font-bold text-foreground dark:text-white mb-3">Excellence</h3>
+                  <p className="text-muted-foreground dark:text-neutral-300">
                     Delivering solutions that exceed expectations and drive measurable results.
                   </p>
                 </div>
@@ -65,48 +93,98 @@ export default function AboutPage() {
         </section>
 
         {/* Story Section */}
-        <section className="py-16 bg-white">
+        <section className="py-20 bg-muted/30 dark:bg-[#0d1f33]">
           <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto">
-              <div className="grid md:grid-cols-2 gap-12 items-center">
-                <div>
-                  <h2 className="bw-subtitle text-gray-900 mb-6">Our Story</h2>
-                  <p className="bw-body mb-6">
-                    Founded by construction industry veterans and AI specialists, BuildwellAI 
-                    emerged from a shared vision to address the sector's most pressing challenges 
-                    through intelligent technology solutions.
+            <div className="max-w-6xl mx-auto">
+              <div className="grid lg:grid-cols-2 gap-12 items-center">
+                {/* Image */}
+                <div className="order-2 lg:order-1">
+                  <div className="relative aspect-[4/3] rounded-[5px] overflow-hidden shadow-2xl">
+                    <Image
+                      src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1200&q=80"
+                      alt="BuildwellAI Office"
+                      fill
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-tr from-[#FBB429]/10 to-[#F87866]/10" />
+                  </div>
+                </div>
+                
+                {/* Text Content */}
+                <div className="order-1 lg:order-2">
+                  <span className="text-sm font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866] uppercase tracking-wider">
+                    Our Story
+                  </span>
+                  <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground dark:text-white mt-4 mb-6">
+                    Building on Experience, Innovating for Tomorrow
+                  </h2>
+                  <p className="text-lg text-muted-foreground dark:text-neutral-300 mb-6 leading-relaxed">
+                    Founded by construction veterans and AI specialists, BuildwellAI emerged from a shared vision 
+                    to solve the sector's most pressing challenges through intelligent technology.
                   </p>
-                  <p className="bw-body mb-6">
-                    Our team combines decades of construction experience with cutting-edge 
-                    artificial intelligence expertise, enabling us to create solutions that 
-                    truly understand the industry's unique requirements.
-                  </p>
-                  <p className="bw-body">
-                    Today, we're proud to serve construction professionals across the UK, 
-                    helping them build safer, more efficient, and more profitable projects.
+                  <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed">
+                    Today, we proudly serve construction professionals across the UK, helping them build 
+                    safer, more efficient, and more profitable projects.
                   </p>
                 </div>
-                <div className="space-y-6">
-                  <div className="flex items-start space-x-4">
-                    <CheckCircle className="h-6 w-6 text-green-500 mt-1" />
-                    <div>
-                      <h4 className="bw-heading-sm mb-2">Industry Expertise</h4>
-                      <p className="bw-body">Deep understanding of construction workflows and challenges</p>
-                    </div>
+              </div>
+              
+              {/* Feature Cards with Images */}
+              <div className="grid md:grid-cols-3 gap-8 mt-16">
+                <div className="bg-background dark:bg-[#0a1929] rounded-[5px] overflow-hidden border border-border hover:border-[#FBB429] transition-all duration-300 hover:shadow-xl">
+                  <div className="relative h-48">
+                    <Image
+                      src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&q=80"
+                      alt="Industry Expertise"
+                      fill
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                   </div>
-                  <div className="flex items-start space-x-4">
-                    <CheckCircle className="h-6 w-6 text-green-500 mt-1" />
-                    <div>
-                      <h4 className="bw-heading-sm mb-2">AI Innovation</h4>
-                      <p className="bw-body">Cutting-edge machine learning and automation technologies</p>
+                  <div className="p-6">
+                    <div className="flex items-center gap-3 mb-3">
+                      <CheckCircle className="h-6 w-6 text-[#FBB429] flex-shrink-0" />
+                      <h4 className="font-display text-lg font-bold text-foreground dark:text-white">Industry Expertise</h4>
                     </div>
+                    <p className="text-muted-foreground dark:text-neutral-300">Deep understanding of construction workflows and challenges</p>
                   </div>
-                  <div className="flex items-start space-x-4">
-                    <CheckCircle className="h-6 w-6 text-green-500 mt-1" />
-                    <div>
-                      <h4 className="bw-heading-sm mb-2">Proven Results</h4>
-                      <p className="bw-body">Track record of successful implementations across the UK</p>
+                </div>
+                
+                <div className="bg-background dark:bg-[#0a1929] rounded-[5px] overflow-hidden border border-border hover:border-[#FBB429] transition-all duration-300 hover:shadow-xl">
+                  <div className="relative h-48">
+                    <Image
+                      src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800&q=80"
+                      alt="AI Innovation"
+                      fill
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  </div>
+                  <div className="p-6">
+                    <div className="flex items-center gap-3 mb-3">
+                      <CheckCircle className="h-6 w-6 text-[#FBB429] flex-shrink-0" />
+                      <h4 className="font-display text-lg font-bold text-foreground dark:text-white">AI Innovation</h4>
                     </div>
+                    <p className="text-muted-foreground dark:text-neutral-300">Cutting-edge machine learning and automation technologies</p>
+                  </div>
+                </div>
+                
+                <div className="bg-background dark:bg-[#0a1929] rounded-[5px] overflow-hidden border border-border hover:border-[#FBB429] transition-all duration-300 hover:shadow-xl">
+                  <div className="relative h-48">
+                    <Image
+                      src="https://images.unsplash.com/photo-1590402494682-cd3fb53b1f70?w=800&q=80"
+                      alt="Proven Results"
+                      fill
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  </div>
+                  <div className="p-6">
+                    <div className="flex items-center gap-3 mb-3">
+                      <CheckCircle className="h-6 w-6 text-[#FBB429] flex-shrink-0" />
+                      <h4 className="font-display text-lg font-bold text-foreground dark:text-white">Proven Results</h4>
+                    </div>
+                    <p className="text-muted-foreground dark:text-neutral-300">Track record of successful implementations across the UK</p>
                   </div>
                 </div>
               </div>
@@ -115,41 +193,58 @@ export default function AboutPage() {
         </section>
 
         {/* Values Section */}
-        <section className="py-16">
+        <section className="py-20 bg-background dark:bg-background">
           <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto">
-              <div className="text-center mb-12">
-                <h2 className="bw-subtitle text-gray-900 mb-6">Our Values</h2>
-                <p className="bw-body text-lg">
-                  The principles that guide everything we do
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center mb-16">
+                <span className="text-sm font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866] uppercase tracking-wider">
+                  Our Values
+                </span>
+                <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground dark:text-white mt-4 mb-6">
+                  The Principles That Guide Us
+                </h2>
+                <p className="text-lg text-muted-foreground dark:text-neutral-300 max-w-3xl mx-auto">
+                  Everything we do is guided by these core values
                 </p>
               </div>
 
               <div className="grid md:grid-cols-2 gap-8">
-                <div className="card-dark">
-                  <h3 className="bw-heading-sm text-white mb-4">Safety First</h3>
-                  <p className="bw-body-light">
+                <div className="bg-background dark:bg-[#0a1929] p-8 rounded-[5px] border border-border hover:border-[#FBB429] transition-all duration-300 hover:shadow-xl group">
+                  <div className="w-16 h-16 rounded-[5px] bg-gradient-to-r from-[#FBB429]/10 to-[#F87866]/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <Shield className="h-8 w-8 text-[#FBB429]" />
+                  </div>
+                  <h3 className="font-display text-2xl font-bold text-foreground dark:text-white mb-4">Safety First</h3>
+                  <p className="text-muted-foreground dark:text-neutral-300 leading-relaxed">
                     Every solution we develop prioritises worker safety and regulatory compliance, 
                     helping construction sites become safer environments for everyone.
                   </p>
                 </div>
-                <div className="card-dark">
-                  <h3 className="bw-heading-sm text-white mb-4">Transparency</h3>
-                  <p className="bw-body-light">
+                <div className="bg-background dark:bg-[#0a1929] p-8 rounded-[5px] border border-border hover:border-[#FBB429] transition-all duration-300 hover:shadow-xl group">
+                  <div className="w-16 h-16 rounded-[5px] bg-gradient-to-r from-[#FBB429]/10 to-[#F87866]/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <Zap className="h-8 w-8 text-[#FBB429]" />
+                  </div>
+                  <h3 className="font-display text-2xl font-bold text-foreground dark:text-white mb-4">Transparency</h3>
+                  <p className="text-muted-foreground dark:text-neutral-300 leading-relaxed">
                     We believe in clear communication, honest partnerships, and transparent 
                     processes that build trust with our clients and stakeholders.
                   </p>
                 </div>
-                <div className="card-dark">
-                  <h3 className="bw-heading-sm text-white mb-4">Continuous Learning</h3>
-                  <p className="bw-body-light">
+                <div className="bg-background dark:bg-[#0a1929] p-8 rounded-[5px] border border-border hover:border-[#FBB429] transition-all duration-300 hover:shadow-xl group">
+                  <div className="w-16 h-16 rounded-[5px] bg-gradient-to-r from-[#FBB429]/10 to-[#F87866]/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <TrendingUp className="h-8 w-8 text-[#FBB429]" />
+                  </div>
+                  <h3 className="font-display text-2xl font-bold text-foreground dark:text-white mb-4">Continuous Learning</h3>
+                  <p className="text-muted-foreground dark:text-neutral-300 leading-relaxed">
                     The construction industry evolves rapidly, and so do we. We're committed 
                     to staying at the forefront of both industry trends and technological advances.
                   </p>
                 </div>
-                <div className="card-dark">
-                  <h3 className="bw-heading-sm text-white mb-4">Sustainability</h3>
-                  <p className="bw-body-light">
+                <div className="bg-background dark:bg-[#0a1929] p-8 rounded-[5px] border border-border hover:border-[#FBB429] transition-all duration-300 hover:shadow-xl group">
+                  <div className="w-16 h-16 rounded-[5px] bg-gradient-to-r from-[#FBB429]/10 to-[#F87866]/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <Award className="h-8 w-8 text-[#FBB429]" />
+                  </div>
+                  <h3 className="font-display text-2xl font-bold text-foreground dark:text-white mb-4">Sustainability</h3>
+                  <p className="text-muted-foreground dark:text-neutral-300 leading-relaxed">
                     Our solutions help reduce waste, optimise resource usage, and support 
                     environmentally responsible construction practices.
                   </p>
@@ -160,27 +255,45 @@ export default function AboutPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-16 bg-gradient-to-r from-orange-500 to-red-500">
-          <div className="container mx-auto px-4 text-center">
-            <div className="max-w-2xl mx-auto">
-              <h2 className="bw-subtitle text-white mb-6">Ready to Transform Your Projects?</h2>
-              <p className="bw-body-light text-lg mb-8">
+        <section className="relative py-20 overflow-hidden">
+          {/* Background Image */}
+          <div className="absolute inset-0 z-0">
+            <Image
+              src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1920&q=80"
+              alt="Construction Site"
+              fill
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#000000]/65 to-[#000000]/65" />
+          </div>
+          
+          {/* Content */}
+          <div className="container mx-auto px-4 text-center relative z-10">
+            <div className="max-w-3xl mx-auto">
+              <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-6">
+                Ready to Transform Your Projects?
+              </h2>
+              <p className="text-xl text-white/90 mb-8 leading-relaxed">
                 Join hundreds of construction professionals who trust BuildwellAI to 
                 deliver smarter, safer, and more efficient building solutions.
               </p>
               <div className="flex flex-wrap justify-center gap-4">
-                <a href="/contact" className="btn-primary bg-white text-gray-900 hover:bg-gray-100">
-                  Get In Touch
+                <a href="/contact">
+                  <button className="bg-gradient-to-r from-[#FBB429] to-[#F87866] text-white px-8 py-4 rounded-[5px] font-semibold hover:opacity-90 transition-all shadow-lg">
+                    Get In Touch
+                  </button>
                 </a>
-                <a href="/pricing" className="btn-secondary border-white text-white hover:bg-white hover:text-gray-900">
-                  View Pricing
+                <a href="/pricing">
+                  <button className="bg-transparent text-white px-8 py-4 rounded-[5px] font-semibold hover:bg-white/10 transition-all shadow-[inset_0_0_0_2px] shadow-white">
+                    View Pricing
+                  </button>
                 </a>
               </div>
             </div>
           </div>
         </section>
       </main>
-      <Footer />
+      <MarketingFooter />
     </div>
   )
 }

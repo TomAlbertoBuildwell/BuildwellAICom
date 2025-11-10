@@ -2,297 +2,172 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Import BuildwellAI brand fonts */
-@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,200..900;1,200..900&display=swap'); /* RoxboroughCF alternative */
-@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-
-body {
-  font-family: 'Courier Prime', monospace;
+html {
+  scroll-behavior: auto;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+html.lenis {
+  height: auto;
 }
 
-@layer base {
-  :root {
-    /* BuildwellAI Brand Colors */
-    --bw-grad-start: #F77E4D;
-    --bw-grad-end: #F6567B;
-    --bw-black: #000000;
-    --bw-graphite: #333333;
-    --bw-sand: #EBE9E3;
-    --bw-white: #FFFFFF;
-    --bw-success: #36C98E;
-    --bw-warning: #FFB020;
-    --bw-danger: #FF5A5A;
-    --bw-border: #333333;
-    --bw-focus: #F6567B;
-    --bw-overlay: rgba(0,0,0,0.6);
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
 
-    /* Tailwind/shadcn compatibility - mapped to BuildwellAI colors */
-    --background: 0 0% 0%; /* Onyx Black */
-    --foreground: 0 0% 100%; /* Pure White */
-    --card: 0 0% 0%; /* Onyx Black */
-    --card-foreground: 0 0% 100%; /* Pure White */
-    --popover: 0 0% 0%; /* Onyx Black */
-    --popover-foreground: 0 0% 100%; /* Pure White */
-    --primary: 247 51% 62%; /* Buildwell Gradient Start */
-    --primary-foreground: 0 0% 100%; /* Pure White */
-    --secondary: 30 9% 92%; /* Soft Sand */
-    --secondary-foreground: 0 0% 20%; /* Graphite Grey */
-    --muted: 30 9% 92%; /* Soft Sand */
-    --muted-foreground: 0 0% 20%; /* Graphite Grey */
-    --accent: 247 51% 62%; /* Buildwell Gradient Start */
-    --accent-foreground: 0 0% 100%; /* Pure White */
-    --destructive: 0 100% 67%; /* Danger Red */
-    --destructive-foreground: 0 0% 100%; /* Pure White */
-    --border: 0 0% 20%; /* Graphite Grey */
-    --input: 30 9% 92%; /* Soft Sand */
-    --ring: 346 80% 61%; /* Buildwell Gradient End */
-    --chart-1: 247 51% 62%; /* Buildwell Gradient Start */
-    --chart-2: 346 80% 61%; /* Buildwell Gradient End */
-    --chart-3: 156 60% 51%; /* Success Green */
-    --chart-4: 37 100% 56%; /* Warning Amber */
-    --chart-5: 0 100% 67%; /* Danger Red */
-    --radius: 0.5rem;
-    --sidebar-background: 0 0% 0%; /* Onyx Black */
-    --sidebar-foreground: 0 0% 100%; /* Pure White */
-    --sidebar-primary: 247 51% 62%; /* Buildwell Gradient Start */
-    --sidebar-primary-foreground: 0 0% 100%; /* Pure White */
-    --sidebar-accent: 0 0% 20%; /* Graphite Grey */
-    --sidebar-accent-foreground: 0 0% 100%; /* Pure White */
-    --sidebar-border: 0 0% 20%; /* Graphite Grey */
-    --sidebar-ring: 346 80% 61%; /* Buildwell Gradient End */
-  }
-  
-  .dark {
-    /* Dark mode uses same BuildwellAI colors */
-    --background: 0 0% 0%; /* Onyx Black */
-    --foreground: 0 0% 100%; /* Pure White */
-    --card: 0 0% 0%; /* Onyx Black */
-    --card-foreground: 0 0% 100%; /* Pure White */
-    --popover: 0 0% 0%; /* Onyx Black */
-    --popover-foreground: 0 0% 100%; /* Pure White */
-    --primary: 247 51% 62%; /* Buildwell Gradient Start */
-    --primary-foreground: 0 0% 100%; /* Pure White */
-    --secondary: 0 0% 20%; /* Graphite Grey */
-    --secondary-foreground: 0 0% 100%; /* Pure White */
-    --muted: 0 0% 20%; /* Graphite Grey */
-    --muted-foreground: 30 9% 92%; /* Soft Sand */
-    --accent: 247 51% 62%; /* Buildwell Gradient Start */
-    --accent-foreground: 0 0% 100%; /* Pure White */
-    --destructive: 0 100% 67%; /* Danger Red */
-    --destructive-foreground: 0 0% 100%; /* Pure White */
-    --border: 0 0% 20%; /* Graphite Grey */
-    --input: 0 0% 20%; /* Graphite Grey */
-    --ring: 346 80% 61%; /* Buildwell Gradient End */
-    --chart-1: 247 51% 62%; /* Buildwell Gradient Start */
-    --chart-2: 346 80% 61%; /* Buildwell Gradient End */
-    --chart-3: 156 60% 51%; /* Success Green */
-    --chart-4: 37 100% 56%; /* Warning Amber */
-    --chart-5: 0 100% 67%; /* Danger Red */
-    --sidebar-background: 0 0% 0%; /* Onyx Black */
-    --sidebar-foreground: 0 0% 100%; /* Pure White */
-    --sidebar-primary: 247 51% 62%; /* Buildwell Gradient Start */
-    --sidebar-primary-foreground: 0 0% 100%; /* Pure White */
-    --sidebar-accent: 0 0% 20%; /* Graphite Grey */
-    --sidebar-accent-foreground: 0 0% 100%; /* Pure White */
-    --sidebar-border: 0 0% 20%; /* Graphite Grey */
-    --sidebar-ring: 346 80% 61%; /* Buildwell Gradient End */
-  }
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #0a1929;
+  --card: #f7fafc;
+  --card-foreground: #0a1929;
+  --popover: #f7fafc;
+  --popover-foreground: #0a1929;
+  --primary: #ff8a00;
+  --primary-foreground: #ffffff;
+  --secondary: #2196f3;
+  --secondary-foreground: #ffffff;
+  --muted: #f0f3f7;
+  --muted-foreground: #607d8b;
+  --accent: #ffe0c0;
+  --accent-foreground: #0a1929;
+  --destructive: #f44336;
+  --destructive-foreground: #ffffff;
+  --border: transparent;
+  --input: #f0f3f7;
+  --ring: #ff8a00;
+  --chart-1: #2196f3;
+  --chart-2: #ffd600;
+  --chart-3: #4caf50;
+  --chart-4: #f44336;
+  --chart-5: #ff8a00;
+  --radius: 5px;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #0a1929;
+  --sidebar-primary: #ff8a00;
+  --sidebar-primary-foreground: #0a1929;
+  --sidebar-accent: #2196f3;
+  --sidebar-accent-foreground: #0a1929;
+  --sidebar-border: #e0e0e0;
+  --sidebar-ring: #ffd600;
+  /* Brand-specific colors */
+  --construction-orange: #ff8a00;
+  --deep-navy: #0a1929;
+  --blueprint-blue: #2196f3;
+  --steel-grey: #607d8b;
+  --safety-yellow: #ffd600;
+  --success-green: #4caf50;
+  --alert-red: #f44336;
+  --light-grey: #e0e0e0;
+  --shadow-x: 0px;
+  --shadow-y: 1px;
+  --shadow-blur: 2px;
+  --shadow-spread: 0px;
+  --shadow-opacity: 0.05;
+  --shadow-color: #000000;
+}
+
+.dark {
+  --background: #0a1929;
+  --foreground: #e0e0e0;
+  --card: #172b3a;
+  --card-foreground: #e0e0e0;
+  --popover: #172b3a;
+  --popover-foreground: #e0e0e0;
+  --primary: #ff8a00;
+  --primary-foreground: #ffffff;
+  --secondary: #2196f3;
+  --secondary-foreground: #ffffff;
+  --muted: #1a2f42;
+  --muted-foreground: #94a3b8;
+  --accent: #2d3e50;
+  --accent-foreground: #e0e0e0;
+  --destructive: #f44336;
+  --destructive-foreground: #ffffff;
+  --border: transparent;
+  --input: #1a2f42;
+  --ring: #ff8a00;
+  --chart-1: #2196f3;
+  --chart-2: #ffd600;
+  --chart-3: #4caf50;
+  --chart-4: #f44336;
+  --chart-5: #ff8a00;
+  --sidebar: #0d1b2a;
+  --sidebar-foreground: #e0e0e0;
+  --sidebar-primary: #ff8a00;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #2196f3;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #2d3e50;
+  --sidebar-ring: #ffd600;
+  /* Dark mode brand colors */
+  --construction-orange: #ff8a00;
+  --deep-navy: #0a1929;
+  --blueprint-blue: #2196f3;
+  --steel-grey: #607d8b;
+  --safety-yellow: #ffd600;
+  --success-green: #4caf50;
+  --alert-red: #f44336;
+  --light-grey: #e0e0e0;
+  --shadow-x: 0px;
+  --shadow-y: 1px;
+  --shadow-blur: 2px;
+  --shadow-spread: 0px;
+  --shadow-opacity: 0.1;
+  --shadow-color: #000000;
 }
 
 @layer base {
   * {
-    @apply border-border;
+    border-color: hsl(var(--border));
+    outline-color: hsl(var(--ring) / 0.5);
   }
   body {
-    @apply bg-background text-foreground;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-feature-settings: "rlig" 1, "calt" 1;
   }
-  
-  /* BuildwellAI Typography Hierarchy */
-  .bw-title {
+  /* Brand font utilities */
+  .font-display {
     font-family: 'Big Shoulders Display', sans-serif;
-    font-weight: 700;
-    font-size: 2.625rem; /* 42pt equivalent */
-    line-height: 1.1;
   }
-  
-  .bw-subtitle {
-    font-family: 'Source Serif Pro', serif; /* RoxboroughCF alternative */
-    font-weight: 600;
-    font-size: 2.25rem; /* 36pt equivalent */
-    line-height: 1.2;
-  }
-  
-  .bw-heading-lg {
-    font-family: 'Source Serif Pro', serif;
-    font-weight: 600;
-    font-size: 2rem; /* 32pt equivalent */
-    line-height: 1.2;
-  }
-  
-  .bw-heading-md {
-    font-family: 'Source Serif Pro', serif;
-    font-weight: 500;
-    font-size: 1.75rem; /* 28pt equivalent */
-    line-height: 1.2;
-  }
-  
-  .bw-heading-sm {
-    font-family: 'Source Serif Pro', serif;
-    font-weight: 500;
-    font-size: 1.25rem; /* 20pt equivalent */
-    line-height: 1.2;
-  }
-  
-  .bw-body {
+  .font-data {
     font-family: 'Courier Prime', monospace;
-    font-weight: 400;
-    font-size: 1rem; /* 16pt equivalent */
-    line-height: 1.5;
-    color: var(--bw-graphite);
-  }
-  
-  .bw-body-light {
-    font-family: 'Courier Prime', monospace;
-    font-weight: 400;
-    font-size: 1rem;
-    line-height: 1.5;
-    color: var(--bw-white);
-  }
-  
-  .bw-quote {
-    font-family: 'Courier Prime', monospace;
-    font-weight: 400;
-    font-style: italic;
-    font-size: 1rem;
-    line-height: 1.5;
-  }
-  
-  .bw-caption {
-    font-family: 'Courier Prime', monospace;
-    font-weight: 400;
-    font-size: 0.875rem; /* 14pt equivalent */
-    line-height: 1.4;
   }
 }
 
 @layer components {
-  /* BuildwellAI Brand Components */
-  .bw-gradient {
-    background: linear-gradient(102deg, var(--bw-grad-start) 0%, var(--bw-grad-end) 100%);
+  /* Brand gradient utilities */
+  .bg-gradient-orange {
+    background: linear-gradient(90deg, #FBB429 0%, #F87866 100%);
   }
-  
-  .btn-primary {
-    color: var(--bw-white);
-    background: var(--bw-black);
-    border: 1px solid var(--bw-border);
-    padding: 0.75rem 1.5rem;
-    border-radius: 0.5rem;
-    font-family: 'Courier Prime', monospace;
-    font-weight: 400;
-    transition: all 0.2s ease-in-out;
+  .bg-gradient-navy {
+    background: linear-gradient(180deg, #0a1929 0%, #172b3a 100%);
   }
-  
-  .btn-primary:hover {
-    background: var(--bw-graphite);
+  .bg-gradient-blue {
+    background: linear-gradient(135deg, #2196f3 0%, #0d47a1 100%);
   }
-  
-  .btn-gradient {
-    color: var(--bw-white);
-    background: linear-gradient(102deg, var(--bw-grad-start) 0%, var(--bw-grad-end) 100%);
-    border: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 0.5rem;
-    font-family: 'Courier Prime', monospace;
-    font-weight: 400;
-    transition: all 0.2s ease-in-out;
+  /* Text gradient classes */
+  .text-gradient-orange {
+    background: linear-gradient(90deg, #FBB429 0%, #F87866 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
-  
-  .btn-gradient:hover {
-    opacity: 0.9;
-    transform: translateY(-1px);
-  }
-  
-  .btn-secondary {
-    color: var(--bw-white);
-    background: var(--bw-graphite);
-    border: 1px solid var(--bw-border);
-    padding: 0.75rem 1.5rem;
-    border-radius: 0.5rem;
-    font-family: 'Courier Prime', monospace;
-    font-weight: 400;
-    transition: all 0.2s ease-in-out;
-  }
-  
-  .btn-secondary:hover {
-    background: var(--bw-black);
-  }
-  
-  .card-dark {
-    background: var(--bw-black);
-    color: var(--bw-white);
-    border: 1px solid var(--bw-border);
-    border-radius: 0.5rem;
-    padding: 1.5rem;
-  }
-  
-  .card-sand {
-    background: var(--bw-sand);
-    color: var(--bw-black);
-    border: 1px solid var(--bw-graphite);
-    border-radius: 0.5rem;
-    padding: 1.5rem;
-  }
-  
-  .panel-sand {
-    background: var(--bw-sand);
-    color: var(--bw-black);
-    border-radius: 0.5rem;
-    padding: 1rem;
-  }
-  
-  /* Focus states for accessibility */
-  :focus {
-    outline: 3px solid var(--bw-focus);
-    outline-offset: 2px;
-  }
-  
-  /* Status indicators */
-  .status-success {
-    color: var(--bw-success);
-  }
-  
-  .status-warning {
-    color: var(--bw-warning);
-  }
-  
-  .status-danger {
-    color: var(--bw-danger);
-  }
-  
-  .bg-success {
-    background-color: var(--bw-success);
-    color: var(--bw-white);
-  }
-  
-  .bg-warning {
-    background-color: var(--bw-warning);
-    color: var(--bw-black);
-  }
-  
-  .bg-danger {
-    background-color: var(--bw-danger);
-    color: var(--bw-white);
-  }
-  
-  /* Overlay utility */
-  .overlay {
-    background: var(--bw-overlay);
+  .text-gradient-blue {
+    background: linear-gradient(135deg, #2196f3 0%, #0d47a1 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 }
