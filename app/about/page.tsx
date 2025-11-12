@@ -1,35 +1,197 @@
 "use client"
 
-import { useEffect } from "react"
+import { useEffect, useRef, useState } from "react"
+import { useScroll, useTransform, motion } from "framer-motion"
 import { MarketingNav } from "@/components/marketing-nav"
 import { MarketingFooter } from "@/components/marketing-footer"
 import Image from "next/image"
-import "./timeline.css"
+
+interface TimelineEntry {
+  title: string;
+  content: React.ReactNode;
+}
+
+const Timeline = ({ data }: { data: TimelineEntry[] }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [height, setHeight] = useState(0);
+
+  useEffect(() => {
+    if (ref.current) {
+      const rect = ref.current.getBoundingClientRect();
+      setHeight(rect.height);
+    }
+  }, [ref]);
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start 10%", "end 50%"],
+  });
+
+  const heightTransform = useTransform(scrollYProgress, [0, 1], [0, height]);
+  const opacityTransform = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
+
+  return (
+    <div
+      className="w-full bg-background dark:bg-background font-sans md:px-10 relative z-0"
+      ref={containerRef}
+    >
+      <div className="max-w-7xl mx-auto pt-12 md:pt-16 px-4 md:px-8 lg:px-10 text-center">
+        <h2 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-foreground dark:text-white mx-auto mb-20">
+          Our Journey
+        </h2>
+      </div>
+
+      <div ref={ref} className="relative max-w-7xl mx-auto pb-20">
+        {data.map((item, index) => (
+          <div
+            key={index}
+            className="flex justify-start pt-10 md:pt-20 md:gap-10"
+          >
+            <div className="sticky md:flex flex-col md:flex-row z-40 items-center top-40 self-start max-w-xs lg:max-w-sm md:w-full hidden">
+              <div className="h-10 absolute left-3 md:left-3 w-10 rounded-full bg-background dark:bg-background flex items-center justify-center">
+                <div className="h-4 w-4 rounded-full bg-gradient-to-r from-[#FBB429] to-[#F87866] border border-[#FBB429] p-2" />
+              </div>
+              <h3 className="hidden md:block text-xl md:pl-20 md:text-5xl font-bold text-neutral-500 dark:text-neutral-500">
+                {item.title}
+              </h3>
+            </div>
+
+            <div className="relative md:pl-4 w-full px-4 md:px-0">
+              <h3 className="md:hidden block text-2xl mb-4 text-left font-bold text-neutral-500 dark:text-neutral-500">
+                {item.title}
+              </h3>
+              {item.content}
+            </div>
+          </div>
+        ))}
+        <div
+          style={{
+            height: height + "px",
+          }}
+          className="absolute left-[1.1rem] md:left-8 top-0 overflow-hidden w-[2px] bg-[linear-gradient(to_bottom,var(--tw-gradient-stops))] from-transparent from-[0%] via-neutral-200 dark:via-neutral-700 to-transparent to-[99%] [mask-image:linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)] hidden md:block"
+        >
+          <motion.div
+            style={{
+              height: heightTransform,
+              opacity: opacityTransform,
+            }}
+            className="absolute inset-x-0 top-0 w-[2px] bg-gradient-to-b from-[#FBB429] via-[#F87866] to-[#FBB429] rounded-full"
+          />
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default function AboutPage() {
-  useEffect(() => {
-    const revealedBoxes = document.querySelectorAll(".timeliner .revealedBox")
-
-    const handleScroll = () => {
-      revealedBoxes.forEach((box) => {
-        if (window.scrollY + window.innerHeight > (box as HTMLElement).offsetTop) {
-          box.classList.add("revealedBox-in")
-        }
-      })
-    }
-
-    const setChildrenSpanClasses = () => {
-      revealedBoxes.forEach((box) => {
-        const childrenSpan = box.querySelectorAll("span").length
-        box.classList.add(`childrenSpan-${childrenSpan}`)
-      })
-    }
-
-    setChildrenSpanClasses()
-    handleScroll()
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+  const timelineData: TimelineEntry[] = [
+    {
+      title: "2020",
+      content: (
+        <div>
+          <div className="relative aspect-video rounded-[5px] overflow-hidden shadow-2xl mb-8">
+            <Image
+              src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=80"
+              alt="BuildwellAI Foundation"
+              fill
+              className="object-cover"
+            />
+          </div>
+          <h4 className="font-bold text-2xl md:text-3xl text-foreground dark:text-white mb-4">
+            The Foundation
+          </h4>
+          <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed mb-4">
+            BuildwellAI was founded with a simple mission: to revolutionize the UK construction industry 
+            through AI-powered solutions. From day one, we set out to tackle the sector's most pressing 
+            challenges with innovative technology.
+          </p>
+          <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed">
+            Our founding team brought together decades of construction experience with cutting-edge AI expertise, 
+            creating a unique perspective on solving real industry challenges.
+          </p>
+        </div>
+      ),
+    },
+    {
+      title: "2021",
+      content: (
+        <div>
+          <div className="relative aspect-video rounded-[5px] overflow-hidden shadow-2xl mb-8">
+            <Image
+              src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1200&q=80"
+              alt="Team Expansion"
+              fill
+              className="object-cover"
+            />
+          </div>
+          <h4 className="font-bold text-2xl md:text-3xl text-foreground dark:text-white mb-4">
+            Expansion & Innovation
+          </h4>
+          <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed mb-4">
+            Our team grew with industry experts and AI engineers. We launched BuildwellEYE, our flagship 
+            computer vision platform, transforming how construction sites monitor safety in real-time.
+          </p>
+          <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed">
+            The successful deployment of BuildwellEYE across multiple UK construction sites validated our 
+            approach and demonstrated the tangible benefits of AI in construction safety.
+          </p>
+        </div>
+      ),
+    },
+    {
+      title: "2022",
+      content: (
+        <div>
+          <div className="relative aspect-video rounded-[5px] overflow-hidden shadow-2xl mb-8">
+            <Image
+              src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=80"
+              alt="Product Development"
+              fill
+              className="object-cover"
+            />
+          </div>
+          <h4 className="font-bold text-2xl md:text-3xl text-foreground dark:text-white mb-4">
+            Building the Suite
+          </h4>
+          <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed mb-4">
+            We expanded our product portfolio with BuildwellTHREAD for golden thread documentation management 
+            and BuildwellINSPECT for mobile-first site inspections, addressing the complete project lifecycle.
+          </p>
+          <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed">
+            This expansion reflected our deep understanding of construction workflows and enabled seamless 
+            information flow across all project stages and stakeholders.
+          </p>
+        </div>
+      ),
+    },
+    {
+      title: "2024",
+      content: (
+        <div>
+          <div className="relative aspect-video rounded-[5px] overflow-hidden shadow-2xl mb-8">
+            <Image
+              src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1200&q=80"
+              alt="Future Vision"
+              fill
+              className="object-cover"
+            />
+          </div>
+          <h4 className="font-bold text-2xl md:text-3xl text-foreground dark:text-white mb-4">
+            Leading the Future
+          </h4>
+          <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed mb-4">
+            Today, BuildwellAI serves construction professionals across the UK with a comprehensive AI platform. 
+            We're pioneering new frontiers with BuildwellCHAT and BuildwellNEWS while setting new industry standards.
+          </p>
+          <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed">
+            With over 100 active projects and a 60% improvement in safety outcomes, our focus extends to 
+            predictive analytics and AI-powered decision support systems.
+          </p>
+        </div>
+      ),
+    },
+  ];
 
   return (
     <div className="min-h-screen bg-background dark:bg-background">
@@ -224,14 +386,14 @@ export default function AboutPage() {
         {/* Timeline Section */}
         <section className="py-20 bg-background dark:bg-background overflow-hidden">
           <div className="container mx-auto px-4">
-            <div className="timeliner">
+            <div className="timeliner max-w-7xl mx-auto">
               <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-center text-foreground dark:text-white mb-20">
                 Our Journey
               </h1>
               
               {/* Timeline Item 1 - Right */}
-              <div className="md:flex md:flex-row-reverse items-center mb-8">
-                <div className="md:w-1/2 scroll-animation revealedBox goRight">
+              <div className="grid md:grid-cols-[1fr_auto_1.2fr] gap-8 items-center mb-16">
+                <div className="md:order-3 scroll-animation revealedBox goRight">
                   <div className="contentBox relative aspect-[4/3] rounded-[5px] overflow-hidden shadow-2xl">
                     <Image
                       src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80"
@@ -243,21 +405,29 @@ export default function AboutPage() {
                   <span></span>
                   <span></span>
                 </div>
-                <div className="md:w-1/2 text-md md:text-left px-4 text-justify">
+                
+                {/* Divider - Hidden on mobile */}
+                <div className="hidden md:block md:order-2 w-px bg-gradient-to-b from-transparent via-[#FBB429] to-transparent h-48"></div>
+                
+                <div className="md:order-1 md:text-right">
                   <h4 className="font-bold text-2xl md:text-3xl text-foreground dark:text-white mb-4">
                     2020: The Foundation
                   </h4>
-                  <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed">
+                  <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed mb-4">
                     BuildwellAI was founded with a simple mission: to revolutionize the UK construction industry 
                     through AI-powered solutions. From day one, we set out to tackle the sector's most pressing 
-                    challenges with innovative technology, starting with safety monitoring and compliance management.
+                    challenges with innovative technology.
+                  </p>
+                  <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed">
+                    Our founding team brought together decades of construction experience with cutting-edge AI expertise, 
+                    creating a unique perspective on solving real industry challenges.
                   </p>
                 </div>
               </div>
 
               {/* Timeline Item 2 - Left */}
-              <div className="md:flex items-center mb-8">
-                <div className="md:w-1/2 scroll-animation revealedBox goLeft">
+              <div className="grid md:grid-cols-[1.2fr_auto_1fr] gap-8 items-center mb-16">
+                <div className="scroll-animation revealedBox goLeft">
                   <div className="contentBox relative aspect-[4/3] rounded-[5px] overflow-hidden shadow-2xl">
                     <Image
                       src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80"
@@ -271,21 +441,28 @@ export default function AboutPage() {
                   <span></span>
                   <span></span>
                 </div>
-                <div className="md:w-1/2 text-md md:text-right text-center px-4">
+                
+                {/* Divider - Hidden on mobile */}
+                <div className="hidden md:block w-px bg-gradient-to-b from-transparent via-[#FBB429] to-transparent h-48"></div>
+                
+                <div className="md:text-left">
                   <h4 className="font-bold text-2xl md:text-3xl text-foreground dark:text-white mb-4">
                     2021: Expansion & Innovation
                   </h4>
+                  <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed mb-4">
+                    Our team grew with industry experts and AI engineers. We launched BuildwellEYE, our flagship 
+                    computer vision platform, transforming how construction sites monitor safety in real-time.
+                  </p>
                   <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed">
-                    Our team grew with industry experts, AI engineers, and construction professionals. We launched 
-                    BuildwellEYE, our flagship computer vision platform, transforming how construction sites monitor 
-                    safety in real-time. This year marked our commitment to combining human expertise with AI innovation.
+                    The successful deployment of BuildwellEYE across multiple UK construction sites validated our 
+                    approach and demonstrated the tangible benefits of AI in construction safety.
                   </p>
                 </div>
               </div>
 
               {/* Timeline Item 3 - Right */}
-              <div className="md:flex md:flex-row-reverse items-center mb-8">
-                <div className="md:w-1/2 scroll-animation revealedBox goTop">
+              <div className="grid md:grid-cols-[1fr_auto_1.2fr] gap-8 items-center mb-16">
+                <div className="md:order-3 scroll-animation revealedBox goTop">
                   <div className="contentBox relative aspect-[4/3] rounded-[5px] overflow-hidden shadow-2xl">
                     <Image
                       src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80"
@@ -298,21 +475,28 @@ export default function AboutPage() {
                   <span></span>
                   <span></span>
                 </div>
-                <div className="md:w-1/2 text-md md:text-left text-center px-4">
+                
+                {/* Divider - Hidden on mobile */}
+                <div className="hidden md:block md:order-2 w-px bg-gradient-to-b from-transparent via-[#FBB429] to-transparent h-48"></div>
+                
+                <div className="md:order-1 md:text-right">
                   <h4 className="font-bold text-2xl md:text-3xl text-foreground dark:text-white mb-4">
                     2022: Building the Suite
                   </h4>
-                  <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed">
+                  <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed mb-4">
                     We expanded our product portfolio with BuildwellTHREAD for golden thread documentation management 
-                    and BuildwellINSPECT for mobile-first site inspections. Our solutions began addressing the complete 
-                    lifecycle of construction projects, from planning to handover.
+                    and BuildwellINSPECT for mobile-first site inspections, addressing the complete project lifecycle.
+                  </p>
+                  <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed">
+                    This expansion reflected our deep understanding of construction workflows and enabled seamless 
+                    information flow across all project stages and stakeholders.
                   </p>
                 </div>
               </div>
 
               {/* Timeline Item 4 - Left */}
-              <div className="md:flex items-center mb-8">
-                <div className="md:w-1/2 scroll-animation revealedBox goBottom">
+              <div className="grid md:grid-cols-[1.2fr_auto_1fr] gap-8 items-center mb-16">
+                <div className="scroll-animation revealedBox goBottom">
                   <div className="contentBox relative aspect-[4/3] rounded-[5px] overflow-hidden shadow-2xl">
                     <Image
                       src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=800&q=80"
@@ -327,14 +511,21 @@ export default function AboutPage() {
                   <span></span>
                   <span></span>
                 </div>
-                <div className="md:w-1/2 text-md md:text-right text-center px-4">
+                
+                {/* Divider - Hidden on mobile */}
+                <div className="hidden md:block w-px bg-gradient-to-b from-transparent via-[#FBB429] to-transparent h-48"></div>
+                
+                <div className="md:text-left">
                   <h4 className="font-bold text-2xl md:text-3xl text-foreground dark:text-white mb-4">
                     2024: Leading the Future
                   </h4>
-                  <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed">
+                  <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed mb-4">
                     Today, BuildwellAI serves construction professionals across the UK with a comprehensive AI platform. 
-                    We're pioneering new frontiers with BuildwellCHAT and BuildwellNEWS, while continuing to push the 
-                    boundaries of innovation. Our commitment to safety, compliance, and excellence drives us forward.
+                    We're pioneering new frontiers with BuildwellCHAT and BuildwellNEWS while setting new industry standards.
+                  </p>
+                  <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed">
+                    With over 100 active projects and a 60% improvement in safety outcomes, our focus extends to 
+                    predictive analytics and AI-powered decision support systems.
                   </p>
                 </div>
               </div>

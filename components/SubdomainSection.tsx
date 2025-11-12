@@ -6,6 +6,10 @@ import { MessageSquare, Eye, Newspaper, Search, GitMerge } from 'lucide-react';
 
 export function SubdomainSection() {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+  const [currentCardIndex, setCurrentCardIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const carouselRef = React.useRef<HTMLDivElement>(null);
+  const pauseTimeoutRef = React.useRef<NodeJS.Timeout | null>(null);
 
   const featureCards = [
     {
@@ -49,6 +53,61 @@ export function SubdomainSection() {
       url: "https://buildwellai.com/thread",
     },
   ];
+
+  // Auto-scroll effect for mobile carousel
+  React.useEffect(() => {
+    const carousel = carouselRef.current;
+    if (!carousel || isPaused) return;
+
+    const autoScrollInterval = setInterval(() => {
+      setCurrentCardIndex((prevIndex) => {
+        const nextIndex = (prevIndex + 1) % featureCards.length;
+        
+        // Calculate scroll position based on viewport width (85vw per card + 16px gap)
+        const viewportWidth = window.innerWidth;
+        const cardWidth = viewportWidth * 0.85; // 85vw
+        const gap = 16; // gap-4 in pixels
+        const scrollPosition = (cardWidth + gap) * nextIndex;
+        
+        carousel.scrollTo({
+          left: scrollPosition,
+          behavior: 'smooth'
+        });
+        
+        return nextIndex;
+      });
+    }, 1500); // Change card every 1.5 seconds
+
+    return () => clearInterval(autoScrollInterval);
+  }, [featureCards.length, isPaused]);
+
+  // Pause auto-scroll when user manually scrolls
+  React.useEffect(() => {
+    const carousel = carouselRef.current;
+    if (!carousel) return;
+
+    const handleScroll = () => {
+      setIsPaused(true);
+      
+      // Clear existing timeout
+      if (pauseTimeoutRef.current) {
+        clearTimeout(pauseTimeoutRef.current);
+      }
+      
+      // Resume auto-scroll after 5 seconds of no scrolling
+      pauseTimeoutRef.current = setTimeout(() => {
+        setIsPaused(false);
+      }, 5000);
+    };
+
+    carousel.addEventListener('scroll', handleScroll);
+    return () => {
+      carousel.removeEventListener('scroll', handleScroll);
+      if (pauseTimeoutRef.current) {
+        clearTimeout(pauseTimeoutRef.current);
+      }
+    };
+  }, []);
 
   const getCardWidth = (id: number) => {
     if (hoveredCard === null) return '20%';
@@ -189,9 +248,10 @@ export function SubdomainSection() {
             ))}
           </div>
 
-          {/* Mobile: Carousel cards with proper snapping */}
+          {/* Mobile: Carousel cards with auto-scroll */}
           <div className="mobile-cards w-screen flex-col items-center">
             <div 
+              ref={carouselRef}
               className="card-carousel flex flex-row overflow-x-auto gap-4 px-4" 
               style={{ width: '100vw' }}
             >
