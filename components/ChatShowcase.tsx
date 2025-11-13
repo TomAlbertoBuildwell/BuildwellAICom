@@ -47,7 +47,7 @@ export function ChatShowcase() {
               BuildwellAI Chat
             </span>
             <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground dark:text-white mt-4">
-              Your AI Construction Assistant
+              Your AI Construction<span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866]"> Assistant</span>
             </h2>
             <p className="text-lg text-muted-foreground dark:text-neutral-300 mt-4 max-w-2xl mx-auto">
               Get expert answers and guidance powered by advanced AI trained on UK construction standards

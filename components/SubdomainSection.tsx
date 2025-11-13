@@ -8,7 +8,9 @@ export function SubdomainSection() {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
   const carouselRef = React.useRef<HTMLDivElement>(null);
+  const sectionRef = React.useRef<HTMLDivElement>(null);
   const pauseTimeoutRef = React.useRef<NodeJS.Timeout | null>(null);
 
   const featureCards = [
@@ -54,10 +56,43 @@ export function SubdomainSection() {
     },
   ];
 
-  // Auto-scroll effect for mobile carousel
+  // Intersection Observer to detect when section is visible
+  React.useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+          }
+        });
+      },
+      { threshold: 0.3 } // Trigger when 30% of the section is visible
+    );
+
+    observer.observe(section);
+
+    return () => {
+      if (section) {
+        observer.unobserve(section);
+      }
+    };
+  }, []);
+
+  // Ensure carousel starts at the left on mount
   React.useEffect(() => {
     const carousel = carouselRef.current;
-    if (!carousel || isPaused) return;
+    if (carousel) {
+      carousel.scrollTo({ left: 0, behavior: 'auto' });
+    }
+  }, []);
+
+  // Auto-scroll effect for mobile carousel - only when visible
+  React.useEffect(() => {
+    const carousel = carouselRef.current;
+    if (!carousel || isPaused || !isVisible) return;
 
     const autoScrollInterval = setInterval(() => {
       setCurrentCardIndex((prevIndex) => {
@@ -79,7 +114,7 @@ export function SubdomainSection() {
     }, 1500); // Change card every 1.5 seconds
 
     return () => clearInterval(autoScrollInterval);
-  }, [featureCards.length, isPaused]);
+  }, [featureCards.length, isPaused, isVisible]);
 
   // Pause auto-scroll when user manually scrolls
   React.useEffect(() => {
@@ -115,7 +150,11 @@ export function SubdomainSection() {
   };
 
   return (
-    <section id="solutions" className="relative w-full py-20 border-t border-transparent bg-background dark:bg-background">
+    <section 
+      ref={sectionRef}
+      id="solutions" 
+      className="relative w-full py-20 border-t border-transparent bg-background dark:bg-[#0d1f33]"
+    >
       <style dangerouslySetInnerHTML={{
         __html: `
           .card-carousel {
@@ -157,9 +196,6 @@ export function SubdomainSection() {
 
       <div className="container mx-auto px-4 mb-12">
         <div className="mx-auto max-w-3xl text-center">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-[5px] border-0 bg-primary/10 px-4 py-2 text-sm font-medium">
-            <span>Our Product Suite</span>
-          </div>
           <h2 className="font-display text-3xl font-bold tracking-tight md:text-4xl mb-4">
             AI-Powered Solutions for{' '}
             <span className="text-gradient-orange">Modern Construction</span>
