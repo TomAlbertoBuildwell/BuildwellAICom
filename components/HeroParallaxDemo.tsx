@@ -38,7 +38,10 @@ export const HeroCarousel = React.forwardRef<HTMLDivElement, HeroCarouselProps>(
       hidden: { clipPath: 'polygon(100% 0, 100% 0, 100% 100%, 100% 100%)' },
       visible: {
         clipPath: 'polygon(25% 0, 100% 0, 100% 100%, 0% 100%)',
-        transition: { duration: 1.5, ease: "circOut" }
+        transition: { 
+          duration: 1.2, 
+          ease: [0.18, 0.9, 0.3, 1] // Smooth easeOutCubic - fast start, smooth end
+        }
       }
     };
     
@@ -90,13 +93,13 @@ export const HeroCarousel = React.forwardRef<HTMLDivElement, HeroCarouselProps>(
                 className="flex flex-col gap-4 pt-4"
               >
                 <a href="#solutions" className="w-full">
-                  <button className="w-full group relative inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#FBB429] to-[#F87866] text-white px-8 py-3 rounded-md font-semibold hover:shadow-lg hover:opacity-95 transition-all duration-300">
+                  <button className="w-full group relative inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#FBB429] to-[#F87866] text-white px-8 py-3 rounded-[5px] font-semibold hover:shadow-lg hover:opacity-95 transition-all duration-300">
                     Explore Our Solutions
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </button>
                 </a>
                 <a href="/contact" className="w-full">
-                  <button className="w-full inline-flex items-center justify-center gap-2 border-2 border-white text-white px-8 py-3 rounded-md font-semibold hover:bg-white/10 transition-all duration-300">
+                  <button className="w-full inline-flex items-center justify-center gap-2 border-2 border-white text-white px-8 py-3 rounded-[5px] font-semibold hover:bg-white/10 transition-all duration-300">
                     Get in Touch
                   </button>
                 </a>
@@ -142,13 +145,13 @@ export const HeroCarousel = React.forwardRef<HTMLDivElement, HeroCarouselProps>(
                 className="flex flex-row gap-4 pt-4"
               >
                 <a href="#solutions">
-                  <button className="group relative inline-flex items-center gap-2 bg-gradient-to-r from-[#FBB429] to-[#F87866] text-white px-8 py-3 rounded-md font-semibold hover:shadow-lg hover:opacity-95 transition-all duration-300">
+                  <button className="group relative inline-flex items-center gap-2 bg-gradient-to-r from-[#FBB429] to-[#F87866] text-white px-8 py-3 rounded-[5px] font-semibold hover:shadow-lg hover:opacity-95 transition-all duration-300">
                     Explore Our Solutions
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </button>
                 </a>
                 <a href="/contact">
-                  <button className="inline-flex items-center gap-2 border-2 border-gray-300 dark:border-gray-600 text-black dark:text-white px-8 py-3 rounded-md font-semibold hover:bg-gray-50 dark:hover:bg-gray-900 transition-all duration-300">
+                  <button className="inline-flex items-center gap-2 border-2 border-gray-300 dark:border-gray-600 text-black dark:text-white px-8 py-3 rounded-[5px] font-semibold hover:bg-gray-50 dark:hover:bg-gray-900 transition-all duration-300">
                     Get in Touch
                   </button>
                 </a>
