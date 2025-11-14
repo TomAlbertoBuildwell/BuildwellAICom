@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter, Courier_Prime } from 'next/font/google'
 import { ThemeProvider } from "next-themes"
 import { SmoothScrollProvider } from "@/components/smooth-scroll-provider"
+import { ScrollToTop } from '@/components/scroll-to-top'
 import './globals.css'
 
 const inter = Inter({ 
@@ -60,17 +61,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en-GB" suppressHydrationWarning className="dark">
+    <html lang="en-GB" suppressHydrationWarning>
       <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              try {
-                document.documentElement.classList.add('dark');
-              } catch (e) {}
-            `,
-          }}
-        />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@100..900&display=swap" rel="stylesheet" />
@@ -87,8 +79,8 @@ export default function RootLayout({
           defaultTheme="dark"
           enableSystem={false}
           disableTransitionOnChange
-          forcedTheme="dark"
         >
+                    <ScrollToTop />
           <SmoothScrollProvider>
             {children}
           </SmoothScrollProvider>

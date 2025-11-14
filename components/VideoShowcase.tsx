@@ -27,17 +27,52 @@ export function VideoShowcase({
 
   return (
     <div className={`w-full ${className}`}>
-      <div className="grid lg:grid-cols-5 gap-8 lg:gap-12 items-center">
-        {/* Left Column - Text Content (2 columns) */}
-        <div className="lg:col-span-2 space-y-4">
-          <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white">
-            {title}
+      <div className="flex flex-col lg:grid lg:grid-cols-5 gap-8 lg:gap-12 lg:items-center">
+        {/* Left Column - Text Content (2 columns on desktop) */}
+        <div className="lg:col-span-2 space-y-4 lg:order-1">
+          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 dark:text-white text-center lg:text-left">
+            {title.split(' ').slice(0, -1).join(' ')} <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866]">{title.split(' ').slice(-1)}</span>
           </h2>
-          <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
+          <p className="text-base sm:text-lg lg:text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
             {description}
           </p>
           
-          <div className="space-y-3 pt-2">
+          {/* Video - Shows after description on mobile only */}
+          <div className="lg:hidden relative">
+            <div className="relative overflow-hidden rounded-lg bg-[#0a1929] shadow-lg">
+              <video
+                ref={videoRef}
+                className="w-full h-auto object-cover aspect-video"
+                loop
+                muted
+                playsInline
+                autoPlay
+              >
+                <source src={videoUrl} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0a1929]/20 to-transparent pointer-events-none" />
+            </div>
+          </div>
+
+          {/* Mobile only: Compact feature badges */}
+          <div className="flex flex-wrap justify-center gap-2 lg:hidden pt-4">
+            <span className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-gradient-to-r from-[#FBB429]/10 to-[#F87866]/10 text-xs font-semibold text-foreground dark:text-white border border-[#FBB429]/20">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#FBB429]"></span>
+              AI Detection
+            </span>
+            <span className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-gradient-to-r from-[#FBB429]/10 to-[#F87866]/10 text-xs font-semibold text-foreground dark:text-white border border-[#FBB429]/20">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#FBB429]"></span>
+              Analytics
+            </span>
+            <span className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-gradient-to-r from-[#FBB429]/10 to-[#F87866]/10 text-xs font-semibold text-foreground dark:text-white border border-[#FBB429]/20">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#FBB429]"></span>
+              24/7 Monitoring
+            </span>
+          </div>
+          
+          {/* Desktop only features list */}
+          <div className="space-y-3 pt-2 hidden lg:block">
             <h3 className="font-display text-2xl font-bold text-gray-900 dark:text-white">
               Key Features
             </h3>
@@ -51,7 +86,6 @@ export function VideoShowcase({
                 </p>
               </div>
             </div>
-            
             
             <div className="flex items-start gap-3">
               <div className="w-2 h-2 rounded-full bg-gradient-to-r from-[#FBB429] to-[#F87866] mt-2 flex-shrink-0" />
@@ -75,13 +109,10 @@ export function VideoShowcase({
           </div>
         </div>
 
-        {/* Right Column - Video (3 columns - larger) */}
-        <div className="lg:col-span-3 relative">
-          {/* Video Container */}
+        {/* Right Column - Video (3 columns on desktop - larger) - Desktop only */}
+        <div className="lg:col-span-3 relative lg:order-2 hidden lg:block">
           <div className="relative overflow-hidden rounded-lg bg-[#0a1929] shadow-lg">
-            {/* Video Element - Auto-playing, looping, muted, no controls */}
             <video
-              ref={videoRef}
               className="w-full h-auto object-cover aspect-video"
               loop
               muted
@@ -91,12 +122,8 @@ export function VideoShowcase({
               <source src={videoUrl} type="video/mp4" />
               Your browser does not support the video tag.
             </video>
-
-            {/* Gradient Overlay for Better Visual */}
             <div className="absolute inset-0 bg-gradient-to-t from-[#0a1929]/20 to-transparent pointer-events-none" />
           </div>
-
-          
         </div>
       </div>
     </div>

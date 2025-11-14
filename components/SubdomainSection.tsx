@@ -6,6 +6,12 @@ import { MessageSquare, Eye, Newspaper, Search, GitMerge } from 'lucide-react';
 
 export function SubdomainSection() {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+  const [currentCardIndex, setCurrentCardIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const carouselRef = React.useRef<HTMLDivElement>(null);
+  const sectionRef = React.useRef<HTMLDivElement>(null);
+  const pauseTimeoutRef = React.useRef<NodeJS.Timeout | null>(null);
 
   const featureCards = [
     {
@@ -50,13 +56,105 @@ export function SubdomainSection() {
     },
   ];
 
+  // Intersection Observer to detect when section is visible
+  React.useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+          }
+        });
+      },
+      { threshold: 0.3 } // Trigger when 30% of the section is visible
+    );
+
+    observer.observe(section);
+
+    return () => {
+      if (section) {
+        observer.unobserve(section);
+      }
+    };
+  }, []);
+
+  // Ensure carousel starts at the left on mount
+  React.useEffect(() => {
+    const carousel = carouselRef.current;
+    if (carousel) {
+      carousel.scrollTo({ left: 0, behavior: 'auto' });
+    }
+  }, []);
+
+  // Auto-scroll effect for mobile carousel - only when visible
+  React.useEffect(() => {
+    const carousel = carouselRef.current;
+    if (!carousel || isPaused || !isVisible) return;
+
+    const autoScrollInterval = setInterval(() => {
+      setCurrentCardIndex((prevIndex) => {
+        const nextIndex = (prevIndex + 1) % featureCards.length;
+        
+        // Calculate scroll position based on viewport width (85vw per card + 16px gap)
+        const viewportWidth = window.innerWidth;
+        const cardWidth = viewportWidth * 0.85; // 85vw
+        const gap = 16; // gap-4 in pixels
+        const scrollPosition = (cardWidth + gap) * nextIndex;
+        
+        carousel.scrollTo({
+          left: scrollPosition,
+          behavior: 'smooth'
+        });
+        
+        return nextIndex;
+      });
+    }, 1500); // Change card every 1.5 seconds
+
+    return () => clearInterval(autoScrollInterval);
+  }, [featureCards.length, isPaused, isVisible]);
+
+  // Pause auto-scroll when user manually scrolls
+  React.useEffect(() => {
+    const carousel = carouselRef.current;
+    if (!carousel) return;
+
+    const handleScroll = () => {
+      setIsPaused(true);
+      
+      // Clear existing timeout
+      if (pauseTimeoutRef.current) {
+        clearTimeout(pauseTimeoutRef.current);
+      }
+      
+      // Resume auto-scroll after 5 seconds of no scrolling
+      pauseTimeoutRef.current = setTimeout(() => {
+        setIsPaused(false);
+      }, 5000);
+    };
+
+    carousel.addEventListener('scroll', handleScroll);
+    return () => {
+      carousel.removeEventListener('scroll', handleScroll);
+      if (pauseTimeoutRef.current) {
+        clearTimeout(pauseTimeoutRef.current);
+      }
+    };
+  }, []);
+
   const getCardWidth = (id: number) => {
     if (hoveredCard === null) return '20%';
     return hoveredCard === id ? '40%' : '15%';
   };
 
   return (
-    <section id="solutions" className="relative w-full py-20 border-t border-transparent bg-background dark:bg-background">
+    <section 
+      ref={sectionRef}
+      id="solutions" 
+      className="relative w-full py-20 border-t border-transparent bg-background dark:bg-[#0d1f33]"
+    >
       <style dangerouslySetInnerHTML={{
         __html: `
           .card-carousel {
@@ -98,9 +196,6 @@ export function SubdomainSection() {
 
       <div className="container mx-auto px-4 mb-12">
         <div className="mx-auto max-w-3xl text-center">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-[5px] border-0 bg-primary/10 px-4 py-2 text-sm font-medium">
-            <span>Our Product Suite</span>
-          </div>
           <h2 className="font-display text-3xl font-bold tracking-tight md:text-4xl mb-4">
             AI-Powered Solutions for{' '}
             <span className="text-gradient-orange">Modern Construction</span>
@@ -189,9 +284,10 @@ export function SubdomainSection() {
             ))}
           </div>
 
-          {/* Mobile: Carousel cards with proper snapping */}
+          {/* Mobile: Carousel cards with auto-scroll */}
           <div className="mobile-cards w-screen flex-col items-center">
             <div 
+              ref={carouselRef}
               className="card-carousel flex flex-row overflow-x-auto gap-4 px-4" 
               style={{ width: '100vw' }}
             >
