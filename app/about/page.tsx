@@ -1,198 +1,12 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import { useScroll, useTransform, motion } from "framer-motion"
 import { MarketingNav } from "@/components/marketing-nav"
 import { MarketingFooter } from "@/components/marketing-footer"
 import Image from "next/image"
-
-interface TimelineEntry {
-  title: string;
-  content: React.ReactNode;
-}
-
-const Timeline = ({ data }: { data: TimelineEntry[] }) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [height, setHeight] = useState(0);
-
-  useEffect(() => {
-    if (ref.current) {
-      const rect = ref.current.getBoundingClientRect();
-      setHeight(rect.height);
-    }
-  }, [ref]);
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start 10%", "end 50%"],
-  });
-
-  const heightTransform = useTransform(scrollYProgress, [0, 1], [0, height]);
-  const opacityTransform = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
-
-  return (
-    <div
-      className="w-full bg-background dark:bg-background font-sans md:px-10 relative z-0"
-      ref={containerRef}
-    >
-      <div className="max-w-7xl mx-auto pt-12 md:pt-16 px-4 md:px-8 lg:px-10 text-center">
-        <h2 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-foreground dark:text-white mx-auto mb-20">
-          Our Journey
-        </h2>
-      </div>
-
-      <div ref={ref} className="relative max-w-7xl mx-auto pb-20">
-        {data.map((item, index) => (
-          <div
-            key={index}
-            className="flex justify-start pt-10 md:pt-20 md:gap-10"
-          >
-            <div className="sticky md:flex flex-col md:flex-row z-40 items-center top-40 self-start max-w-xs lg:max-w-sm md:w-full hidden">
-              <div className="h-10 absolute left-3 md:left-3 w-10 rounded-full bg-background dark:bg-background flex items-center justify-center">
-                <div className="h-4 w-4 rounded-full bg-gradient-to-r from-[#FBB429] to-[#F87866] border border-[#FBB429] p-2" />
-              </div>
-              <h3 className="hidden md:block text-xl md:pl-20 md:text-5xl font-bold text-neutral-500 dark:text-neutral-500">
-                {item.title}
-              </h3>
-            </div>
-
-            <div className="relative md:pl-4 w-full px-4 md:px-0">
-              <h3 className="md:hidden block text-2xl mb-4 text-left font-bold text-neutral-500 dark:text-neutral-500">
-                {item.title}
-              </h3>
-              {item.content}
-            </div>
-          </div>
-        ))}
-        <div
-          style={{
-            height: height + "px",
-          }}
-          className="absolute left-[1.1rem] md:left-8 top-0 overflow-hidden w-[2px] bg-[linear-gradient(to_bottom,var(--tw-gradient-stops))] from-transparent from-[0%] via-neutral-200 dark:via-neutral-700 to-transparent to-[99%] [mask-image:linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)] hidden md:block"
-        >
-          <motion.div
-            style={{
-              height: heightTransform,
-              opacity: opacityTransform,
-            }}
-            className="absolute inset-x-0 top-0 w-[2px] bg-gradient-to-b from-[#FBB429] via-[#F87866] to-[#FBB429] rounded-full"
-          />
-        </div>
-      </div>
-    </div>
-  );
-};
+import { ArrowRight } from "lucide-react"
 
 export default function AboutPage() {
-  const timelineData: TimelineEntry[] = [
-    {
-      title: "2020",
-      content: (
-        <div>
-          <div className="relative aspect-video rounded-[5px] overflow-hidden shadow-2xl mb-8">
-            <Image
-              src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=80"
-              alt="BuildwellAI Foundation"
-              fill
-              className="object-cover"
-            />
-          </div>
-          <h4 className="font-bold text-2xl md:text-3xl text-foreground dark:text-white mb-4">
-            The Foundation
-          </h4>
-          <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed mb-4">
-            BuildwellAI was founded with a simple mission: to revolutionize the UK construction industry 
-            through AI-powered solutions. From day one, we set out to tackle the sector's most pressing 
-            challenges with innovative technology.
-          </p>
-          <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed">
-            Our founding team brought together decades of construction experience with cutting-edge AI expertise, 
-            creating a unique perspective on solving real industry challenges.
-          </p>
-        </div>
-      ),
-    },
-    {
-      title: "2021",
-      content: (
-        <div>
-          <div className="relative aspect-video rounded-[5px] overflow-hidden shadow-2xl mb-8">
-            <Image
-              src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1200&q=80"
-              alt="Team Expansion"
-              fill
-              className="object-cover"
-            />
-          </div>
-          <h4 className="font-bold text-2xl md:text-3xl text-foreground dark:text-white mb-4">
-            Expansion & Innovation
-          </h4>
-          <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed mb-4">
-            Our team grew with industry experts and AI engineers. We launched BuildwellEYE, our flagship 
-            computer vision platform, transforming how construction sites monitor safety in real-time.
-          </p>
-          <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed">
-            The successful deployment of BuildwellEYE across multiple UK construction sites validated our 
-            approach and demonstrated the tangible benefits of AI in construction safety.
-          </p>
-        </div>
-      ),
-    },
-    {
-      title: "2022",
-      content: (
-        <div>
-          <div className="relative aspect-video rounded-[5px] overflow-hidden shadow-2xl mb-8">
-            <Image
-              src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=80"
-              alt="Product Development"
-              fill
-              className="object-cover"
-            />
-          </div>
-          <h4 className="font-bold text-2xl md:text-3xl text-foreground dark:text-white mb-4">
-            Building the Suite
-          </h4>
-          <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed mb-4">
-            We expanded our product portfolio with BuildwellTHREAD for golden thread documentation management 
-            and BuildwellINSPECT for mobile-first site inspections, addressing the complete project lifecycle.
-          </p>
-          <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed">
-            This expansion reflected our deep understanding of construction workflows and enabled seamless 
-            information flow across all project stages and stakeholders.
-          </p>
-        </div>
-      ),
-    },
-    {
-      title: "2024",
-      content: (
-        <div>
-          <div className="relative aspect-video rounded-[5px] overflow-hidden shadow-2xl mb-8">
-            <Image
-              src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1200&q=80"
-              alt="Future Vision"
-              fill
-              className="object-cover"
-            />
-          </div>
-          <h4 className="font-bold text-2xl md:text-3xl text-foreground dark:text-white mb-4">
-            Leading the Future
-          </h4>
-          <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed mb-4">
-            Today, BuildwellAI serves construction professionals across the UK with a comprehensive AI platform. 
-            We're pioneering new frontiers with BuildwellCHAT and BuildwellNEWS while setting new industry standards.
-          </p>
-          <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed">
-            With over 100 active projects and a 60% improvement in safety outcomes, our focus extends to 
-            predictive analytics and AI-powered decision support systems.
-          </p>
-        </div>
-      ),
-    },
-  ];
-
   return (
     <div className="min-h-screen bg-background dark:bg-background">
       <MarketingNav />
@@ -202,40 +16,40 @@ export default function AboutPage() {
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
               <div className="text-center mb-12">
-                <span className="inline-flex items-center gap-2 rounded-full bg-gradient-orange/10 px-4 py-2 text-sm font-semibold text-primary border border-primary/20 mb-6">
+                <span className="text-sm font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866] uppercase tracking-wider">
                   About BuildwellAI
                 </span>
-                <h1 className="font-display text-5xl md:text-6xl lg:text-8xl font-bold text-foreground dark:text-white mb-6">
-                  Transforming UK Construction with <span className="text-gradient-orange">AI Innovation</span>
+                <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground dark:text-white mt-4 mb-6">
+                  Transforming UK Construction with <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866]">AI Innovation</span>
                 </h1>
-                <p className="text-xl md:text-2xl text-muted-foreground dark:text-neutral-300 max-w-4xl mx-auto leading-relaxed">
+                <p className="text-lg md:text-xl text-muted-foreground dark:text-neutral-300 max-w-3xl mx-auto leading-relaxed">
                   We're building the future of construction through intelligent automation, 
                   safety innovation, and data-driven insights.
                 </p>
               </div>
 
               {/* Stats Grid */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mt-16">
-                <div className="text-center p-6 bg-background dark:bg-[#0a1929] rounded-[5px] border border-border hover:border-[#FBB429] transition-all">
-                  <div className="font-display text-4xl md:text-5xl font-bold text-gradient-orange mb-2">100+</div>
-                  <div className="text-sm md:text-base text-muted-foreground dark:text-neutral-300">Active Projects</div>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mt-12">
+                <div className="text-center p-6 bg-background dark:bg-[#0a1929] rounded-[5px] border-2 border-neutral-200 dark:border-neutral-700/50 hover:border-[#FBB429] transition-all">
+                  <div className="font-display text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866] mb-2">100+</div>
+                  <div className="text-sm text-muted-foreground dark:text-neutral-300">Active Projects</div>
                 </div>
-                <div className="text-center p-6 bg-background dark:bg-[#0a1929] rounded-[5px] border border-border hover:border-[#FBB429] transition-all">
-                  <div className="font-display text-4xl md:text-5xl font-bold text-gradient-orange mb-2">60%</div>
-                  <div className="text-sm md:text-base text-muted-foreground dark:text-neutral-300">Safety Improvement</div>
+                <div className="text-center p-6 bg-background dark:bg-[#0a1929] rounded-[5px] border-2 border-neutral-200 dark:border-neutral-700/50 hover:border-[#FBB429] transition-all">
+                  <div className="font-display text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866] mb-2">60%</div>
+                  <div className="text-sm text-muted-foreground dark:text-neutral-300">Safety Improvement</div>
                 </div>
-                <div className="text-center p-6 bg-background dark:bg-[#0a1929] rounded-[5px] border border-border hover:border-[#FBB429] transition-all">
-                  <div className="font-display text-4xl md:text-5xl font-bold text-gradient-orange mb-2">24/7</div>
-                  <div className="text-sm md:text-base text-muted-foreground dark:text-neutral-300">AI Monitoring</div>
+                <div className="text-center p-6 bg-background dark:bg-[#0a1929] rounded-[5px] border-2 border-neutral-200 dark:border-neutral-700/50 hover:border-[#FBB429] transition-all">
+                  <div className="font-display text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866] mb-2">24/7</div>
+                  <div className="text-sm text-muted-foreground dark:text-neutral-300">AI Monitoring</div>
                 </div>
-                <div className="text-center p-6 bg-background dark:bg-[#0a1929] rounded-[5px] border border-border hover:border-[#FBB429] transition-all">
-                  <div className="font-display text-4xl md:text-5xl font-bold text-gradient-orange mb-2">5</div>
-                  <div className="text-sm md:text-base text-muted-foreground dark:text-neutral-300">AI Products</div>
+                <div className="text-center p-6 bg-background dark:bg-[#0a1929] rounded-[5px] border-2 border-neutral-200 dark:border-neutral-700/50 hover:border-[#FBB429] transition-all">
+                  <div className="font-display text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866] mb-2">5</div>
+                  <div className="text-sm text-muted-foreground dark:text-neutral-300">AI Products</div>
                 </div>
               </div>
 
               {/* Featured Image */}
-              <div className="mt-16 relative rounded-xl overflow-hidden shadow-2xl">
+              <div className="mt-12 relative rounded-[5px] overflow-hidden shadow-2xl">
                 <div className="aspect-video relative">
                   <Image
                     src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1920&q=80"
@@ -251,39 +65,39 @@ export default function AboutPage() {
         </section>
 
         {/* Mission Section */}
-        <section className="py-20 bg-background dark:bg-background">
+        <section className="py-20 bg-muted/30 dark:bg-[#0d1f33]">
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-16">
+              <div className="text-center mb-12">
                 <span className="text-sm font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866] uppercase tracking-wider">
                   Our Mission
                 </span>
-                <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground dark:text-white mt-4 mb-6">
-                  Building the Future Together
+                <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground dark:text-white mt-4 mb-6">
+                  Building the <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866]">Future</span> Together
                 </h2>
-                <p className="text-lg text-muted-foreground dark:text-neutral-300 max-w-3xl mx-auto">
+                <p className="text-lg text-muted-foreground dark:text-neutral-300 max-w-3xl mx-auto leading-relaxed">
                   We're dedicated to revolutionising the construction industry by providing 
                   AI-powered solutions that enhance safety, efficiency, and productivity 
                   across all phases of building projects.
                 </p>
               </div>
 
-              <div className="grid md:grid-cols-3 gap-8">
-                <div className="bg-background dark:bg-[#0a1929] p-8 rounded-[5px] border border-border hover:border-[#FBB429] transition-all duration-300 hover:shadow-xl text-center group">
-                  <h3 className="font-display text-xl font-bold text-foreground dark:text-white mb-3">Innovation</h3>
-                  <p className="text-muted-foreground dark:text-neutral-300">
+              <div className="grid md:grid-cols-3 gap-6 md:gap-8">
+                <div className="bg-background dark:bg-[#0a1929] p-6 md:p-8 rounded-[5px] border-2 border-neutral-200 dark:border-neutral-700/50 hover:border-[#FBB429] transition-all duration-300 hover:shadow-xl text-center group">
+                  <h3 className="font-display text-xl md:text-2xl font-bold text-foreground dark:text-white mb-3">Innovation</h3>
+                  <p className="text-muted-foreground dark:text-neutral-300 leading-relaxed">
                     Pioneering cutting-edge AI technologies to solve complex construction challenges.
                   </p>
                 </div>
-                <div className="bg-background dark:bg-[#0a1929] p-8 rounded-[5px] border border-border hover:border-[#FBB429] transition-all duration-300 hover:shadow-xl text-center group">
-                  <h3 className="font-display text-xl font-bold text-foreground dark:text-white mb-3">Collaboration</h3>
-                  <p className="text-muted-foreground dark:text-neutral-300">
+                <div className="bg-background dark:bg-[#0a1929] p-6 md:p-8 rounded-[5px] border-2 border-neutral-200 dark:border-neutral-700/50 hover:border-[#FBB429] transition-all duration-300 hover:shadow-xl text-center group">
+                  <h3 className="font-display text-xl md:text-2xl font-bold text-foreground dark:text-white mb-3">Collaboration</h3>
+                  <p className="text-muted-foreground dark:text-neutral-300 leading-relaxed">
                     Working closely with industry professionals to understand real-world needs.
                   </p>
                 </div>
-                <div className="bg-background dark:bg-[#0a1929] p-8 rounded-[5px] border border-border hover:border-[#FBB429] transition-all duration-300 hover:shadow-xl text-center group">
-                  <h3 className="font-display text-xl font-bold text-foreground dark:text-white mb-3">Excellence</h3>
-                  <p className="text-muted-foreground dark:text-neutral-300">
+                <div className="bg-background dark:bg-[#0a1929] p-6 md:p-8 rounded-[5px] border-2 border-neutral-200 dark:border-neutral-700/50 hover:border-[#FBB429] transition-all duration-300 hover:shadow-xl text-center group">
+                  <h3 className="font-display text-xl md:text-2xl font-bold text-foreground dark:text-white mb-3">Excellence</h3>
+                  <p className="text-muted-foreground dark:text-neutral-300 leading-relaxed">
                     Delivering solutions that exceed expectations and drive measurable results.
                   </p>
                 </div>
@@ -293,32 +107,21 @@ export default function AboutPage() {
         </section>
 
         {/* Story Section */}
-        <section className="py-20 bg-muted/30 dark:bg-[#0d1f33]">
+        <section className="py-20 bg-background dark:bg-background">
           <div className="container mx-auto px-4">
-            <div className="max-w-6xl mx-auto">
-              <div className="grid lg:grid-cols-2 gap-12 items-center">
-                {/* Image */}
-                <div className="order-2 lg:order-1">
-                  <div className="relative aspect-[4/3] rounded-[5px] overflow-hidden shadow-2xl">
-                    <Image
-                      src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1200&q=80"
-                      alt="BuildwellAI Office"
-                      fill
-                      className="object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-tr from-[#FBB429]/10 to-[#F87866]/10" />
+            <div className="max-w-7xl mx-auto">
+              <div className="lg:flex lg:items-center lg:gap-12">
+                {/* Text Content - Shows first on mobile, left on desktop */}
+                <div className="lg:w-1/2 space-y-6 order-1">
+                  <div className="flex justify-center lg:justify-start">
+                    <span className="text-sm font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866] uppercase tracking-wider">
+                      Our Story
+                    </span>
                   </div>
-                </div>
-                
-                {/* Text Content */}
-                <div className="order-1 lg:order-2">
-                  <span className="text-sm font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866] uppercase tracking-wider">
-                    Our Story
-                  </span>
-                  <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground dark:text-white mt-4 mb-6">
-                    Building on Experience, Innovating for Tomorrow
+                  <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground dark:text-white text-center lg:text-left">
+                    Building on Experience, <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866]">Innovating</span> for Tomorrow
                   </h2>
-                  <p className="text-lg text-muted-foreground dark:text-neutral-300 mb-6 leading-relaxed">
+                  <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed">
                     Founded by construction veterans and AI specialists, BuildwellAI emerged from a shared vision 
                     to solve the sector's most pressing challenges through intelligent technology.
                   </p>
@@ -327,11 +130,24 @@ export default function AboutPage() {
                     safer, more efficient, and more profitable projects.
                   </p>
                 </div>
+
+                {/* Image - Shows after text on mobile, right on desktop */}
+                <div className="lg:w-1/2 order-2 mt-8 lg:mt-0">
+                  <div className="relative aspect-[4/3] rounded-[5px] overflow-hidden shadow-2xl">
+                    <Image
+                      src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1200&q=80"
+                      alt="BuildwellAI Office"
+                      fill
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-tr from-[#FBB429]/20 to-[#F87866]/20" />
+                  </div>
+                </div>
               </div>
               
               {/* Feature Cards with Images */}
-              <div className="grid md:grid-cols-3 gap-8 mt-16">
-                <div className="bg-background dark:bg-[#0a1929] rounded-[5px] overflow-hidden border border-border hover:border-[#FBB429] transition-all duration-300 hover:shadow-xl">
+              <div className="grid md:grid-cols-3 gap-6 md:gap-8 mt-16">
+                <div className="bg-background dark:bg-[#0a1929] rounded-[5px] overflow-hidden border-2 border-neutral-200 dark:border-neutral-700/50 hover:border-[#FBB429] transition-all duration-300 shadow-lg hover:shadow-2xl">
                   <div className="relative h-48">
                     <Image
                       src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&q=80"
@@ -347,7 +163,7 @@ export default function AboutPage() {
                   </div>
                 </div>
                 
-                <div className="bg-background dark:bg-[#0a1929] rounded-[5px] overflow-hidden border border-border hover:border-[#FBB429] transition-all duration-300 hover:shadow-xl">
+                <div className="bg-background dark:bg-[#0a1929] rounded-[5px] overflow-hidden border-2 border-neutral-200 dark:border-neutral-700/50 hover:border-[#FBB429] transition-all duration-300 shadow-lg hover:shadow-2xl">
                   <div className="relative h-48">
                     <Image
                       src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800&q=80"
@@ -363,7 +179,7 @@ export default function AboutPage() {
                   </div>
                 </div>
                 
-                <div className="bg-background dark:bg-[#0a1929] rounded-[5px] overflow-hidden border border-border hover:border-[#FBB429] transition-all duration-300 hover:shadow-xl">
+                <div className="bg-background dark:bg-[#0a1929] rounded-[5px] overflow-hidden border-2 border-neutral-200 dark:border-neutral-700/50 hover:border-[#FBB429] transition-all duration-300 shadow-lg hover:shadow-2xl">
                   <div className="relative h-48">
                     <Image
                       src="https://images.unsplash.com/photo-1590402494682-cd3fb53b1f70?w=800&q=80"
@@ -383,150 +199,142 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Timeline Section */}
-        <section className="py-20 bg-background dark:bg-background overflow-hidden">
+        {/* Journey Timeline Section */}
+        <section className="py-20 bg-muted/30 dark:bg-[#0d1f33]">
           <div className="container mx-auto px-4">
-            <div className="timeliner max-w-7xl mx-auto">
-              <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-center text-foreground dark:text-white mb-20">
-                Our Journey
-              </h1>
+            <div className="max-w-7xl mx-auto">
+              <div className="text-center mb-16">
+                <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground dark:text-white mt-4 mb-6">
+                  Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866]">Journey</span>
+                </h2>
+              </div>
               
-              {/* Timeline Item 1 - Right */}
-              <div className="grid md:grid-cols-[1fr_auto_1.2fr] gap-8 items-center mb-16">
-                <div className="md:order-3 scroll-animation revealedBox goRight">
-                  <div className="contentBox relative aspect-[4/3] rounded-[5px] overflow-hidden shadow-2xl">
-                    <Image
-                      src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80"
-                      alt="BuildwellAI Foundation"
-                      fill
-                      className="object-cover"
-                    />
+              {/* Timeline Item 1 - 2020 */}
+              <div className="mb-16">
+                <div className="lg:flex lg:items-center lg:gap-12">
+                  {/* Image */}
+                  <div className="lg:w-1/2">
+                    <div className="relative aspect-[4/3] rounded-[5px] overflow-hidden shadow-2xl mb-6 lg:mb-0">
+                      <Image
+                        src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80"
+                        alt="BuildwellAI Foundation"
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
                   </div>
-                  <span></span>
-                  <span></span>
-                </div>
-                
-                {/* Divider - Hidden on mobile */}
-                <div className="hidden md:block md:order-2 w-px bg-gradient-to-b from-transparent via-[#FBB429] to-transparent h-48"></div>
-                
-                <div className="md:order-1 md:text-right">
-                  <h4 className="font-bold text-2xl md:text-3xl text-foreground dark:text-white mb-4">
-                    2020: The Foundation
-                  </h4>
-                  <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed mb-4">
-                    BuildwellAI was founded with a simple mission: to revolutionize the UK construction industry 
-                    through AI-powered solutions. From day one, we set out to tackle the sector's most pressing 
-                    challenges with innovative technology.
-                  </p>
-                  <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed">
-                    Our founding team brought together decades of construction experience with cutting-edge AI expertise, 
-                    creating a unique perspective on solving real industry challenges.
-                  </p>
+                  
+                  {/* Text */}
+                  <div className="lg:w-1/2 space-y-4">
+                    <h4 className="font-bold text-2xl md:text-3xl text-foreground dark:text-white">
+                      2020: The Foundation
+                    </h4>
+                    <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed">
+                      BuildwellAI was founded with a simple mission: to revolutionize the UK construction industry 
+                      through AI-powered solutions. From day one, we set out to tackle the sector's most pressing 
+                      challenges with innovative technology.
+                    </p>
+                    <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed">
+                      Our founding team brought together decades of construction experience with cutting-edge AI expertise, 
+                      creating a unique perspective on solving real industry challenges.
+                    </p>
+                  </div>
                 </div>
               </div>
 
-              {/* Timeline Item 2 - Left */}
-              <div className="grid md:grid-cols-[1.2fr_auto_1fr] gap-8 items-center mb-16">
-                <div className="scroll-animation revealedBox goLeft">
-                  <div className="contentBox relative aspect-[4/3] rounded-[5px] overflow-hidden shadow-2xl">
-                    <Image
-                      src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80"
-                      alt="Team Expansion"
-                      fill
-                      className="object-cover"
-                    />
+              {/* Timeline Item 2 - 2021 */}
+              <div className="mb-16">
+                <div className="lg:flex lg:flex-row-reverse lg:items-center lg:gap-12">
+                  {/* Image */}
+                  <div className="lg:w-1/2">
+                    <div className="relative aspect-[4/3] rounded-[5px] overflow-hidden shadow-2xl mb-6 lg:mb-0">
+                      <Image
+                        src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80"
+                        alt="Team Expansion"
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
                   </div>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </div>
-                
-                {/* Divider - Hidden on mobile */}
-                <div className="hidden md:block w-px bg-gradient-to-b from-transparent via-[#FBB429] to-transparent h-48"></div>
-                
-                <div className="md:text-left">
-                  <h4 className="font-bold text-2xl md:text-3xl text-foreground dark:text-white mb-4">
-                    2021: Expansion & Innovation
-                  </h4>
-                  <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed mb-4">
-                    Our team grew with industry experts and AI engineers. We launched BuildwellEYE, our flagship 
-                    computer vision platform, transforming how construction sites monitor safety in real-time.
-                  </p>
-                  <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed">
-                    The successful deployment of BuildwellEYE across multiple UK construction sites validated our 
-                    approach and demonstrated the tangible benefits of AI in construction safety.
-                  </p>
+                  
+                  {/* Text */}
+                  <div className="lg:w-1/2 space-y-4">
+                    <h4 className="font-bold text-2xl md:text-3xl text-foreground dark:text-white">
+                      2021: Expansion & Innovation
+                    </h4>
+                    <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed">
+                      Our team grew with industry experts and AI engineers. We launched BuildwellEYE, our flagship 
+                      computer vision platform, transforming how construction sites monitor safety in real-time.
+                    </p>
+                    <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed">
+                      The successful deployment of BuildwellEYE across multiple UK construction sites validated our 
+                      approach and demonstrated the tangible benefits of AI in construction safety.
+                    </p>
+                  </div>
                 </div>
               </div>
 
-              {/* Timeline Item 3 - Right */}
-              <div className="grid md:grid-cols-[1fr_auto_1.2fr] gap-8 items-center mb-16">
-                <div className="md:order-3 scroll-animation revealedBox goTop">
-                  <div className="contentBox relative aspect-[4/3] rounded-[5px] overflow-hidden shadow-2xl">
-                    <Image
-                      src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80"
-                      alt="Product Development"
-                      fill
-                      className="object-cover"
-                    />
+              {/* Timeline Item 3 - 2022 */}
+              <div className="mb-16">
+                <div className="lg:flex lg:items-center lg:gap-12">
+                  {/* Image */}
+                  <div className="lg:w-1/2">
+                    <div className="relative aspect-[4/3] rounded-[5px] overflow-hidden shadow-2xl mb-6 lg:mb-0">
+                      <Image
+                        src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80"
+                        alt="Product Development"
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
                   </div>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </div>
-                
-                {/* Divider - Hidden on mobile */}
-                <div className="hidden md:block md:order-2 w-px bg-gradient-to-b from-transparent via-[#FBB429] to-transparent h-48"></div>
-                
-                <div className="md:order-1 md:text-right">
-                  <h4 className="font-bold text-2xl md:text-3xl text-foreground dark:text-white mb-4">
-                    2022: Building the Suite
-                  </h4>
-                  <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed mb-4">
-                    We expanded our product portfolio with BuildwellTHREAD for golden thread documentation management 
-                    and BuildwellINSPECT for mobile-first site inspections, addressing the complete project lifecycle.
-                  </p>
-                  <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed">
-                    This expansion reflected our deep understanding of construction workflows and enabled seamless 
-                    information flow across all project stages and stakeholders.
-                  </p>
+                  
+                  {/* Text */}
+                  <div className="lg:w-1/2 space-y-4">
+                    <h4 className="font-bold text-2xl md:text-3xl text-foreground dark:text-white">
+                      2022: Building the Suite
+                    </h4>
+                    <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed">
+                      We expanded our product portfolio with BuildwellTHREAD for golden thread documentation management 
+                      and BuildwellINSPECT for mobile-first site inspections, addressing the complete project lifecycle.
+                    </p>
+                    <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed">
+                      This expansion reflected our deep understanding of construction workflows and enabled seamless 
+                      information flow across all project stages and stakeholders.
+                    </p>
+                  </div>
                 </div>
               </div>
 
-              {/* Timeline Item 4 - Left */}
-              <div className="grid md:grid-cols-[1.2fr_auto_1fr] gap-8 items-center mb-16">
-                <div className="scroll-animation revealedBox goBottom">
-                  <div className="contentBox relative aspect-[4/3] rounded-[5px] overflow-hidden shadow-2xl">
-                    <Image
-                      src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=800&q=80"
-                      alt="Future Vision"
-                      fill
-                      className="object-cover"
-                    />
+              {/* Timeline Item 4 - 2024 */}
+              <div>
+                <div className="lg:flex lg:flex-row-reverse lg:items-center lg:gap-12">
+                  {/* Image */}
+                  <div className="lg:w-1/2">
+                    <div className="relative aspect-[4/3] rounded-[5px] overflow-hidden shadow-2xl mb-6 lg:mb-0">
+                      <Image
+                        src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=800&q=80"
+                        alt="Future Vision"
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
                   </div>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </div>
-                
-                {/* Divider - Hidden on mobile */}
-                <div className="hidden md:block w-px bg-gradient-to-b from-transparent via-[#FBB429] to-transparent h-48"></div>
-                
-                <div className="md:text-left">
-                  <h4 className="font-bold text-2xl md:text-3xl text-foreground dark:text-white mb-4">
-                    2024: Leading the Future
-                  </h4>
-                  <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed mb-4">
-                    Today, BuildwellAI serves construction professionals across the UK with a comprehensive AI platform. 
-                    We're pioneering new frontiers with BuildwellCHAT and BuildwellNEWS while setting new industry standards.
-                  </p>
-                  <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed">
-                    With over 100 active projects and a 60% improvement in safety outcomes, our focus extends to 
-                    predictive analytics and AI-powered decision support systems.
-                  </p>
+                  
+                  {/* Text */}
+                  <div className="lg:w-1/2 space-y-4">
+                    <h4 className="font-bold text-2xl md:text-3xl text-foreground dark:text-white">
+                      2024: Leading the Future
+                    </h4>
+                    <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed">
+                      Today, BuildwellAI serves construction professionals across the UK with a comprehensive AI platform. 
+                      We're pioneering new frontiers with BuildwellCHAT and BuildwellNEWS while setting new industry standards.
+                    </p>
+                    <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed">
+                      With over 100 active projects and a 60% improvement in safety outcomes, our focus extends to 
+                      predictive analytics and AI-powered decision support systems.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -534,174 +342,123 @@ export default function AboutPage() {
         </section>
 
         {/* Team Section */}
-        <section className="py-20 bg-muted/30 dark:bg-[#0a1929]">
+        <section className="py-20 bg-background dark:bg-background">
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-16">
+              <div className="text-center mb-12">
                 <span className="text-sm font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866] uppercase tracking-wider">
                   Our Team
                 </span>
-                <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground dark:text-white mt-4 mb-6">
-                  Meet the Experts Behind BuildwellAI
+                <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground dark:text-white mt-4 mb-6">
+                  Meet the <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866]">Experts</span> Behind BuildwellAI
                 </h2>
-                <p className="text-lg text-muted-foreground dark:text-neutral-300 max-w-3xl mx-auto">
+                <p className="text-lg text-muted-foreground dark:text-neutral-300 max-w-3xl mx-auto leading-relaxed">
                   A diverse team of AI specialists, construction experts, and industry professionals
                 </p>
               </div>
 
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div className="bg-background dark:bg-background rounded-[5px] overflow-hidden border border-border hover:border-[#FBB429] transition-all duration-300 hover:shadow-xl group">
-                  <div className="relative h-72">
-                    <Image
-                      src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=800&q=80"
-                      alt="CEO"
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                {[
+                  {
+                    name: "Dr. James Mitchell",
+                    role: "CEO & Co-Founder",
+                    description: "Former construction project manager with 15+ years experience, now leading BuildwellAI's vision for safer, smarter construction sites.",
+                    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=800&q=80"
+                  },
+                  {
+                    name: "Dr. Sarah Chen",
+                    role: "CTO & Co-Founder",
+                    description: "AI researcher specializing in computer vision and machine learning, driving innovation in construction safety technology.",
+                    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&q=80"
+                  },
+                  {
+                    name: "Marcus Thompson",
+                    role: "Head of Engineering",
+                    description: "Software architect with expertise in scalable cloud platforms, ensuring BuildwellAI delivers reliable enterprise solutions.",
+                    image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=800&q=80"
+                  },
+                  {
+                    name: "Emily Rodriguez",
+                    role: "Head of Product",
+                    description: "Product strategist focused on user experience, ensuring every BuildwellAI tool solves real construction challenges.",
+                    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=800&q=80"
+                  },
+                  {
+                    name: "David Patterson",
+                    role: "Head of Safety & Compliance",
+                    description: "Former HSE inspector ensuring our solutions meet all UK construction safety regulations and standards.",
+                    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80"
+                  },
+                  {
+                    name: "Priya Sharma",
+                    role: "Head of Customer Success",
+                    description: "Dedicated to client partnerships, ensuring BuildwellAI delivers measurable value and exceptional support.",
+                    image: "https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=800&q=80"
+                  }
+                ].map((member, index) => (
+                  <div key={index} className="bg-background dark:bg-[#0a1929] rounded-[5px] overflow-hidden border-2 border-neutral-200 dark:border-neutral-700/50 hover:border-[#FBB429] transition-all duration-300 shadow-lg hover:shadow-2xl group">
+                    <div className="relative h-64">
+                      <Image
+                        src={member.image}
+                        alt={member.name}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
+                    <div className="p-6">
+                      <h3 className="font-display text-xl font-bold text-foreground dark:text-white mb-1">{member.name}</h3>
+                      <p className="text-[#FBB429] font-semibold mb-3 text-sm">{member.role}</p>
+                      <p className="text-muted-foreground dark:text-neutral-300 text-sm leading-relaxed">
+                        {member.description}
+                      </p>
+                    </div>
                   </div>
-                  <div className="p-6">
-                    <h3 className="font-display text-xl font-bold text-foreground dark:text-white mb-1">Dr. James Mitchell</h3>
-                    <p className="text-[#FBB429] font-semibold mb-3">CEO & Co-Founder</p>
-                    <p className="text-muted-foreground dark:text-neutral-300 text-sm">
-                      Former construction project manager with 15+ years experience, now leading BuildwellAI's vision for safer, smarter construction sites.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="bg-background dark:bg-background rounded-[5px] overflow-hidden border border-border hover:border-[#FBB429] transition-all duration-300 hover:shadow-xl group">
-                  <div className="relative h-72">
-                    <Image
-                      src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&q=80"
-                      alt="CTO"
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <h3 className="font-display text-xl font-bold text-foreground dark:text-white mb-1">Dr. Sarah Chen</h3>
-                    <p className="text-[#FBB429] font-semibold mb-3">CTO & Co-Founder</p>
-                    <p className="text-muted-foreground dark:text-neutral-300 text-sm">
-                      AI researcher specializing in computer vision and machine learning, driving innovation in construction safety technology.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="bg-background dark:bg-background rounded-[5px] overflow-hidden border border-border hover:border-[#FBB429] transition-all duration-300 hover:shadow-xl group">
-                  <div className="relative h-72">
-                    <Image
-                      src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=800&q=80"
-                      alt="Head of Engineering"
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <h3 className="font-display text-xl font-bold text-foreground dark:text-white mb-1">Marcus Thompson</h3>
-                    <p className="text-[#FBB429] font-semibold mb-3">Head of Engineering</p>
-                    <p className="text-muted-foreground dark:text-neutral-300 text-sm">
-                      Software architect with expertise in scalable cloud platforms, ensuring BuildwellAI delivers reliable enterprise solutions.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="bg-background dark:bg-background rounded-[5px] overflow-hidden border border-border hover:border-[#FBB429] transition-all duration-300 hover:shadow-xl group">
-                  <div className="relative h-72">
-                    <Image
-                      src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=800&q=80"
-                      alt="Head of Product"
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <h3 className="font-display text-xl font-bold text-foreground dark:text-white mb-1">Emily Rodriguez</h3>
-                    <p className="text-[#FBB429] font-semibold mb-3">Head of Product</p>
-                    <p className="text-muted-foreground dark:text-neutral-300 text-sm">
-                      Product strategist focused on user experience, ensuring every BuildwellAI tool solves real construction challenges.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="bg-background dark:bg-background rounded-[5px] overflow-hidden border border-border hover:border-[#FBB429] transition-all duration-300 hover:shadow-xl group">
-                  <div className="relative h-72">
-                    <Image
-                      src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80"
-                      alt="Head of Safety & Compliance"
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <h3 className="font-display text-xl font-bold text-foreground dark:text-white mb-1">David Patterson</h3>
-                    <p className="text-[#FBB429] font-semibold mb-3">Head of Safety & Compliance</p>
-                    <p className="text-muted-foreground dark:text-neutral-300 text-sm">
-                      Former HSE inspector ensuring our solutions meet all UK construction safety regulations and standards.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="bg-background dark:bg-background rounded-[5px] overflow-hidden border border-border hover:border-[#FBB429] transition-all duration-300 hover:shadow-xl group">
-                  <div className="relative h-72">
-                    <Image
-                      src="https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=800&q=80"
-                      alt="Head of Customer Success"
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <h3 className="font-display text-xl font-bold text-foreground dark:text-white mb-1">Priya Sharma</h3>
-                    <p className="text-[#FBB429] font-semibold mb-3">Head of Customer Success</p>
-                    <p className="text-muted-foreground dark:text-neutral-300 text-sm">
-                      Dedicated to client partnerships, ensuring BuildwellAI delivers measurable value and exceptional support.
-                    </p>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
           </div>
         </section>
 
         {/* Values Section */}
-        <section className="py-20 bg-background dark:bg-background">
+        <section className="py-20 bg-muted/30 dark:bg-[#0d1f33]">
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-16">
+              <div className="text-center mb-12">
                 <span className="text-sm font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866] uppercase tracking-wider">
                   Our Values
                 </span>
-                <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground dark:text-white mt-4 mb-6">
-                  The Principles That Guide Us
+                <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground dark:text-white mt-4 mb-6">
+                  The <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866]">Principles</span> That Guide Us
                 </h2>
-                <p className="text-lg text-muted-foreground dark:text-neutral-300 max-w-3xl mx-auto">
+                <p className="text-lg text-muted-foreground dark:text-neutral-300 max-w-3xl mx-auto leading-relaxed">
                   Everything we do is guided by these core values
                 </p>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-8">
-                <div className="bg-background dark:bg-[#0a1929] p-8 rounded-[5px] border border-border hover:border-[#FBB429] transition-all duration-300 hover:shadow-xl group">
-                  <h3 className="font-display text-2xl font-bold text-foreground dark:text-white mb-4">Safety First</h3>
+              <div className="grid md:grid-cols-2 gap-6 md:gap-8">
+                <div className="bg-background dark:bg-[#0a1929] p-6 md:p-8 rounded-[5px] border-2 border-neutral-200 dark:border-neutral-700/50 hover:border-[#FBB429] transition-all duration-300 hover:shadow-xl group">
+                  <h3 className="font-display text-xl md:text-2xl font-bold text-foreground dark:text-white mb-4">Safety First</h3>
                   <p className="text-muted-foreground dark:text-neutral-300 leading-relaxed">
                     Every solution we develop prioritises worker safety and regulatory compliance, 
                     helping construction sites become safer environments for everyone.
                   </p>
                 </div>
-                <div className="bg-background dark:bg-[#0a1929] p-8 rounded-[5px] border border-border hover:border-[#FBB429] transition-all duration-300 hover:shadow-xl group">
-                  <h3 className="font-display text-2xl font-bold text-foreground dark:text-white mb-4">Transparency</h3>
+                <div className="bg-background dark:bg-[#0a1929] p-6 md:p-8 rounded-[5px] border-2 border-neutral-200 dark:border-neutral-700/50 hover:border-[#FBB429] transition-all duration-300 hover:shadow-xl group">
+                  <h3 className="font-display text-xl md:text-2xl font-bold text-foreground dark:text-white mb-4">Transparency</h3>
                   <p className="text-muted-foreground dark:text-neutral-300 leading-relaxed">
                     We believe in clear communication, honest partnerships, and transparent 
                     processes that build trust with our clients and stakeholders.
                   </p>
                 </div>
-                <div className="bg-background dark:bg-[#0a1929] p-8 rounded-[5px] border border-border hover:border-[#FBB429] transition-all duration-300 hover:shadow-xl group">
-                  <h3 className="font-display text-2xl font-bold text-foreground dark:text-white mb-4">Continuous Learning</h3>
+                <div className="bg-background dark:bg-[#0a1929] p-6 md:p-8 rounded-[5px] border-2 border-neutral-200 dark:border-neutral-700/50 hover:border-[#FBB429] transition-all duration-300 hover:shadow-xl group">
+                  <h3 className="font-display text-xl md:text-2xl font-bold text-foreground dark:text-white mb-4">Continuous Learning</h3>
                   <p className="text-muted-foreground dark:text-neutral-300 leading-relaxed">
                     The construction industry evolves rapidly, and so do we. We're committed 
                     to staying at the forefront of both industry trends and technological advances.
                   </p>
                 </div>
-                <div className="bg-background dark:bg-[#0a1929] p-8 rounded-[5px] border border-border hover:border-[#FBB429] transition-all duration-300 hover:shadow-xl group">
-                  <h3 className="font-display text-2xl font-bold text-foreground dark:text-white mb-4">Sustainability</h3>
+                <div className="bg-background dark:bg-[#0a1929] p-6 md:p-8 rounded-[5px] border-2 border-neutral-200 dark:border-neutral-700/50 hover:border-[#FBB429] transition-all duration-300 hover:shadow-xl group">
+                  <h3 className="font-display text-xl md:text-2xl font-bold text-foreground dark:text-white mb-4">Sustainability</h3>
                   <p className="text-muted-foreground dark:text-neutral-300 leading-relaxed">
                     Our solutions help reduce waste, optimise resource usage, and support 
                     environmentally responsible construction practices.
@@ -722,28 +479,29 @@ export default function AboutPage() {
               fill
               className="object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#000000]/65 to-[#000000]/65" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#000000]/70 to-[#000000]/70" />
           </div>
           
           {/* Content */}
           <div className="container mx-auto px-4 text-center relative z-10">
             <div className="max-w-3xl mx-auto">
-              <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-6">
-                Ready to Transform Your Projects?
+              <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
+                Ready to <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866]">Transform</span> Your Projects?
               </h2>
-              <p className="text-xl text-white/90 mb-8 leading-relaxed">
+              <p className="text-lg md:text-xl text-white/90 mb-8 leading-relaxed">
                 Join hundreds of construction professionals who trust BuildwellAI to 
                 deliver smarter, safer, and more efficient building solutions.
               </p>
-              <div className="flex flex-wrap justify-center gap-4">
+              <div className="flex flex-col sm:flex-row justify-center gap-4">
                 <a href="/contact">
-                  <button className="bg-gradient-to-r from-[#FBB429] to-[#F87866] text-white px-8 py-4 rounded-[5px] font-semibold hover:opacity-90 transition-all shadow-lg">
+                  <button className="group bg-gradient-to-r from-[#FBB429] to-[#F87866] text-white px-8 py-4 rounded-[5px] font-semibold hover:opacity-90 transition-all shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto">
                     Get In Touch
+                    <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
                   </button>
                 </a>
-                <a href="/pricing">
-                  <button className="bg-transparent text-white px-8 py-4 rounded-[5px] font-semibold hover:bg-white/10 transition-all shadow-[inset_0_0_0_2px] shadow-white">
-                    View Pricing
+                <a href="/#solutions">
+                  <button className="bg-white/10 backdrop-blur-sm text-white px-8 py-4 rounded-[5px] font-semibold hover:bg-white/20 transition-all border-2 border-white/30 w-full sm:w-auto">
+                    View Solutions
                   </button>
                 </a>
               </div>
