@@ -17,7 +17,7 @@ export function FeaturesSection() {
       icon: Zap,
       title: 'Real-Time AI Analysis',
       description: 'Get instant insights and recommendations powered by advanced machine learning algorithms trained on construction data.',
-      image: 'https://images.unsplash.com/photo-1581094794329-c8112c4e5190?w=600&h=400&fit=crop',
+      image: '/analysis.jpg',
     },
     {
       icon: Users,

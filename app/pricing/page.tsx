@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -97,61 +98,17 @@ export default function PricingPage() {
       question: "What can BuildwellINSPECT verify?",
       answer: "BuildwellINSPECT automatically verifies product certifications, fire safety documentation, and compliance certificates. It cross-references databases and flags expired or missing certifications, with human oversight for all critical decisions.",
     },
-    {
-      question: "How is BuildwellCHAT different from other AI chatbots?",
-      answer: "BuildwellCHAT is trained specifically on UK building regulations, construction standards, and your project documentation. It provides contextual answers with source references, helping your team find information instantly without leaving the platform.",
-    },
-    {
-      question: "What type of alerts does BuildwellNEWS provide?",
-      answer: "BuildwellNEWS monitors regulatory changes, safety notices, product recalls, and industry updates relevant to your projects. You receive prioritized alerts based on your active projects and can customize notification preferences.",
-    },
-    {
-      question: "Do you offer training for my team?",
-      answer: "Yes! All plans include comprehensive onboarding training for each product you use. Professional and Enterprise plans include ongoing training sessions, documentation, and dedicated support to ensure your team maximizes platform benefits.",
-    },
-    {
-      question: "Can I change plans later?",
-      answer: "Yes, you can upgrade or downgrade your plan at any time. Changes take effect immediately, and we'll prorate any charges. Book a meeting to discuss the best plan for your evolving needs.",
-    },
-    {
-      question: "What happens to my data if I cancel?",
-      answer: "You can export all your data at any time in standard formats (PDF, CSV, JSON). After cancellation, we retain your data for 90 days before permanent deletion, giving you plenty of time to migrate if needed.",
-    },
-    {
-      question: "Is there a minimum contract period?",
-      answer: "Starter and Professional plans are month-to-month with no long-term commitment. Enterprise plans typically include annual contracts with better pricing and dedicated support. Contact us to discuss flexible options.",
-    },
-    {
-      question: "How secure is my project data across all products?",
-      answer: "We use bank-level encryption for data in transit and at rest. All data is stored in ISO 27001 certified UK data centers with regular security audits. You maintain full ownership and can control access through role-based permissions across all products.",
-    },
-    {
-      question: "Can I integrate BuildwellAI products with my existing tools?",
-      answer: "Yes! Professional and Enterprise plans include API access for integrations with popular construction management platforms like Procore, BIM 360, Aconex, and Viewpoint. We also offer custom integrations for Enterprise clients.",
-    },
-    {
-      question: "Do you offer discounts for multiple users or annual contracts?",
-      answer: "Absolutely! We offer a 20% discount on annual billing for all plans. Volume discounts are available for teams with 10+ users. Enterprise plans include custom pricing based on your specific requirements and scale.",
-    },
-    {
-      question: "What's the difference between Basic and Advanced plan checking in BuildwellEYE?",
-      answer: "Basic plan checking handles standard comparisons and measurements. Advanced includes 3D model analysis, automated dimension verification, material specification checking, and integration with BIM workflows for complex projects.",
-    },
-    {
-      question: "Can BuildwellTHREAD handle legacy documentation from past projects?",
-      answer: "Yes! BuildwellTHREAD can process and organize historical documentation. We offer bulk upload and AI-assisted classification for legacy files. Enterprise plans include migration support for large document libraries.",
-    },
   ]
 
   return (
-    <div className="flex min-h-screen flex-col bg-white dark:bg-[#0a1929]">
+    <div className="flex min-h-screen flex-col dark:bg-background">
       <MarketingNav />
 
       {/* Hero Section */}
       <section className="container mx-auto px-4 pt-32 pb-20">
         <div className="mx-auto max-w-3xl text-center">
-          <h1 className="font-display text-5xl font-bold leading-tight tracking-tight md:text-6xl">
-            Transparent <span className="text-gradient-orange">Pricing</span> for Every Team Size
+          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight">
+            Transparent <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866]">Pricing</span> for Every Team Size
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
             Choose the plan that fits your needs. Book a demo to see how our complete AI suite can enhance your team's compliance workflow. 
@@ -162,37 +119,47 @@ export default function PricingPage() {
 
       {/* Pricing Cards */}
       <section className="container mx-auto px-4 pb-20">
-        <div className="grid gap-8 lg:grid-cols-3">
+        <div className="grid gap-8 lg:grid-cols-3 max-w-7xl mx-auto">
           {plans.map((plan, index) => (
             <Card
               key={index}
-              className={`relative flex flex-col border-border $  {plan.popular ? "border-primary shadow-lg scale-105" : ""}`}
+              className={`relative flex flex-col border-2 rounded-[5px] shadow-lg transition-all duration-300 ${
+                plan.popular 
+                  ? "border-[#FBB429] lg:scale-105 shadow-2xl hover:shadow-[0_20px_60px_-15px_rgba(251,180,41,0.3)]" 
+                  : "border-neutral-200 dark:border-neutral-700/50 hover:border-[#FBB429] hover:shadow-2xl hover:scale-105"
+              }`}
             >
               {plan.popular && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                  <Badge className="bg-gradient-orange text-white">Most Popular</Badge>
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-auto">
+                  <Badge className="bg-gradient-to-r from-[#FBB429] to-[#F87866] text-white border-0 px-3 py-1 text-xs whitespace-nowrap">
+                    Most Popular
+                  </Badge>
                 </div>
               )}
-              <CardHeader className="text-center">
-                <CardTitle className="text-2xl">{plan.name}</CardTitle>
-                <CardDescription className="mt-2">{plan.description}</CardDescription>
+              <CardHeader className="text-center pb-8 pt-8">
+                <CardTitle className="text-2xl font-display font-bold">{plan.name}</CardTitle>
+                <CardDescription className="mt-2 text-sm">{plan.description}</CardDescription>
                 <div className="mt-6">
-                  <div className="font-display text-4xl font-bold">{plan.price}</div>
+                  <div className="flex items-baseline justify-center gap-1">
+                    <span className="font-display text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866]">{plan.price}</span>
+                  </div>
                 </div>
               </CardHeader>
-              <CardContent className="flex flex-1 flex-col space-y-6">
+              <CardContent className="flex flex-1 flex-col space-y-6 px-6 pb-8">
                 <ul className="flex-1 space-y-3">
                   {plan.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-start gap-3">
                       <CheckCircle className="h-5 w-5 shrink-0 text-success-green mt-0.5" />
-                      <span className="text-sm">{feature}</span>
+                      <span className="text-sm leading-relaxed">{feature}</span>
                     </li>
                   ))}
                 </ul>
                 <Link href="/contact" className="block">
                   <Button
-                    className={`w-full ${
-                      plan.popular ? "bg-gradient-orange text-white hover:brightness-110" : "bg-transparent"
+                    className={`w-full rounded-[5px] transition-all duration-300 ${
+                      plan.popular
+                        ? "bg-gradient-to-r from-[#FBB429] to-[#F87866] text-white hover:opacity-90 hover:scale-105"
+                        : "bg-transparent border-2 hover:bg-muted hover:scale-105"
                     }`}
                     variant={plan.popular ? "default" : "outline"}
                     size="lg"
@@ -214,87 +181,110 @@ export default function PricingPage() {
       </section>
 
       {/* Product Suite Features */}
-      <section className="border-t border-border bg-muted/30 py-20">
+      <section className="border-t border-border bg-muted/30 dark:bg-[#0d1f33] py-20">
         <div className="container mx-auto px-4">
-          <div className="mx-auto max-w-3xl text-center mb-12">
-            <h2 className="font-display text-3xl font-bold tracking-tight md:text-4xl">
-              Complete <span className="text-gradient-orange">BuildwellAI Suite</span>
-            </h2>
-            <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-              All plans include human-in-the-loop AI across our product range
-            </p>
-          </div>
+          <div className="max-w-7xl mx-auto">
+            <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+              {/* Title for mobile */}
+              <div className="lg:hidden space-y-4">
+                <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight text-foreground dark:text-white">
+                  Complete <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866]">BuildwellAI Suite</span>
+                </h2>
+                <p className="text-lg leading-relaxed text-muted-foreground">
+                  All plans include human-in-the-loop AI across our product range
+                </p>
+              </div>
 
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
-            {[
-              {
-                title: "BuildwellTHREAD",
-                description: "AI document sorting and golden thread management with human review",
-              },
-              {
-                title: "BuildwellEYE",
-                description: "Automated plan checking with inspector validation",
-              },
-              {
-                title: "BuildwellINSPECT",
-                description: "Certification verification with compliance officer approval",
-              },
-              {
-                title: "BuildwellCHAT",
-                description: "AI assistant trained on UK regulations with source references",
-              },
-              {
-                title: "BuildwellNEWS",
-                description: "Real-time alerts on regulations, safety, and industry updates",
-              },
-              {
-                title: "API Access",
-                description: "Integrate with your existing construction management tools",
-              },
-            ].map((feature, index) => (
-              <Card key={index} className="border-border text-center">
-                <CardContent className="pt-6">
-                  <CheckCircle className="h-12 w-12 text-success-green mx-auto mb-4" />
-                  <h3 className="font-semibold mb-2">{feature.title}</h3>
-                  <p className="text-sm text-muted-foreground">{feature.description}</p>
-                </CardContent>
-              </Card>
-            ))}
+              {/* Image */}
+              <div className="lg:order-1">
+                <div className="aspect-4/3 overflow-hidden rounded-[5px] border-2 border-neutral-200 dark:border-neutral-700/50 bg-muted shadow-2xl">
+                  <Image
+                    src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop"
+                    alt="Team collaborating with AI tools"
+                    width={800}
+                    height={600}
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+              </div>
+
+              {/* Content */}
+              <div className="lg:order-2 space-y-6">
+                {/* Title for desktop */}
+                <div className="hidden lg:block">
+                  <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight text-foreground dark:text-white">
+                    Complete <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866]">BuildwellAI Suite</span>
+                  </h2>
+                  <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
+                    All plans include human-in-the-loop AI across our product range
+                  </p>
+                </div>
+
+                <div className="space-y-4">
+                  {[
+                    {
+                      title: "BuildwellTHREAD",
+                      description: "AI document sorting and golden thread management with human review",
+                    },
+                    {
+                      title: "BuildwellEYE",
+                      description: "Automated plan checking with inspector validation",
+                    },
+                    {
+                      title: "BuildwellINSPECT",
+                      description: "Certification verification with compliance officer approval",
+                    },
+                    {
+                      title: "BuildwellCHAT",
+                      description: "AI assistant trained on UK regulations with source references",
+                    },
+                    {
+                      title: "BuildwellNEWS",
+                      description: "Real-time alerts on regulations, safety, and industry updates",
+                    },
+                  ].map((feature, index) => (
+                    <div key={index} className="flex gap-4">
+                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[5px] bg-gradient-to-r from-[#FBB429] to-[#F87866]">
+                        <CheckCircle className="h-6 w-6 text-white" />
+                      </div>
+                      <div>
+                        <h3 className="font-display text-lg font-bold text-foreground dark:text-white mb-1">{feature.title}</h3>
+                        <p className="text-sm text-muted-foreground dark:text-neutral-300 leading-relaxed">{feature.description}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* FAQ Section */}
-      <section className="container mx-auto px-4 py-20">
+      <section className="container mx-auto px-4 py-20 bg-background dark:bg-background">
         <div className="mx-auto max-w-3xl">
-          <h2 className="text-center font-display text-3xl font-bold tracking-tight md:text-4xl mb-12">
-            Frequently Asked <span className="text-gradient-orange">Questions</span>
+          <h2 className="text-center font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-12">
+            Frequently Asked <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866]">Questions</span>
           </h2>
           <div className="space-y-3">
             {faqs.map((faq, index) => (
-              <Card key={index} className="border-border overflow-hidden">
+              <Card key={index} className="border-2 border-neutral-200 dark:border-neutral-700/50 hover:border-[#FBB429] transition-all duration-300 overflow-hidden rounded-[5px] p-0">
                 <button
                   onClick={() => toggleFaq(index)}
-                  className="w-full text-left px-6 py-4 flex items-center justify-between transition-colors hover:bg-muted/50"
+                  className="w-full text-left p-6 flex items-center justify-between hover:bg-muted/50 transition-colors"
                 >
                   <h3 className="font-semibold text-base pr-4">{faq.question}</h3>
                   <ChevronDown
-                    className={`h-5 w-5 shrink-0 transition-transform duration-300 ${
+                    className={`h-5 w-5 shrink-0 transition-transform duration-200 ${
                       openFaq === index ? "rotate-180" : ""
                     }`}
                   />
                 </button>
-                <div
-                  className={`grid transition-all duration-300 ease-in-out ${
-                    openFaq === index ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
-                  }`}
-                >
-                  <div className="overflow-hidden">
-                    <div className="px-6 pb-4 pt-0">
-                      <p className="text-sm text-muted-foreground leading-relaxed">{faq.answer}</p>
-                    </div>
+                {openFaq === index && (
+                  <div className="px-6 pb-6 pt-0">
+                    <p className="text-sm text-muted-foreground leading-relaxed">{faq.answer}</p>
                   </div>
-                </div>
+                )}
               </Card>
             ))}
           </div>
@@ -302,19 +292,31 @@ export default function PricingPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="border-t border-border bg-muted/30 py-20">
-        <div className="container mx-auto px-4">
-          <div className="mx-auto max-w-3xl text-center">
-            <h2 className="font-display text-3xl font-bold tracking-tight md:text-4xl">
-              Ready to See BuildwellAI in Action?
+      <section className="relative py-20 overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1920&q=80"
+            alt="Construction Site"
+            fill
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#000000]/70 to-[#000000]/70" />
+        </div>
+        
+        {/* Content */}
+        <div className="container mx-auto px-4 text-center relative z-10">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
+              Ready to See BuildwellAI in <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866]">Action</span>?
             </h2>
-            <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
+            <p className="text-lg md:text-xl text-white/90 mb-8 leading-relaxed">
               Book a personalized demo to see how our AI-powered suite can enhance your team's compliance workflow. 
               We'll discuss your specific needs and help you choose the right plan.
             </p>
-            <div className="mt-8">
-              <Link href="/contact">
-                <Button size="lg" className="bg-gradient-orange text-white hover:brightness-110">
+            <div className="flex flex-col sm:flex-row justify-center gap-4">
+              <Link href="/contact" className="w-full sm:w-auto">
+                <Button size="lg" className="bg-gradient-to-r from-[#FBB429] to-[#F87866] text-white hover:opacity-90 rounded-[5px] w-full">
                   Book Your Demo
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>

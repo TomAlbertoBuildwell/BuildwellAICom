@@ -838,7 +838,7 @@ export default function FeaturesPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
+ {/* CTA Section */}
       <section className="container mx-auto px-4 py-20">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="font-display text-3xl font-bold tracking-tight md:text-4xl">
@@ -848,14 +848,14 @@ export default function FeaturesPage() {
             Book a personalized demo to see how BuildwellAI can work for your projects
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Link href="/contact">
-              <Button size="lg" className="bg-gradient-orange text-white hover:brightness-110">
+            <Link href="/contact" className="w-full sm:w-auto">
+              <Button size="lg" className="w-full bg-gradient-orange text-white hover:brightness-110">
                 Book a Demo
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </Link>
-            <Link href="/pricing">
-              <Button size="lg" variant="outline">
+            <Link href="/pricing" className="w-full sm:w-auto">
+              <Button size="lg" variant="outline" className="w-full">
                 View Pricing
               </Button>
             </Link>
