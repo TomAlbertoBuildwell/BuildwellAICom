@@ -33,14 +33,14 @@ export function CTASection() {
               </p>
               
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="https://chat.buildwellai.com" target="_blank" rel="noopener noreferrer">
-                  <Button size="lg" className="bg-gradient-to-r from-[#FBB429] to-[#F87866] text-white hover:opacity-90 transition-all shadow-lg w-full sm:w-auto">
+                <a href="https://chat.buildwellai.com" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+                  <Button size="lg" className="bg-gradient-to-r from-[#FBB429] to-[#F87866] text-white hover:opacity-90 transition-all shadow-lg w-full">
                     Get Started Free
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
                 </a>
-                <a href="/contact">
-                  <Button size="lg" variant="outline" className="border-2 border-neutral-300 dark:border-neutral-700 hover:border-[#FBB429] dark:hover:border-[#FBB429] w-full sm:w-auto transition-all">
+                <a href="/contact" className="w-full sm:w-auto">
+                  <Button size="lg" variant="outline" className="border-2 border-neutral-300 dark:border-neutral-700 hover:border-[#FBB429] dark:hover:border-[#FBB429] w-full transition-all">
                     <Mail className="mr-2 h-5 w-5" />
                     Contact Sales
                   </Button>
