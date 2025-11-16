@@ -67,7 +67,7 @@ export function ChatShowcase() {
                   playsInline
                   autoPlay
                 >
-                  <source src="https://res.cloudinary.com/drzxliqyz/video/upload/v1762797262/showcasenews_peihce.mp4" type="video/mp4" />
+                  <source src="https://res.cloudinary.com/drzxliqyz/video/upload/v1763297450/chatrec_kfrokc.mp4" type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
                 {/* Mobile-only gradient overlay */}

@@ -399,7 +399,7 @@ export default function FeaturesPage() {
                   playsInline
                   autoPlay
                 >
-                  <source src="https://res.cloudinary.com/drzxliqyz/video/upload/v1762606241/WhatsApp_Video_2025-11-07_at_18.14.45_6913d34a_wrpesi.mp4" type="video/mp4" />
+                  <source src="https://res.cloudinary.com/drzxliqyz/video/upload/v1763297405/threadvid_oxmkua.mp4" type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
               </div>
@@ -580,13 +580,16 @@ export default function FeaturesPage() {
               </div>
               <div className="relative lg:col-span-3">
                 <div className="aspect-video overflow-hidden rounded-xl border-2 border-border bg-muted shadow-lg">
-                  <Image
-                    src="/screenshots/im6.png"
-                    alt="BuildwellCHAT AI Assistant interface"
-                    width={1200}
-                    height={675}
-                    className="h-full w-full object-cover"
-                  />
+                   <video
+                  className="w-full h-auto object-cover aspect-video"
+                  loop
+                  muted
+                  playsInline
+                  autoPlay
+                >
+                  <source src="https://res.cloudinary.com/drzxliqyz/video/upload/v1763297450/chatrec_kfrokc.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
                 </div>
               </div>
             </div>
@@ -633,7 +636,7 @@ export default function FeaturesPage() {
                   playsInline
                   autoPlay
                 >
-                  <source src="https://res.cloudinary.com/drzxliqyz/video/upload/v1762606241/WhatsApp_Video_2025-11-07_at_18.14.45_6913d34a_wrpesi.mp4" type="video/mp4" />
+                  <source src="https://res.cloudinary.com/drzxliqyz/video/upload/v1763297404/inspectvid_znvtb6.mp4" type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
               </div>
