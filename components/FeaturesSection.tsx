@@ -29,7 +29,7 @@ export function FeaturesSection() {
       icon: FileCheck,
       title: 'Digital Golden Thread',
       description: 'Maintain complete digital records of building information throughout the entire lifecycle.',
-      image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&h=400&fit=crop',
+      image: '/plan.jpg',
     },
     {
       icon: BarChart3,

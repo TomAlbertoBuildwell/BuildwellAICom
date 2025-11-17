@@ -40,7 +40,7 @@ export default function FeaturesPage() {
       <section className="relative h-[70vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+            src="/build.jpg"
             alt="Construction site with AI technology"
             fill
             className="object-cover"
@@ -399,7 +399,7 @@ export default function FeaturesPage() {
                   playsInline
                   autoPlay
                 >
-                  <source src="https://res.cloudinary.com/drzxliqyz/video/upload/v1762606241/WhatsApp_Video_2025-11-07_at_18.14.45_6913d34a_wrpesi.mp4" type="video/mp4" />
+                  <source src="https://res.cloudinary.com/drzxliqyz/video/upload/v1763297405/threadvid_oxmkua.mp4" type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
               </div>
@@ -472,7 +472,7 @@ export default function FeaturesPage() {
             <div className="relative">
               <div className="aspect-4/3 overflow-hidden rounded-2xl border-2 border-border bg-muted">
                 <Image
-                  src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=600&fit=crop"
+                  src="/sorting.jpg"
                   alt="Document sorting"
                   width={800}
                   height={600}
@@ -580,13 +580,16 @@ export default function FeaturesPage() {
               </div>
               <div className="relative lg:col-span-3">
                 <div className="aspect-video overflow-hidden rounded-xl border-2 border-border bg-muted shadow-lg">
-                  <Image
-                    src="/screenshots/im6.png"
-                    alt="BuildwellCHAT AI Assistant interface"
-                    width={1200}
-                    height={675}
-                    className="h-full w-full object-cover"
-                  />
+                   <video
+                  className="w-full h-auto object-cover aspect-video"
+                  loop
+                  muted
+                  playsInline
+                  autoPlay
+                >
+                  <source src="https://res.cloudinary.com/drzxliqyz/video/upload/v1763297450/chatrec_kfrokc.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
                 </div>
               </div>
             </div>
@@ -633,7 +636,7 @@ export default function FeaturesPage() {
                   playsInline
                   autoPlay
                 >
-                  <source src="https://res.cloudinary.com/drzxliqyz/video/upload/v1762606241/WhatsApp_Video_2025-11-07_at_18.14.45_6913d34a_wrpesi.mp4" type="video/mp4" />
+                  <source src="https://res.cloudinary.com/drzxliqyz/video/upload/v1763297404/inspectvid_znvtb6.mp4" type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
               </div>
