@@ -52,7 +52,7 @@ export default function AboutPage() {
               <div className="mt-12 relative rounded-[5px] overflow-hidden shadow-2xl">
                 <div className="aspect-video relative">
                   <Image
-                    src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1920&q=80"
+                    src="/sky.jpg"
                     alt="BuildwellAI Team"
                     fill
                     className="object-cover"
