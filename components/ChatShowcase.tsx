@@ -74,8 +74,6 @@ export function ChatShowcase() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent lg:hidden" />
               </div>
             </div>
-
-            {/* Features - Takes 2 columns on desktop, grid on mobile */}
             <div className="lg:col-span-2 lg:order-2">
               {/* Mobile: 2-column grid */}
               <div className="grid grid-cols-2 gap-4 lg:space-y-6 lg:grid-cols-1 lg:gap-0">
