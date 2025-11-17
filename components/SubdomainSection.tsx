@@ -19,7 +19,7 @@ export function SubdomainSection() {
       title: "BuildwellAI Chat",
       subtitle: "CHAT",
       description: "Your on-demand construction expert providing instant, accurate answers. Access building regulations, and project documents with visual analysis capabilities.",
-      image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+      image: "/buildwell_chat.png",
       url: "https://chat.buildwellai.com",
     },
     {
@@ -27,7 +27,7 @@ export function SubdomainSection() {
       title: "BuildwellEYE",
       subtitle: "EYE",
       description: "Automated defect detection using computer vision. Identifies potential issues, verifies work quality, and monitors progress with greater speed and accuracy than manual inspection.",
-      image: "/AI Hardhat.png",
+      image: "/buildwell_eye.png",
       url: "https://eye.buildwellai.com/",
     },
     {
@@ -35,7 +35,7 @@ export function SubdomainSection() {
       title: "BuildwellNEWS",
       subtitle: "NEWS",
       description: "Curated industry intelligence and risk monitoring. Stay informed about regulatory changes, product failures, and emerging risks relevant to your projects.",
-      image: "/Buildwell News.png",
+      image: "/buildwell_news.png",
       url: "https://news.buildwellai.com/",
     },
     {
@@ -43,7 +43,7 @@ export function SubdomainSection() {
       title: "BuildwellINSPECT",
       subtitle: "INSPECT",
       description: "Mobile-first site inspection tool. Capture issues with GPS-tagged photos, generate professional reports in minutes, and sync with your project management systems.",
-      image: "/Buildwell Inspect.png",
+      image: "/buildwell_inspect.png",
       url: "https://inspect.buildwellai.com/",
     },
     {
@@ -51,7 +51,7 @@ export function SubdomainSection() {
       title: "BuildwellTHREAD",
       subtitle: "THREAD",
       description: "Complete golden thread compliance management. Organizes critical documents, links on-site evidence, automates compliance tracking, and generates safety case reports.",
-      image: "https://images.unsplash.com/photo-1576267423445-b2e0074d68a4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+      image: "/buildwell_threads.png",
       url: "https://buildwellai.com/thread",
     },
   ];
