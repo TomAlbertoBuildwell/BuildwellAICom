@@ -36,7 +36,7 @@ export default function Home() {
       
     />
         <div className="-mt-40">
-          <ImageTextSection />
+          {/*  <ImageTextSection />*/}
           <SubdomainSection />
           <section className="py-20 border-t border-transparent bg-background dark:bg-background">
             <div className="container mx-auto px-4">

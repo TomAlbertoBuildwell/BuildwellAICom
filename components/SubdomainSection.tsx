@@ -153,7 +153,7 @@ export function SubdomainSection() {
     <section 
       ref={sectionRef}
       id="solutions" 
-      className="relative w-full py-20 border-t border-transparent bg-background dark:bg-[#0d1f33]"
+      className="relative w-full py-20 border-t border-transparent bg-background dark:bg-[#11263f]"
     >
       <style dangerouslySetInnerHTML={{
         __html: `
@@ -234,8 +234,8 @@ export function SubdomainSection() {
               >
                 <div className="absolute inset-0">
                   <img src={card.image} alt={card.title} className="w-full h-full object-cover" />
-                  <div className="absolute inset-0 bg-black/50" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+                  <div className="absolute inset-0 bg-black/20" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                 </div>
                 <div className="relative h-full flex flex-col justify-end p-6">
                   <motion.div
