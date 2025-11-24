@@ -23,7 +23,7 @@ export default function AboutPage() {
                   Transforming UK Construction with <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866]">AI Innovation</span>
                 </h1>
                 <p className="text-lg md:text-xl text-muted-foreground dark:text-neutral-300 max-w-3xl mx-auto leading-relaxed">
-                  We're building the future of construction through intelligent automation, 
+                  We're building the future of construction through intelligent automation,
                   safety innovation, and data-driven insights.
                 </p>
               </div>
@@ -76,8 +76,8 @@ export default function AboutPage() {
                   Building the <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866]">Future</span> Together
                 </h2>
                 <p className="text-lg text-muted-foreground dark:text-neutral-300 max-w-3xl mx-auto leading-relaxed">
-                  We're dedicated to revolutionising the construction industry by providing 
-                  AI-powered solutions that enhance safety, efficiency, and productivity 
+                  We're dedicated to revolutionising the construction industry by providing
+                  AI-powered solutions that enhance safety, efficiency, and productivity
                   across all phases of building projects.
                 </p>
               </div>
@@ -122,11 +122,11 @@ export default function AboutPage() {
                     Building on Experience, <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866]">Innovating</span> for Tomorrow
                   </h2>
                   <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed">
-                    Founded by construction veterans and AI specialists, BuildwellAI emerged from a shared vision 
+                    Founded by construction veterans and AI specialists, BuildwellAI emerged from a shared vision
                     to solve the sector's most pressing challenges through intelligent technology.
                   </p>
                   <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed">
-                    Today, we proudly serve construction professionals across the UK, helping them build 
+                    Today, we proudly serve construction professionals across the UK, helping them build
                     safer, more efficient, and more profitable projects.
                   </p>
                 </div>
@@ -144,7 +144,7 @@ export default function AboutPage() {
                   </div>
                 </div>
               </div>
-              
+
               {/* Feature Cards with Images */}
               <div className="grid md:grid-cols-3 gap-6 md:gap-8 mt-16">
                 <div className="bg-background dark:bg-[#0a1929] rounded-[5px] overflow-hidden border-2 border-neutral-200 dark:border-neutral-700/50 hover:border-[#FBB429] transition-all duration-300 shadow-lg hover:shadow-2xl">
@@ -162,7 +162,7 @@ export default function AboutPage() {
                     <p className="text-muted-foreground dark:text-neutral-300">Deep understanding of construction workflows and challenges</p>
                   </div>
                 </div>
-                
+
                 <div className="bg-background dark:bg-[#0a1929] rounded-[5px] overflow-hidden border-2 border-neutral-200 dark:border-neutral-700/50 hover:border-[#FBB429] transition-all duration-300 shadow-lg hover:shadow-2xl">
                   <div className="relative h-48">
                     <Image
@@ -178,7 +178,7 @@ export default function AboutPage() {
                     <p className="text-muted-foreground dark:text-neutral-300">Cutting-edge machine learning and automation technologies</p>
                   </div>
                 </div>
-                
+
                 <div className="bg-background dark:bg-[#0a1929] rounded-[5px] overflow-hidden border-2 border-neutral-200 dark:border-neutral-700/50 hover:border-[#FBB429] transition-all duration-300 shadow-lg hover:shadow-2xl">
                   <div className="relative h-48">
                     <Image
@@ -208,7 +208,7 @@ export default function AboutPage() {
                   Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866]">Journey</span>
                 </h2>
               </div>
-              
+
               {/* Timeline Item 1 - 2020 */}
               <div className="mb-16">
                 <div className="lg:flex lg:items-center lg:gap-12">
@@ -223,19 +223,19 @@ export default function AboutPage() {
                       />
                     </div>
                   </div>
-                  
+
                   {/* Text */}
                   <div className="lg:w-1/2 space-y-4">
                     <h4 className="font-bold text-2xl md:text-3xl text-foreground dark:text-white">
                       2020: The Foundation
                     </h4>
                     <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed">
-                      BuildwellAI was founded with a simple mission: to revolutionize the UK construction industry 
-                      through AI-powered solutions. From day one, we set out to tackle the sector's most pressing 
+                      BuildwellAI was founded with a simple mission: to revolutionize the UK construction industry
+                      through AI-powered solutions. From day one, we set out to tackle the sector's most pressing
                       challenges with innovative technology.
                     </p>
                     <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed">
-                      Our founding team brought together decades of construction experience with cutting-edge AI expertise, 
+                      Our founding team brought together decades of construction experience with cutting-edge AI expertise,
                       creating a unique perspective on solving real industry challenges.
                     </p>
                   </div>
@@ -256,18 +256,18 @@ export default function AboutPage() {
                       />
                     </div>
                   </div>
-                  
+
                   {/* Text */}
                   <div className="lg:w-1/2 space-y-4">
                     <h4 className="font-bold text-2xl md:text-3xl text-foreground dark:text-white">
                       2021: Expansion & Innovation
                     </h4>
                     <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed">
-                      Our team grew with industry experts and AI engineers. We launched BuildwellEYE, our flagship 
+                      Our team grew with industry experts and AI engineers. We launched BuildwellEYE, our flagship
                       computer vision platform, transforming how construction sites monitor safety in real-time.
                     </p>
                     <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed">
-                      The successful deployment of BuildwellEYE across multiple UK construction sites validated our 
+                      The successful deployment of BuildwellEYE across multiple UK construction sites validated our
                       approach and demonstrated the tangible benefits of AI in construction safety.
                     </p>
                   </div>
@@ -288,18 +288,18 @@ export default function AboutPage() {
                       />
                     </div>
                   </div>
-                  
+
                   {/* Text */}
                   <div className="lg:w-1/2 space-y-4">
                     <h4 className="font-bold text-2xl md:text-3xl text-foreground dark:text-white">
                       2022: Building the Suite
                     </h4>
                     <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed">
-                      We expanded our product portfolio with BuildwellTHREAD for golden thread documentation management 
+                      We expanded our product portfolio with BuildwellTHREAD for golden thread documentation management
                       and BuildwellINSPECT for mobile-first site inspections, addressing the complete project lifecycle.
                     </p>
                     <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed">
-                      This expansion reflected our deep understanding of construction workflows and enabled seamless 
+                      This expansion reflected our deep understanding of construction workflows and enabled seamless
                       information flow across all project stages and stakeholders.
                     </p>
                   </div>
@@ -320,18 +320,18 @@ export default function AboutPage() {
                       />
                     </div>
                   </div>
-                  
+
                   {/* Text */}
                   <div className="lg:w-1/2 space-y-4">
                     <h4 className="font-bold text-2xl md:text-3xl text-foreground dark:text-white">
                       2024: Leading the Future
                     </h4>
                     <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed">
-                      Today, BuildwellAI serves construction professionals across the UK with a comprehensive AI platform. 
+                      Today, BuildwellAI serves construction professionals across the UK with a comprehensive AI platform.
                       We're pioneering new frontiers with BuildwellCHAT and BuildwellNEWS while setting new industry standards.
                     </p>
                     <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed">
-                      With over 100 active projects and a 60% improvement in safety outcomes, our focus extends to 
+                      With over 100 active projects and a 60% improvement in safety outcomes, our focus extends to
                       predictive analytics and AI-powered decision support systems.
                     </p>
                   </div>
@@ -341,7 +341,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Team Section */}
+        {/* Team Section 
       <section className="py-20 bg-background dark:bg-background">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
@@ -445,7 +445,7 @@ export default function AboutPage() {
           </div>
         </div>
       </div>
-    </section>
+    </section>*/}
         {/* Values Section */}
         <section className="py-20 bg-muted/30 dark:bg-[#0d1f33]">
           <div className="container mx-auto px-4">
@@ -466,28 +466,28 @@ export default function AboutPage() {
                 <div className="bg-background dark:bg-[#0a1929] p-6 md:p-8 rounded-[5px] border-2 border-neutral-200 dark:border-neutral-700/50 hover:border-[#FBB429] transition-all duration-300 hover:shadow-xl group">
                   <h3 className="font-display text-xl md:text-2xl font-bold text-foreground dark:text-white mb-4">Safety First</h3>
                   <p className="text-muted-foreground dark:text-neutral-300 leading-relaxed">
-                    Every solution we develop prioritises worker safety and regulatory compliance, 
+                    Every solution we develop prioritises worker safety and regulatory compliance,
                     helping construction sites become safer environments for everyone.
                   </p>
                 </div>
                 <div className="bg-background dark:bg-[#0a1929] p-6 md:p-8 rounded-[5px] border-2 border-neutral-200 dark:border-neutral-700/50 hover:border-[#FBB429] transition-all duration-300 hover:shadow-xl group">
                   <h3 className="font-display text-xl md:text-2xl font-bold text-foreground dark:text-white mb-4">Transparency</h3>
                   <p className="text-muted-foreground dark:text-neutral-300 leading-relaxed">
-                    We believe in clear communication, honest partnerships, and transparent 
+                    We believe in clear communication, honest partnerships, and transparent
                     processes that build trust with our clients and stakeholders.
                   </p>
                 </div>
                 <div className="bg-background dark:bg-[#0a1929] p-6 md:p-8 rounded-[5px] border-2 border-neutral-200 dark:border-neutral-700/50 hover:border-[#FBB429] transition-all duration-300 hover:shadow-xl group">
                   <h3 className="font-display text-xl md:text-2xl font-bold text-foreground dark:text-white mb-4">Continuous Learning</h3>
                   <p className="text-muted-foreground dark:text-neutral-300 leading-relaxed">
-                    The construction industry evolves rapidly, and so do we. We're committed 
+                    The construction industry evolves rapidly, and so do we. We're committed
                     to staying at the forefront of both industry trends and technological advances.
                   </p>
                 </div>
                 <div className="bg-background dark:bg-[#0a1929] p-6 md:p-8 rounded-[5px] border-2 border-neutral-200 dark:border-neutral-700/50 hover:border-[#FBB429] transition-all duration-300 hover:shadow-xl group">
                   <h3 className="font-display text-xl md:text-2xl font-bold text-foreground dark:text-white mb-4">Sustainability</h3>
                   <p className="text-muted-foreground dark:text-neutral-300 leading-relaxed">
-                    Our solutions help reduce waste, optimise resource usage, and support 
+                    Our solutions help reduce waste, optimise resource usage, and support
                     environmentally responsible construction practices.
                   </p>
                 </div>
@@ -508,7 +508,7 @@ export default function AboutPage() {
             />
             <div className="absolute inset-0 bg-gradient-to-r from-[#000000]/70 to-[#000000]/70" />
           </div>
-          
+
           {/* Content */}
           <div className="container mx-auto px-4 text-center relative z-10">
             <div className="max-w-3xl mx-auto">
@@ -516,7 +516,7 @@ export default function AboutPage() {
                 Ready to <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866]">Transform</span> Your Projects?
               </h2>
               <p className="text-lg md:text-xl text-white/90 mb-8 leading-relaxed">
-                Join hundreds of construction professionals who trust BuildwellAI to 
+                Join hundreds of construction professionals who trust BuildwellAI to
                 deliver smarter, safer, and more efficient building solutions.
               </p>
               <div className="flex flex-col sm:flex-row justify-center gap-4">
