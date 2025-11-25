@@ -52,7 +52,7 @@ export default function AboutPage() {
               <div className="mt-12 relative rounded-[5px] overflow-hidden shadow-2xl">
                 <div className="aspect-video relative">
                   <Image
-                    src="/sky.jpg"
+                    src="/sky.png"
                     alt="BuildwellAI Team"
                     fill
                     className="object-cover"
@@ -391,7 +391,7 @@ export default function AboutPage() {
                   {
                     name: "Jermouni Choukri",
                     role: "Full Stack Engineer / Dev-Ops",
-                    description: "Full Stack Engineer with expertise in scalable cloud platforms, ensuring BuildwellAI delivers reliable enterprise solutions.",
+                    description: "Full Stack Engineer and DevOps specialist, building robust and scalable infrastructure while developing seamless user experiences.",
                     // Experienced senior professional
                     image: "/personalimgs/choukri.jpg"
                   },
@@ -399,7 +399,7 @@ export default function AboutPage() {
                   {
                     name: "Oussama Alouche",
                     role: "Frontend Engineer",
-                    description: "Passionate about crafting seamless user experiences, Oussama brings designs to life with clean, efficient code.",
+                    description: "Passionate about crafting seamless user experiences, bringing designs to life with clean, efficient code.",
                     // Developer/Creative vibe
                     image: "/personalimgs/oussama.jpg"
                   },
