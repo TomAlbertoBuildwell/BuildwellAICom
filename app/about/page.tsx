@@ -52,7 +52,7 @@ export default function AboutPage() {
               <div className="mt-12 relative rounded-[5px] overflow-hidden shadow-2xl">
                 <div className="aspect-video relative">
                   <Image
-                    src="/sky.jpg"
+                    src="/sky.png"
                     alt="BuildwellAI Team"
                     fill
                     className="object-cover"
@@ -341,111 +341,99 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Team Section 
-      <section className="py-20 bg-background dark:bg-background">
-      <div className="container mx-auto px-4">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <span className="text-sm font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866] uppercase tracking-wider">
-              Our Team
-            </span>
-            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground dark:text-white mt-4 mb-6">
-              Meet the <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866]">Experts</span> Behind BuildwellAI
-            </h2>
-            <p className="text-lg text-muted-foreground dark:text-neutral-300 max-w-3xl mx-auto leading-relaxed">
-              A diverse team of AI specialists, construction experts, and industry professionals
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {[
-              {
-                name: "Ben Smallwood",
-                role: "CEO & Founder",
-                description: "Former construction project manager with 15+ years experience, now leading BuildwellAI's vision for safer, smarter construction sites.",
-                // Professional mature business man
-                image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=800"
-              },
-              {
-                name: "Thomas Alberto",
-                role: "Head of Research and Development",
-                description: "AI researcher specializing in computer vision and machine learning, driving innovation in construction safety technology.",
-                // Tech focused professional
-                image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=800"
-              },
-              {
-                name: "Jad El Tounsi",
-                role: "Head of Engineering",
-                description: "Software architect with expertise in scalable cloud platforms, ensuring BuildwellAI delivers reliable enterprise solutions.",
-                // Corporate professional
-                image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=800"
-              },
-              {
-                name: "Badr Otky",
-                role: "Head of Product",
-                description: "Product strategist focused on user experience, ensuring every BuildwellAI tool solves real construction challenges.",
-                // Smart casual professional
-                image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=800"
-              },
-              {
-                name: "Jermouni Choukri",
-                role: "Head of Safety & Compliance",
-                description: "Former HSE inspector ensuring our solutions meet all UK construction safety regulations and standards.",
-                // Experienced senior professional
-                image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=800"
-              },
-              {
-                name: "Baddredin Bendriss",
-                role: "Head of Customer Success",
-                description: "Dedicated to client partnerships, ensuring BuildwellAI delivers measurable value and exceptional support.",
-                // Friendly professional
-                image: "https://images.unsplash.com/photo-1618077360395-f3068be8e001?auto=format&fit=crop&q=80&w=800"
-              },
-              {
-                name: "Hamza",
-                role: "Customer Success Manager",
-                description: "Specializes in onboarding new construction firms and integrating AI workflows into daily site operations.",
-                // Young professional
-                image: "https://images.unsplash.com/photo-1600486913747-55e5470d6f40?auto=format&fit=crop&q=80&w=800"
-              },
-              {
-                name: "Oussama Alouche",
-                role: "Frontend Engineer",
-                description: "Passionate about crafting seamless user experiences, Oussama brings designs to life with clean, efficient code.",
-                // Developer/Creative vibe
-                image: "https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&q=80&w=800"
-              },
-              {
-                name: "Oumaima El Hakim",
-                role: "Client Relations Lead",
-                description: "Expert in strategic implementation, ensuring our enterprise clients achieve their safety and efficiency goals.",
-                // Professional woman
-                image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800"
-              }
-            ].map((member, index) => (
-              <div key={index} className="bg-background dark:bg-[#0a1929] rounded-[5px] overflow-hidden border-2 border-neutral-200 dark:border-neutral-700/50 hover:border-[#FBB429] transition-all duration-300 shadow-lg hover:shadow-2xl group">
-                <div className="relative h-64 w-full">
-                  <Image
-                    src={member.image}
-                    alt={member.name}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  />
-                </div>
-                <div className="p-6">
-                  <h3 className="font-display text-xl font-bold text-foreground dark:text-white mb-1">{member.name}</h3>
-                  <p className="text-[#FBB429] font-semibold mb-3 text-sm">{member.role}</p>
-                  <p className="text-muted-foreground dark:text-neutral-300 text-sm leading-relaxed">
-                    {member.description}
-                  </p>
-                </div>
+        {/* Team Section */}
+        <section className="py-20 bg-background dark:bg-background">
+          <div className="container mx-auto px-4">
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center mb-12">
+                <span className="text-sm font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866] uppercase tracking-wider">
+                  Our Team
+                </span>
+                <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground dark:text-white mt-4 mb-6">
+                  Meet the <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866]">Experts</span> Behind BuildwellAI
+                </h2>
+                <p className="text-lg text-muted-foreground dark:text-neutral-300 max-w-3xl mx-auto leading-relaxed">
+                  A diverse team of AI specialists, construction experts, and industry professionals
+                </p>
               </div>
-            ))}
+
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                {[
+                  {
+                    name: "Ben Smallwood",
+                    role: "CEO & Founder",
+                    description: "Former construction project manager with 15+ years experience, now leading BuildwellAI's vision for safer, smarter construction sites.",
+                    // Professional mature business man
+                    image: "/personalimgs/ben.jpg"
+                  },
+                  {
+                    name: "Giles Fallan",
+                    role: "Chairman",
+                    description: "Seasoned construction industry veteran and strategic advisor, guiding BuildwellAI's growth and market leadership.",
+                    // Professional mature business man
+                    image: "/personalimgs/giles.jpg"
+                  },
+
+                  //{
+                  // name: "Thomas Alberto",
+                  //role: "Head of Research and Development",
+                  //description: "AI researcher specializing in computer vision and machine learning, driving innovation in construction safety technology.",
+                  // Tech focused professional
+                  //image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=800"
+                  //},
+                  {
+                    name: "Jad El Tounsi",
+                    role: "AI Engineer",
+                    description: "AI Engineer with expertise in scalable cloud platforms, ensuring BuildwellAI delivers reliable enterprise solutions.",
+                    // Corporate professional
+                    image: "/personalimgs/jad.jpg"
+                  },
+                  {
+                    name: "Jermouni Choukri",
+                    role: "Full Stack Engineer / Dev-Ops",
+                    description: "Full Stack Engineer and DevOps specialist, building robust and scalable infrastructure while developing seamless user experiences.",
+                    // Experienced senior professional
+                    image: "/personalimgs/choukri.jpg"
+                  },
+
+                  {
+                    name: "Oussama Alouche",
+                    role: "Frontend Engineer",
+                    description: "Passionate about crafting seamless user experiences, bringing designs to life with clean, efficient code.",
+                    // Developer/Creative vibe
+                    image: "/personalimgs/oussama.jpg"
+                  },
+                  {
+                    name: "Oumaima El Hakim",
+                    role: "Operations Automation Specialist",
+                    description: "Operations Automation Specialist with expertise in scalable cloud platforms, ensuring BuildwellAI delivers reliable enterprise solutions.",
+                    // Professional woman
+                    image: "/personalimgs/oumaima.jpg"
+                  }
+                ].map((member, index) => (
+                  <div key={index} className="bg-background dark:bg-[#0a1929] rounded-[5px] overflow-hidden border-2 border-neutral-200 dark:border-neutral-700/50 hover:border-[#FBB429] transition-all duration-300 shadow-lg hover:shadow-2xl group">
+                    <div className="relative h-64 w-full">
+                      <Image
+                        src={member.image}
+                        alt={member.name}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      />
+                    </div>
+                    <div className="p-6">
+                      <h3 className="font-display text-xl font-bold text-foreground dark:text-white mb-1">{member.name}</h3>
+                      <p className="text-[#FBB429] font-semibold mb-3 text-sm">{member.role}</p>
+                      <p className="text-muted-foreground dark:text-neutral-300 text-sm leading-relaxed">
+                        {member.description}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-    </section>*/}
+        </section>
         {/* Values Section */}
         <section className="py-20 bg-muted/30 dark:bg-[#0d1f33]">
           <div className="container mx-auto px-4">
