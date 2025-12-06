@@ -375,13 +375,13 @@ export default function AboutPage() {
                     image: "/personalimgs/giles.jpg"
                   },
 
-                  {
-                    name: "Thomas Alberto",
-                    role: "Head Of Operations",
-                    description: "An accomplished leader in operational efficiency and strategic planning, optimizing workflows and ensuring seamless project delivery.",
-                    // Tech focused professional
-                    image: "/personalimgs/thomas.jpg"
-                  },
+                  // {
+                  //   name: "Thomas Alberto",
+                  //   role: "Head Of Operations",
+                  //   description: "An accomplished leader in operational efficiency and strategic planning, optimizing workflows and ensuring seamless project delivery.",
+                  //   // Tech focused professional
+                  //   image: "/personalimgs/thomas.jpg"
+                  // },
                   {
                     name: "Badr Otky",
                     role: "DevOps/MLOps",
@@ -426,12 +426,14 @@ export default function AboutPage() {
                     // Professional woman
                     image: "/personalimgs/oumaima.jpg"
                   },
+                  {/*
                   {
                     name: "Hamza",
                     role: "Mobile Engineer",
                     description: "A skilled Mobile Engineer dedicated to building innovative and user-friendly applications, extending BuildwellAI's powerful platform to every device.",
                     image: "/personalimgs/hamzaa.png"
                   },
+                  */}
 
 
 
