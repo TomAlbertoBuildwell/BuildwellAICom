@@ -5,6 +5,7 @@ import { MarketingNav } from "@/components/marketing-nav"
 import { MarketingFooter } from "@/components/marketing-footer"
 import Image from "next/image"
 import { ArrowRight } from "lucide-react"
+import { m } from "framer-motion"
 
 export default function AboutPage() {
   return (
@@ -209,15 +210,15 @@ export default function AboutPage() {
                 </h2>
               </div>
 
-              {/* Timeline Item 1 - 2020 */}
+              {/* Timeline Item 1 - Jan 2022 */}
               <div className="mb-16">
-                <div className="lg:flex lg:items-center lg:gap-12">
+                <div className="lg:flex lg:items-start lg:gap-12">
                   {/* Image */}
-                  <div className="lg:w-1/2">
+                  <div className="lg:w-[45%]">
                     <div className="relative aspect-[4/3] rounded-[5px] overflow-hidden shadow-2xl mb-6 lg:mb-0">
                       <Image
-                        src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80"
-                        alt="BuildwellAI Foundation"
+                        src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&q=80"
+                        alt="AI Research Foundation"
                         fill
                         className="object-cover"
                       />
@@ -225,32 +226,31 @@ export default function AboutPage() {
                   </div>
 
                   {/* Text */}
-                  <div className="lg:w-1/2 space-y-4">
+                  <div className="lg:w-[55%] lg:pr-8 space-y-4">
                     <h4 className="font-bold text-2xl md:text-3xl text-foreground dark:text-white">
-                      2020: The Foundation
+                      January 2022: The Foundation
                     </h4>
-                    <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed">
-                      BuildwellAI was founded with a simple mission: to revolutionize the UK construction industry
-                      through AI-powered solutions. From day one, we set out to tackle the sector's most pressing
-                      challenges with innovative technology.
+                    <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed text-justify">
+                      BuildwellAI was established as an AI research group with a focused mission: investigating how
+                      robotic process automation could transform workflows in the construction industry.
                     </p>
-                    <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed">
-                      Our founding team brought together decades of construction experience with cutting-edge AI expertise,
-                      creating a unique perspective on solving real industry challenges.
+                    <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed text-justify">
+                      Our founding research identified critical inefficiencies in construction processes, laying the
+                      groundwork for our AI-powered solutions that would address real industry pain points.
                     </p>
                   </div>
                 </div>
               </div>
 
-              {/* Timeline Item 2 - 2021 */}
+              {/* Timeline Item 2 - June 2023 - Feb 2024 */}
               <div className="mb-16">
-                <div className="lg:flex lg:flex-row-reverse lg:items-center lg:gap-12">
+                <div className="lg:flex lg:flex-row-reverse lg:items-start lg:gap-12">
                   {/* Image */}
-                  <div className="lg:w-1/2">
+                  <div className="lg:w-[45%]">
                     <div className="relative aspect-[4/3] rounded-[5px] overflow-hidden shadow-2xl mb-6 lg:mb-0">
                       <Image
-                        src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80"
-                        alt="Team Expansion"
+                        src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80"
+                        alt="Early AI Development"
                         fill
                         className="object-cover"
                       />
@@ -258,31 +258,31 @@ export default function AboutPage() {
                   </div>
 
                   {/* Text */}
-                  <div className="lg:w-1/2 space-y-4">
+                  <div className="lg:w-[55%] lg:pl-8 space-y-4">
                     <h4 className="font-bold text-2xl md:text-3xl text-foreground dark:text-white">
-                      2021: Expansion & Innovation
+                      June 2023 - February 2024: Early Innovation
                     </h4>
-                    <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed">
-                      Our team grew with industry experts and AI engineers. We launched BuildwellEYE, our flagship
-                      computer vision platform, transforming how construction sites monitor safety in real-time.
+                    <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed text-justify">
+                      We began leveraging GPT-3 and reinforcement learning to develop basic report generation capabilities,
+                      marking our first step into practical AI applications for construction documentation.
                     </p>
-                    <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed">
-                      The successful deployment of BuildwellEYE across multiple UK construction sites validated our
-                      approach and demonstrated the tangible benefits of AI in construction safety.
+                    <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed text-justify">
+                      The creation of our custom GPT models combined with systematic user feedback collection helped us
+                      refine our approach and understand real-world construction needs better than ever before.
                     </p>
                   </div>
                 </div>
               </div>
 
-              {/* Timeline Item 3 - 2022 */}
+              {/* Timeline Item 3 - Nov 2024 - May 2025 */}
               <div className="mb-16">
-                <div className="lg:flex lg:items-center lg:gap-12">
+                <div className="lg:flex lg:items-start lg:gap-12">
                   {/* Image */}
-                  <div className="lg:w-1/2">
+                  <div className="lg:w-[45%]">
                     <div className="relative aspect-[4/3] rounded-[5px] overflow-hidden shadow-2xl mb-6 lg:mb-0">
                       <Image
-                        src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80"
-                        alt="Product Development"
+                        src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80"
+                        alt="Platform Development and Investment"
                         fill
                         className="object-cover"
                       />
@@ -290,31 +290,32 @@ export default function AboutPage() {
                   </div>
 
                   {/* Text */}
-                  <div className="lg:w-1/2 space-y-4">
+                  <div className="lg:w-[55%] lg:pr-8 space-y-4">
                     <h4 className="font-bold text-2xl md:text-3xl text-foreground dark:text-white">
-                      2022: Building the Suite
+                      November 2024 - May 2025: Strategic Growth
                     </h4>
-                    <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed">
-                      We expanded our product portfolio with BuildwellTHREAD for golden thread documentation management
-                      and BuildwellINSPECT for mobile-first site inspections, addressing the complete project lifecycle.
+                    <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed text-justify">
+                      Full rebuild and strategic development of BuildwellCHAT transformed our platform capabilities.
+                      In February 2025, we advanced into computer vision development, creating sophisticated AI models
+                      for construction safety scenario detection.
                     </p>
-                    <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed">
-                      This expansion reflected our deep understanding of construction workflows and enabled seamless
-                      information flow across all project stages and stakeholders.
+                    <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed text-justify">
+                      May 2025 marked a pivotal moment with strategic investment from LBB, validating our technology
+                      and vision while providing the resources to accelerate our development roadmap.
                     </p>
                   </div>
                 </div>
               </div>
 
-              {/* Timeline Item 4 - 2024 */}
+              {/* Timeline Item 4 - June 2025 & Beyond */}
               <div>
-                <div className="lg:flex lg:flex-row-reverse lg:items-center lg:gap-12">
+                <div className="lg:flex lg:flex-row-reverse lg:items-start lg:gap-12">
                   {/* Image */}
-                  <div className="lg:w-1/2">
+                  <div className="lg:w-[45%]">
                     <div className="relative aspect-[4/3] rounded-[5px] overflow-hidden shadow-2xl mb-6 lg:mb-0">
                       <Image
-                        src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=800&q=80"
-                        alt="Future Vision"
+                        src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80"
+                        alt="Team Growth and Future"
                         fill
                         className="object-cover"
                       />
@@ -322,17 +323,18 @@ export default function AboutPage() {
                   </div>
 
                   {/* Text */}
-                  <div className="lg:w-1/2 space-y-4">
+                  <div className="lg:w-[55%] lg:pl-8 space-y-4">
                     <h4 className="font-bold text-2xl md:text-3xl text-foreground dark:text-white">
-                      2024: Leading the Future
+                      June 2025: Leading the Future
                     </h4>
-                    <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed">
-                      Today, BuildwellAI serves construction professionals across the UK with a comprehensive AI platform.
-                      We're pioneering new frontiers with BuildwellCHAT and BuildwellNEWS while setting new industry standards.
+                    <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed text-justify">
+                      Following our investment milestone, we expanded our team to its current strength, bringing together
+                      top talent in AI engineering, construction technology, and industry expertise.
                     </p>
-                    <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed">
-                      With over 100 active projects and a 60% improvement in safety outcomes, our focus extends to
-                      predictive analytics and AI-powered decision support systems.
+                    <p className="text-lg text-muted-foreground dark:text-neutral-300 leading-relaxed text-justify">
+                      Today, BuildwellAI serves construction professionals across the UK with BuildwellEYE, BuildwellCHAT,
+                      and our comprehensive AI platform. We're pioneering the future with advanced computer vision,
+                      predictive analytics, and AI-powered decision support systems that are setting new industry standards.
                     </p>
                   </div>
                 </div>
@@ -340,7 +342,6 @@ export default function AboutPage() {
             </div>
           </div>
         </section>
-
         {/* Team Section */}
         <section className="py-20 bg-background dark:bg-background">
           <div className="container mx-auto px-4">
@@ -362,25 +363,40 @@ export default function AboutPage() {
                   {
                     name: "Ben Smallwood",
                     role: "CEO & Founder",
-                    description: "Former construction project manager with 15+ years experience, now leading BuildwellAI's vision for safer, smarter construction sites.",
+                    description: "chartered construction professional with building regulation and insurance experience, now leading BuildwellAI's vision for safer, smarter construction sites.",
                     // Professional mature business man
                     image: "/personalimgs/ben.jpg"
                   },
                   {
                     name: "Giles Fallan",
                     role: "Chairman",
-                    description: "Seasoned construction industry veteran and strategic advisor, guiding BuildwellAI's growth and market leadership.",
+                    description: "A highly experienced construction industry professional and strategic advisor, guiding BuildwellAI's growth and market leadership.",
                     // Professional mature business man
                     image: "/personalimgs/giles.jpg"
                   },
 
-                  //{
-                  // name: "Thomas Alberto",
-                  //role: "Head of Research and Development",
-                  //description: "AI researcher specializing in computer vision and machine learning, driving innovation in construction safety technology.",
-                  // Tech focused professional
-                  //image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=800"
-                  //},
+                  // {
+                  //   name: "Thomas Alberto",
+                  //   role: "Head Of Operations",
+                  //   description: "An accomplished leader in operational efficiency and strategic planning, optimizing workflows and ensuring seamless project delivery.",
+                  //   // Tech focused professional
+                  //   image: "/personalimgs/thomas.jpg"
+                  // },
+                  {
+                    name: "Badr Otky",
+                    role: "DevOps/MLOps",
+                    description: "DevOps/MLOps specialist, building robust and scalable infrastructure while developing seamless user experiences.",
+                    // Corporate professional
+                    image: "/personalimgs/badr.jpg"
+                  },
+                  {
+                    name: "Baddredin Bendriss",
+                    role: "Software Engineer",
+                    description: "Software Engineer passionate about crafting efficient and scalable solutions, contributing to the core development of BuildwellAI's platform.",
+                    // Corporate professional
+                    image: "/personalimgs/baddredin.jpg"
+                  },
+
                   {
                     name: "Jad El Tounsi",
                     role: "AI Engineer",
@@ -390,7 +406,7 @@ export default function AboutPage() {
                   },
                   {
                     name: "Jermouni Choukri",
-                    role: "Full Stack Engineer / Dev-Ops",
+                    role: "Full Stack Engineer ",
                     description: "Full Stack Engineer and DevOps specialist, building robust and scalable infrastructure while developing seamless user experiences.",
                     // Experienced senior professional
                     image: "/personalimgs/choukri.jpg"
@@ -409,15 +425,26 @@ export default function AboutPage() {
                     description: "Operations Automation Specialist with expertise in scalable cloud platforms, ensuring BuildwellAI delivers reliable enterprise solutions.",
                     // Professional woman
                     image: "/personalimgs/oumaima.jpg"
-                  }
+                  },
+                  /* {/*
+                   {
+                     name: "Hamza",
+                     role: "Mobile Engineer",
+                     description: "A skilled Mobile Engineer dedicated to building innovative and user-friendly applications, extending BuildwellAI's powerful platform to every device.",
+                     image: "/personalimgs/hamzaa.png"
+                   },
+                  } */
+
+
+
                 ].map((member, index) => (
                   <div key={index} className="bg-background dark:bg-[#0a1929] rounded-[5px] overflow-hidden border-2 border-neutral-200 dark:border-neutral-700/50 hover:border-[#FBB429] transition-all duration-300 shadow-lg hover:shadow-2xl group">
-                    <div className="relative h-64 w-full">
+                    <div className="relative h-80 w-full">
                       <Image
                         src={member.image}
                         alt={member.name}
                         fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        className="object-cover object-top group-hover:scale-105 transition-transform duration-300"
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
                     </div>
