@@ -426,14 +426,14 @@ export default function AboutPage() {
                     // Professional woman
                     image: "/personalimgs/oumaima.jpg"
                   },
-                  /* {/*
+                 
                    {
-                     name: "Hamza",
+                     name: "Hamza El Alaoui El Ismaili",
                      role: "Mobile Engineer",
                      description: "A skilled Mobile Engineer dedicated to building innovative and user-friendly applications, extending BuildwellAI's powerful platform to every device.",
                      image: "/personalimgs/hamzaa.png"
                    },
-                  } */
+               
 
 
 
