@@ -23,19 +23,19 @@ export default function Home() {
               Building the <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#FBB429] to-[#F87866]">Future</span>
             </>
           }
-      subtitle="Your subtitle here"
-      callToActionPrimary={{
-        text: "Get Started",
-        href: "/features"
-      }}
-      callToActionSecondary={{
-        text: "Learn More",
-        href: "/about"
-      }}
-      backgroundImage="/signupim.png"
-      
-    />
-        <div className="-mt-40">
+          subtitle="Your subtitle here"
+          callToActionPrimary={{
+            text: "Get Started",
+            href: "/features"
+          }}
+          callToActionSecondary={{
+            text: "Learn More",
+            href: "/about"
+          }}
+          backgroundImage="/signupim.png"
+
+        />
+        <div className="-mt-20">
           {/*  <ImageTextSection />*/}
           <SubdomainSection />
           <section className="py-20 border-t border-transparent bg-background dark:bg-background">

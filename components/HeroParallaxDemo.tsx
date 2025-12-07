@@ -10,7 +10,7 @@ interface HeroCarouselProps {
 
 export const HeroCarousel = React.forwardRef<HTMLDivElement, HeroCarouselProps>(
   ({ backgroundImage }, ref) => {
-    
+
     const containerVariants = {
       hidden: { opacity: 0 },
       visible: {
@@ -38,13 +38,13 @@ export const HeroCarousel = React.forwardRef<HTMLDivElement, HeroCarouselProps>(
       hidden: { clipPath: 'polygon(100% 0, 100% 0, 100% 100%, 100% 100%)' },
       visible: {
         clipPath: 'polygon(25% 0, 100% 0, 100% 100%, 0% 100%)',
-        transition: { 
-          duration: 1.2, 
+        transition: {
+          duration: 1.2,
           ease: [0.18, 0.9, 0.3, 1] // Smooth easeOutCubic - fast start, smooth end
         }
       }
     };
-    
+
     return (
       <motion.section
         ref={ref}
@@ -54,19 +54,19 @@ export const HeroCarousel = React.forwardRef<HTMLDivElement, HeroCarouselProps>(
         variants={containerVariants}
       >
         {/* Mobile Version - Full background image */}
-        <div 
-          className="md:hidden relative w-full min-h-screen bg-cover bg-center"
+        <div
+          className="md:hidden relative w-full h-screen bg-cover bg-center"
           style={{ backgroundImage: `url(${backgroundImage})` }}
         >
           {/* Dark overlay for text readability */}
           <div className="absolute inset-0 bg-black/60"></div>
-          
+
           {/* Content */}
-          <div className="relative z-10 flex flex-col justify-center min-h-screen p-6 pt-24">
-            <div className="space-y-6 max-w-2xl">
-              
+          <div className="relative z-10 flex flex-col justify-center items-center h-screen p-6 pt-24">
+            <div className="space-y-6 max-w-2xl text-center">
+
               {/* Main Title */}
-              <motion.h1 
+              <motion.h1
                 variants={itemVariants}
                 className="font-display text-5xl font-bold leading-tight text-white"
               >
@@ -74,13 +74,13 @@ export const HeroCarousel = React.forwardRef<HTMLDivElement, HeroCarouselProps>(
               </motion.h1>
 
               {/* Accent Line */}
-              <motion.div 
+              <motion.div
                 variants={itemVariants}
-                className="h-1 w-24 bg-gradient-to-r from-[#FBB429] to-[#F87866]"
+                className="h-1 w-24 bg-gradient-to-r from-[#FBB429] to-[#F87866] mx-auto"
               ></motion.div>
 
               {/* Subtitle */}
-              <motion.p 
+              <motion.p
                 variants={itemVariants}
                 className="text-base text-gray-200 leading-relaxed"
               >
@@ -88,7 +88,7 @@ export const HeroCarousel = React.forwardRef<HTMLDivElement, HeroCarouselProps>(
               </motion.p>
 
               {/* CTA Buttons */}
-              <motion.div 
+              <motion.div
                 variants={itemVariants}
                 className="flex flex-col gap-4 pt-4"
               >
@@ -110,15 +110,15 @@ export const HeroCarousel = React.forwardRef<HTMLDivElement, HeroCarouselProps>(
 
         {/* Desktop Version - Split layout */}
         <div className="hidden md:flex flex-row min-h-screen">
-          
+
           {/* Left Content Section */}
           <div className="w-full md:w-3/5 flex flex-col justify-center p-12 lg:p-16">
-            
+
             {/* Main Content */}
             <div className="space-y-8 max-w-2xl">
-              
+
               {/* Main Title */}
-              <motion.h1 
+              <motion.h1
                 variants={itemVariants}
                 className="font-display text-5xl lg:text-6xl font-bold leading-tight text-black dark:text-white"
               >
@@ -126,13 +126,13 @@ export const HeroCarousel = React.forwardRef<HTMLDivElement, HeroCarouselProps>(
               </motion.h1>
 
               {/* Accent Line */}
-              <motion.div 
+              <motion.div
                 variants={itemVariants}
                 className="h-1 w-24 bg-gradient-to-r from-[#FBB429] to-[#F87866]"
               ></motion.div>
 
               {/* Subtitle */}
-              <motion.p 
+              <motion.p
                 variants={itemVariants}
                 className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed"
               >
@@ -140,7 +140,7 @@ export const HeroCarousel = React.forwardRef<HTMLDivElement, HeroCarouselProps>(
               </motion.p>
 
               {/* CTA Buttons */}
-              <motion.div 
+              <motion.div
                 variants={itemVariants}
                 className="flex flex-row gap-4 pt-4"
               >
@@ -160,10 +160,10 @@ export const HeroCarousel = React.forwardRef<HTMLDivElement, HeroCarouselProps>(
           </div>
 
           {/* Right Image Section */}
-          <motion.div 
+          <motion.div
             variants={imageVariants}
             className="w-full md:w-4/5 min-h-full bg-cover bg-center relative"
-            style={{ 
+            style={{
               backgroundImage: `url(${backgroundImage})`,
               backgroundAttachment: 'fixed'
             }}
