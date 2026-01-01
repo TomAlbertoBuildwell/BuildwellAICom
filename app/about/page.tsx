@@ -32,20 +32,20 @@ export default function AboutPage() {
               {/* Stats Grid */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mt-12">
                 <div className="text-center p-6 bg-background dark:bg-[#0a1929] rounded-[5px] border-2 border-neutral-200 dark:border-neutral-700/50 hover:border-[#FBB429] transition-all">
-                  <div className="font-display text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866] mb-2">100+</div>
-                  <div className="text-sm text-muted-foreground dark:text-neutral-300">Active Projects</div>
+                  <div className="font-display text-lg md:text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866] mb-2">Trusted Nationwide</div>
+                  <div className="text-sm text-muted-foreground dark:text-neutral-300">By Leading Contractors</div>
                 </div>
                 <div className="text-center p-6 bg-background dark:bg-[#0a1929] rounded-[5px] border-2 border-neutral-200 dark:border-neutral-700/50 hover:border-[#FBB429] transition-all">
-                  <div className="font-display text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866] mb-2">60%</div>
-                  <div className="text-sm text-muted-foreground dark:text-neutral-300">Safety Improvement</div>
+                  <div className="font-display text-lg md:text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866] mb-2">Safer Sites</div>
+                  <div className="text-sm text-muted-foreground dark:text-neutral-300">Through Proactive Monitoring</div>
                 </div>
                 <div className="text-center p-6 bg-background dark:bg-[#0a1929] rounded-[5px] border-2 border-neutral-200 dark:border-neutral-700/50 hover:border-[#FBB429] transition-all">
-                  <div className="font-display text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866] mb-2">24/7</div>
-                  <div className="text-sm text-muted-foreground dark:text-neutral-300">AI Monitoring</div>
+                  <div className="font-display text-lg md:text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866] mb-2">Always On</div>
+                  <div className="text-sm text-muted-foreground dark:text-neutral-300">Continuous AI Protection</div>
                 </div>
                 <div className="text-center p-6 bg-background dark:bg-[#0a1929] rounded-[5px] border-2 border-neutral-200 dark:border-neutral-700/50 hover:border-[#FBB429] transition-all">
-                  <div className="font-display text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866] mb-2">5</div>
-                  <div className="text-sm text-muted-foreground dark:text-neutral-300">AI Products</div>
+                  <div className="font-display text-lg md:text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866] mb-2">Full Suite</div>
+                  <div className="text-sm text-muted-foreground dark:text-neutral-300">Integrated AI Platform</div>
                 </div>
               </div>
 
@@ -217,7 +217,7 @@ export default function AboutPage() {
                   <div className="lg:w-[45%]">
                     <div className="relative aspect-[4/3] rounded-[5px] overflow-hidden shadow-2xl mb-6 lg:mb-0">
                       <Image
-                        src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&q=80"
+                        src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&q=80"
                         alt="AI Research Foundation"
                         fill
                         className="object-cover"
@@ -426,14 +426,14 @@ export default function AboutPage() {
                     // Professional woman
                     image: "/personalimgs/oumaima.jpg"
                   },
-                  /* {/*
-                   {
-                     name: "Hamza",
-                     role: "Mobile Engineer",
-                     description: "A skilled Mobile Engineer dedicated to building innovative and user-friendly applications, extending BuildwellAI's powerful platform to every device.",
-                     image: "/personalimgs/hamzaa.png"
-                   },
-                  } */
+
+                  {
+                    name: "Hamza El Alaoui El Ismaili",
+                    role: "Mobile Engineer",
+                    description: "A skilled Mobile Engineer dedicated to building innovative and user-friendly applications, extending BuildwellAI's powerful platform to every device.",
+                    image: "/personalimgs/hamzaa.png"
+                  },
+
 
 
 
