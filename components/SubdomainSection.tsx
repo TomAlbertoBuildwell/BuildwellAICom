@@ -19,7 +19,7 @@ export function SubdomainSection() {
       title: "BuildwellAI Chat",
       subtitle: "CHAT",
       description: "Your on-demand construction expert providing instant, accurate answers. Access building regulations, and project documents with visual analysis capabilities.",
-      image: "/buildwell_chat.png",
+      image: "/chat.jpg",
       url: "https://chat.buildwellai.com",
     },
     {
@@ -27,7 +27,7 @@ export function SubdomainSection() {
       title: "BuildwellEYE",
       subtitle: "EYE",
       description: "Automated defect detection using computer vision. Identifies potential issues, verifies work quality, and monitors progress with greater speed and accuracy than manual inspection.",
-      image: "/buildwell_eye.png",
+      image: "/eye.jpg",
       url: "https://eye.buildwellai.com/",
     },
     {
@@ -35,7 +35,7 @@ export function SubdomainSection() {
       title: "BuildwellNEWS",
       subtitle: "NEWS",
       description: "Curated industry intelligence and risk monitoring. Stay informed about regulatory changes, product failures, and emerging risks relevant to your projects.",
-      image: "/buildwell_news.png",
+      image: "/news.jpg",
       url: "https://news.buildwellai.com/",
     },
     {
@@ -43,7 +43,7 @@ export function SubdomainSection() {
       title: "BuildwellINSPECT",
       subtitle: "INSPECT",
       description: "Mobile-first site inspection tool. Capture issues with GPS-tagged photos, generate professional reports in minutes, and sync with your project management systems.",
-      image: "/buildwell_inspect.png",
+      image: "/inspect.jpg",
       url: "https://inspect.buildwellai.com/",
     },
     {
@@ -51,7 +51,7 @@ export function SubdomainSection() {
       title: "BuildwellTHREAD",
       subtitle: "THREAD",
       description: "Complete golden thread compliance management. Organizes critical documents, links on-site evidence, automates compliance tracking, and generates safety case reports.",
-      image: "/buildwell_threads.png",
+      image: "/thread.jpg",
       url: "https://buildwellai.com/thread",
     },
   ];
@@ -97,18 +97,18 @@ export function SubdomainSection() {
     const autoScrollInterval = setInterval(() => {
       setCurrentCardIndex((prevIndex) => {
         const nextIndex = (prevIndex + 1) % featureCards.length;
-        
+
         // Calculate scroll position based on viewport width (85vw per card + 16px gap)
         const viewportWidth = window.innerWidth;
         const cardWidth = viewportWidth * 0.85; // 85vw
         const gap = 16; // gap-4 in pixels
         const scrollPosition = (cardWidth + gap) * nextIndex;
-        
+
         carousel.scrollTo({
           left: scrollPosition,
           behavior: 'smooth'
         });
-        
+
         return nextIndex;
       });
     }, 1500); // Change card every 1.5 seconds
@@ -123,12 +123,12 @@ export function SubdomainSection() {
 
     const handleScroll = () => {
       setIsPaused(true);
-      
+
       // Clear existing timeout
       if (pauseTimeoutRef.current) {
         clearTimeout(pauseTimeoutRef.current);
       }
-      
+
       // Resume auto-scroll after 5 seconds of no scrolling
       pauseTimeoutRef.current = setTimeout(() => {
         setIsPaused(false);
@@ -150,9 +150,9 @@ export function SubdomainSection() {
   };
 
   return (
-    <section 
+    <section
       ref={sectionRef}
-      id="solutions" 
+      id="solutions"
       className="relative w-full py-20 border-t border-transparent bg-background dark:bg-[#11263f]"
     >
       <style dangerouslySetInnerHTML={{
@@ -208,7 +208,7 @@ export function SubdomainSection() {
 
       <div className="w-full flex flex-col justify-center">
         <div className="max-w-6xl mx-auto w-full flex flex-col justify-center">
-          
+
           {/* Desktop: Animated stacked cards */}
           <div className="desktop-cards gap-3 h-[400px] px-4">
             {featureCards.map((card) => (
@@ -286,9 +286,9 @@ export function SubdomainSection() {
 
           {/* Mobile: Carousel cards with auto-scroll */}
           <div className="mobile-cards w-screen flex-col items-center">
-            <div 
+            <div
               ref={carouselRef}
-              className="card-carousel flex flex-row overflow-x-auto gap-4 px-4" 
+              className="card-carousel flex flex-row overflow-x-auto gap-4 px-4"
               style={{ width: '100vw' }}
             >
               {featureCards.map((card) => (
