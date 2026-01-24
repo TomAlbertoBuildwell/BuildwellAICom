@@ -11,6 +11,8 @@ import { ChatShowcase } from "@/components/ChatShowcase"
 import { ProductHighlight } from "@/components/ProductHighlight"
 import { FeaturesSection } from "@/components/FeaturesSection"
 import { CTASection } from "@/components/CTASection"
+import { StatsBar } from "@/components/StatsBar"
+import { Testimonials } from "@/components/Testimonials"
 
 export default function Home() {
   return (
@@ -20,31 +22,32 @@ export default function Home() {
         <HeroCarousel
           title={
             <>
-              Building the <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#FBB429] to-[#F87866]">Future</span>
+              Construction Safety. <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#FBB429] to-[#F87866]">Simplified.</span>
             </>
           }
-          subtitle="Your subtitle here"
+          subtitle="Real-time defect detection, automated compliance, and instant reporting for UK construction professionals."
           callToActionPrimary={{
-            text: "Get Started",
-            href: "/features"
+            text: "Get Started Free",
+            href: "/contact"
           }}
           callToActionSecondary={{
-            text: "Learn More",
-            href: "/about"
+            text: "See How It Works",
+            href: "#video"
           }}
           backgroundImage="/signupim.png"
 
         />
         <div className="-mt-20">
-          {/*  <ImageTextSection />*/}
           <SubdomainSection />
-          <section className="py-20 border-t border-transparent bg-background dark:bg-background">
+          <StatsBar />
+          <section id="video" className="py-20 border-t border-transparent bg-background dark:bg-background">
             <div className="container mx-auto px-4">
               <VideoShowcase />
             </div>
           </section>
-          <ChatShowcase />
           <FeaturesSection />
+          <ChatShowcase />
+          <Testimonials />
           <CTASection />
         </div>
       </main>

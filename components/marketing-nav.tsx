@@ -19,7 +19,7 @@ export function MarketingNav({ hideUntilScroll = false }: { hideUntilScroll?: bo
   const [isProductHovered, setIsProductHovered] = useState(false)
 
   return (
-    <nav 
+    <nav
       className="fixed top-0 z-50 w-full border-b border-border bg-white/80 dark:bg-[#0a1929]/90 backdrop-blur-md"
     >
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
@@ -31,14 +31,14 @@ export function MarketingNav({ hideUntilScroll = false }: { hideUntilScroll?: bo
             height={32}
             className="h-6 w-auto"
           />
-          </Link>
+        </Link>
 
         {/* Desktop Navigation */}
         <div className="hidden items-center gap-8 md:flex">
           <Link href="/about" className="text-sm font-medium transition-colors hover:text-primary">
             About
           </Link>
-          <div 
+          <div
             className="relative"
             onMouseEnter={() => setIsProductHovered(true)}
             onMouseLeave={() => setIsProductHovered(false)}
@@ -50,42 +50,42 @@ export function MarketingNav({ hideUntilScroll = false }: { hideUntilScroll?: bo
             {isProductHovered && (
               <div className="absolute left-0 top-full pt-2 z-50">
                 <div className="bg-white dark:bg-[#0a1929] border border-border rounded-[5px] shadow-lg w-48 py-1">
-                  <a 
-                    href="https://thread.buildwellai.com" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
+                  <a
+                    href="https://thread.buildwellai.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="block px-4 py-2 text-sm transition-colors hover:bg-muted cursor-pointer"
                   >
                     BuildwellThread
                   </a>
-                  <a 
-                    href="https://inspect.buildwellai.com" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
+                  <a
+                    href="https://inspect.buildwellai.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="block px-4 py-2 text-sm transition-colors hover:bg-muted cursor-pointer"
                   >
                     BuildwellInspect
                   </a>
-                  <a 
-                    href="https://eye.buildwellai.com" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
+                  <a
+                    href="https://eye.buildwellai.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="block px-4 py-2 text-sm transition-colors hover:bg-muted cursor-pointer"
                   >
                     BuildwellEye
                   </a>
-                  <a 
-                    href="https://chat.buildwellai.com" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
+                  <a
+                    href="https://chat.buildwellai.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="block px-4 py-2 text-sm transition-colors hover:bg-muted cursor-pointer"
                   >
                     BuildwellChat
                   </a>
-                  <a 
-                    href="https://news.buildwellai.com" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
+                  <a
+                    href="https://news.buildwellai.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="block px-4 py-2 text-sm transition-colors hover:bg-muted cursor-pointer"
                   >
                     BuildwellNews
@@ -112,7 +112,7 @@ export function MarketingNav({ hideUntilScroll = false }: { hideUntilScroll?: bo
         <div className="hidden items-center gap-3 md:flex">
           <ThemeToggle />
           <a href="https://chat.buildwellai.com" target="_blank" rel="noopener noreferrer">
-            <Button className="bg-gradient-orange text-white hover:brightness-110">
+            <Button className="group relative inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#FBB429] to-[#F87866] text-white px-8 py-3 rounded-[5px] font-semibold text-base hover:shadow-lg hover:opacity-95 transition-all duration-300 h-auto">
               Get Started
             </Button>
           </a>
@@ -135,7 +135,7 @@ export function MarketingNav({ hideUntilScroll = false }: { hideUntilScroll?: bo
             >
               About
             </Link>
-            
+
             {/* Mobile Product Line Dropdown */}
             <div>
               <button
@@ -229,7 +229,7 @@ export function MarketingNav({ hideUntilScroll = false }: { hideUntilScroll?: bo
                 <ThemeToggle />
               </div>
               <a href="https://chat.buildwellai.com" target="_blank" rel="noopener noreferrer" onClick={() => setMobileMenuOpen(false)}>
-                <Button className="w-full bg-gradient-orange text-white hover:brightness-110">
+                <Button className="w-full group relative inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#FBB429] to-[#F87866] text-white px-8 py-3 rounded-[5px] font-semibold text-base hover:shadow-lg hover:opacity-95 transition-all duration-300 h-auto">
                   Get Started
                 </Button>
               </a>
