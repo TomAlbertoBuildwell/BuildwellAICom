@@ -5,13 +5,13 @@ import { SmoothScrollProvider } from "@/components/smooth-scroll-provider"
 import { ScrollToTop } from '@/components/scroll-to-top'
 import './globals.css'
 
-const inter = Inter({ 
+const inter = Inter({
   subsets: ['latin'],
   variable: '--font-sans',
   display: 'swap',
 })
 
-const courierPrime = Courier_Prime({ 
+const courierPrime = Courier_Prime({
   weight: ['400', '700'],
   subsets: ['latin'],
   variable: '--font-mono',
@@ -28,6 +28,9 @@ export const metadata: Metadata = {
   applicationName: 'BuildwellAI',
   category: 'construction technology',
   classification: 'Construction Industry Solutions',
+  other: {
+    'format-detection': 'telephone=no',
+  },
   openGraph: {
     title: 'BuildwellAI - AI-Powered Construction Solutions',
     description: 'Transform your construction projects with AI-powered compliance, safety, and digital tools for the modern building industry.',
@@ -63,6 +66,7 @@ export default function RootLayout({
   return (
     <html lang="en-GB" suppressHydrationWarning>
       <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@100..900&display=swap" rel="stylesheet" />
@@ -73,14 +77,14 @@ export default function RootLayout({
         <meta name="theme-color" content="#ff8a00" />
         <meta name="msapplication-TileColor" content="#ff8a00" />
       </head>
-      <body className={`${inter.variable} ${courierPrime.variable} font-sans antialiased`}>
+      <body className={`${inter.variable} ${courierPrime.variable} font-sans antialiased`} role="application">
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
           enableSystem={false}
           disableTransitionOnChange
         >
-                    <ScrollToTop />
+          <ScrollToTop />
           <SmoothScrollProvider>
             {children}
           </SmoothScrollProvider>
