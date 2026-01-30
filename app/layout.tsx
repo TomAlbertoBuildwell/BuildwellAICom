@@ -87,6 +87,32 @@ export default function RootLayout({
           <ScrollToTop />
           <SmoothScrollProvider>
             {children}
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{
+                __html: JSON.stringify({
+                  "@context": "https://schema.org",
+                  "@type": "Organization",
+                  "name": "BuildwellAI",
+                  "url": "https://buildwellai.com",
+                  "logo": "https://buildwellai.com/logo.png",
+                  "sameAs": [
+                    "https://twitter.com/buildwellai",
+                    "https://linkedin.com/company/buildwellai"
+                  ],
+                  "description": "AI-Powered Solutions for UK Construction. Advanced AI tools for construction compliance, building safety, and digital transformation.",
+                  "address": {
+                    "@type": "PostalAddress",
+                    "addressCountry": "GB"
+                  },
+                  "contactPoint": {
+                    "@type": "ContactPoint",
+                    "contactType": "customer support",
+                    "email": "contact@buildwellai.com"
+                  }
+                })
+              }}
+            />
           </SmoothScrollProvider>
         </ThemeProvider>
       </body>
