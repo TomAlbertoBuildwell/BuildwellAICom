@@ -374,21 +374,35 @@ export default function AboutPage() {
                     // Professional mature business man
                     image: "/personalimgs/giles.jpg"
                   },
-
-                  // {
-                  //   name: "Thomas Alberto",
-                  //   role: "Head Of Operations",
-                  //   description: "An accomplished leader in operational efficiency and strategic planning, optimizing workflows and ensuring seamless project delivery.",
-                  //   // Tech focused professional
-                  //   image: "/personalimgs/thomas.jpg"
-                  // },
                   {
                     name: "Badr Otky",
-                    role: "DevOps/MLOps",
-                    description: "DevOps/MLOps specialist, building robust and scalable infrastructure while developing seamless user experiences.",
+                    role: "Chief Technology Officer",
+                    description: "A visionary leader in AI and technology, driving innovation and shaping the future of construction intelligence.",
                     // Corporate professional
                     image: "/personalimgs/badr.jpg"
                   },
+                  {
+                    name: "Thomas Alberto",
+                    role: "Head Of Operations",
+                    description: "An accomplished leader in operational efficiency and strategic planning, optimizing workflows and ensuring seamless project delivery.",
+                    // Tech focused professional
+                    image: "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&s=400"
+                  },
+                  {
+                    name: "Jad El Tounsi",
+                    role: "AI Engineer",
+                    description: "AI Engineer with expertise in scalable cloud platforms, ensuring BuildwellAI delivers reliable enterprise solutions.",
+                    // Corporate professional
+                    image: "/personalimgs/jad.jpg"
+                  },
+                  {
+                    name: "Tim Woodgate",
+                    role: "Head of Partnerships",
+                    description: "A strategic relationship builder with extensive experience forging valuable partnerships, driving business growth and expanding BuildwellAI's industry reach.",
+                    // Tech focused professional
+                    image: "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&s=400"
+                  },
+
                   {
                     name: "Baddredin Bendriss",
                     role: "Software Engineer",
@@ -397,13 +411,7 @@ export default function AboutPage() {
                     image: "/personalimgs/baddredin.jpg"
                   },
 
-                  {
-                    name: "Jad El Tounsi",
-                    role: "AI Engineer",
-                    description: "AI Engineer with expertise in scalable cloud platforms, ensuring BuildwellAI delivers reliable enterprise solutions.",
-                    // Corporate professional
-                    image: "/personalimgs/jad.jpg"
-                  },
+
                   {
                     name: "Jermouni Choukri",
                     role: "Full Stack Engineer ",
@@ -427,12 +435,12 @@ export default function AboutPage() {
                     image: "/personalimgs/oumaima.jpg"
                   },
 
-                  {
-                    name: "Hamza El Alaoui El Ismaili",
-                    role: "Mobile Engineer",
-                    description: "A skilled Mobile Engineer dedicated to building innovative and user-friendly applications, extending BuildwellAI's powerful platform to every device.",
-                    image: "/personalimgs/hamzaa.png"
-                  },
+                  // {
+                  //   name: "Hamza El Alaoui El Ismaili",
+                  //   role: "Mobile Engineer",
+                  //   description: "A skilled Mobile Engineer dedicated to building innovative and user-friendly applications, extending BuildwellAI's powerful platform to every device.",
+                  //   image: "/personalimgs/hamzaa.png"
+                  // },
 
 
 
