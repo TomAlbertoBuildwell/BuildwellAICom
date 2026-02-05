@@ -21,13 +21,36 @@ export default function ContactPage() {
     message: "",
   })
   const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
   const [openFaq, setOpenFaq] = useState<number | null>(null)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    console.log("Form submitted:", formData)
-    setSubmitted(true)
-    setTimeout(() => setSubmitted(false), 3000)
+    setLoading(true)
+    setError(null)
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to send message')
+      }
+
+      setSubmitted(true)
+      setFormData({ name: "", email: "", company: "", phone: "", message: "" })
+      setTimeout(() => setSubmitted(false), 5000)
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Something went wrong')
+    } finally {
+      setLoading(false)
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -95,7 +118,7 @@ export default function ContactPage() {
             Get in <span className="text-gradient-orange">Touch</span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            Ready to transform your construction projects with AI? Our team is here to help. 
+            Ready to transform your construction projects with AI? Our team is here to help.
             Whether you have questions, need support, or want to learn more about our solutions.
           </p>
         </div>
@@ -136,8 +159,8 @@ export default function ContactPage() {
                 <CardDescription>Quick questions? Send us an email</CardDescription>
               </CardHeader>
               <CardContent>
-                <a href="mailto:hello@buildwellai.com" className="font-sans text-primary hover:underline">
-                  hello@buildwellai.com
+                <a href="mailto:support@buildwellai.com" className="font-sans text-primary hover:underline">
+                  support@buildwellai.com
                 </a>
               </CardContent>
             </Card>
@@ -151,8 +174,8 @@ export default function ContactPage() {
                 <CardDescription>Monday to Friday, 9am to 6pm GMT</CardDescription>
               </CardHeader>
               <CardContent>
-                <a href="tel:+442012345678" className="font-sans text-primary hover:underline">
-                  +44 20 1234 5678
+                <a href="tel:+442045728537" className="font-sans text-primary hover:underline">
+                  +44 20 4572 8537
                 </a>
               </CardContent>
             </Card>
@@ -164,7 +187,7 @@ export default function ContactPage() {
               <CardHeader>
                 <CardTitle className="text-2xl">Send Us a Message</CardTitle>
                 <CardDescription>
-                  Fill out the form below and our team will get back to you within 24 hours. 
+                  Fill out the form below and our team will get back to you within 24 hours.
                   We're excited to hear about your project and how we can help.
                 </CardDescription>
               </CardHeader>
@@ -240,7 +263,7 @@ export default function ContactPage() {
 
                   <div className="rounded-lg border border-muted bg-muted/30 p-4">
                     <p className="text-sm text-muted-foreground">
-                      By submitting this form, you agree to be contacted by BuildwellAI. 
+                      By submitting this form, you agree to be contacted by BuildwellAI.
                       We respect your privacy and will never share your information.
                     </p>
                   </div>
@@ -251,13 +274,29 @@ export default function ContactPage() {
                     </div>
                   )}
 
+                  {error && (
+                    <div className="rounded-lg border border-red-500/20 bg-red-500/10 p-4 text-red-600 dark:text-red-400">
+                      <strong>Error:</strong> {error}
+                    </div>
+                  )}
+
                   <Button
                     type="submit"
                     size="lg"
-                    className="w-full bg-gradient-orange text-white hover:brightness-110 md:w-auto"
+                    disabled={loading}
+                    className="w-full bg-gradient-orange text-white hover:brightness-110 md:w-auto disabled:opacity-50"
                   >
-                    <Send className="mr-2 h-4 w-4" />
-                    Send Message
+                    {loading ? (
+                      <>
+                        <span className="mr-2 h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        <Send className="mr-2 h-4 w-4" />
+                        Send Message
+                      </>
+                    )}
                   </Button>
                 </form>
               </CardContent>
@@ -287,15 +326,13 @@ export default function ContactPage() {
                 >
                   <h3 className="font-semibold text-base pr-4">{faq.question}</h3>
                   <ChevronDown
-                    className={`h-5 w-5 shrink-0 transition-transform duration-300 ${
-                      openFaq === index ? "rotate-180" : ""
-                    }`}
+                    className={`h-5 w-5 shrink-0 transition-transform duration-300 ${openFaq === index ? "rotate-180" : ""
+                      }`}
                   />
                 </button>
                 <div
-                  className={`grid transition-all duration-300 ease-in-out ${
-                    openFaq === index ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
-                  }`}
+                  className={`grid transition-all duration-300 ease-in-out ${openFaq === index ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                    }`}
                 >
                   <div className="overflow-hidden">
                     <div className="px-6 pb-4 pt-0">
