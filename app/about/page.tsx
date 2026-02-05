@@ -386,7 +386,8 @@ export default function AboutPage() {
                     role: "Head Of Operations",
                     description: "An accomplished leader in operational efficiency and strategic planning, optimizing workflows and ensuring seamless project delivery.",
                     // Tech focused professional
-                    image: "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&s=400"
+                    image: "/personalimgs/tom.jpg",
+                    objectPosition: "center 30%"
                   },
                   {
                     name: "Jad El Tounsi",
@@ -400,7 +401,7 @@ export default function AboutPage() {
                     role: "Head of Partnerships",
                     description: "A strategic relationship builder with extensive experience forging valuable partnerships, driving business growth and expanding BuildwellAI's industry reach.",
                     // Tech focused professional
-                    image: "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&s=400"
+                    image: "/personalimgs/tim.jpeg"
                   },
 
                   {
@@ -452,7 +453,8 @@ export default function AboutPage() {
                         src={member.image}
                         alt={member.name}
                         fill
-                        className="object-cover object-top group-hover:scale-105 transition-transform duration-300"
+                        className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        style={{ objectPosition: member.objectPosition || 'center top' }}
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
                     </div>
