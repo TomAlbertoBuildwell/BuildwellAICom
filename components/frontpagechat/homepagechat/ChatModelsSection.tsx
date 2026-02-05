@@ -10,7 +10,7 @@ export const ChatModelsSection = () => {
                 <div className="grid lg:grid-cols-2 gap-10 md:gap-16 items-center max-w-7xl mx-auto">
                     {/* Mobile Title (Visible only on mobile/tablet) */}
                     <div className="text-center mb-8 lg:hidden">
-                        <h2 className="font-display text-3xl font-bold text-foreground dark:text-white leading-tight">
+                        <h2 className="font-['Big_Shoulders_Display'] text-3xl font-bold text-foreground dark:text-white leading-tight">
                             Advanced Chat Models <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866]">for Every Discipline</span>
                         </h2>
                     </div>
@@ -19,7 +19,7 @@ export const ChatModelsSection = () => {
                     <div className="relative">
                         <div className="rounded-xl overflow-hidden">
                             <Image
-                                src="/build.jpg"
+                                src="/chatimg/build.jpg"
                                 alt="AI Chat Models Processing Construction Data"
                                 width={800}
                                 height={600}
@@ -33,7 +33,7 @@ export const ChatModelsSection = () => {
                     {/* Right Text Content */}
                     <div className="text-center lg:text-left">
                         {/* Desktop Title (Hidden on mobile) */}
-                        <h2 className="hidden lg:block font-display text-3xl lg:text-4xl font-bold text-foreground dark:text-white leading-tight mb-6">
+                        <h2 className="hidden lg:block font-['Big_Shoulders_Display'] text-3xl lg:text-4xl font-bold text-foreground dark:text-white leading-tight mb-6">
                             Advanced Chat Models <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866]">for Every Discipline</span>
                         </h2>
                         <p className="text-xl text-justify lg:text-left text-muted-foreground dark:text-neutral-400 mb-8 leading-relaxed">

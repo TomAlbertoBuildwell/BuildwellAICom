@@ -6,7 +6,8 @@ import Link from "next/link";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Button } from "@/components/ui/button";
+import { Button } from "./../ui/button"; // Local clone
+import "../chat-styles.css";
 
 // Register GSAP ScrollTrigger
 if (typeof window !== "undefined") {
@@ -39,17 +40,17 @@ const ScrollSection = () => {
         {
             title: "Geolocation Intelligence",
             description: "Automatically identify site locations and relevant local regulations based on project data. No manual lookup required.",
-            image: "/screenshots/phones.png"
+            image: "/chatimg/phones.png"
         },
         {
             title: "Universal Integration",
             description: "Seamlessly connect with your existing software ecosystem. BuildwellAI works alongside the tools you already trust.",
-            image: "/screenshots/photos2.png"
+            image: "/chatimg/photos2.png"
         },
         {
             title: "Smart Project Planning",
             description: "Draft construction schedules and logistics plans in minutes. Let AI handle the complexity of sequencing and resource allocation.",
-            image: "/screenshots/photos3.png"
+            image: "/chatimg/photos3.png"
         }
     ];
 
@@ -59,7 +60,7 @@ const ScrollSection = () => {
 
             {/* Component Title (Visible on all screens) */}
             <div className="container mx-auto px-10 pt-20 pb-10 text-center">
-                <h2 className="font-display text-4xl lg:text-5xl font-bold text-foreground dark:text-white">
+                <h2 className="font-['Big_Shoulders_Display'] text-4xl lg:text-5xl font-bold text-foreground dark:text-white">
                     Your On-Site <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866]">Compliance Partner</span>
                 </h2>
             </div>
@@ -93,7 +94,7 @@ const ScrollSection = () => {
                                 className="h-[60vh] flex flex-col justify-center lg:pl-32 xl:pl-48 2xl:pl-64 lg:pr-20 xl:pr-32 relative overflow-visible"
                             >
                                 {/* Background Watermark Number */}
-                                <span className={`absolute top-1/2 -translate-y-1/2 text-[20rem] md:text-[30rem] font-display font-medium text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866] opacity-10 select-none z-0 leading-none pointer-events-none whitespace-nowrap ${i === 1
+                                <span className={`absolute top-1/2 -translate-y-1/2 text-[20rem] md:text-[30rem] font-['Big_Shoulders_Display'] font-medium text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866] opacity-10 select-none z-0 leading-none pointer-events-none whitespace-nowrap ${i === 1
                                     ? 'left-0' // 02 at the start
                                     : 'left-1/2 -translate-x-1/2' // 01, 03 centered
                                     }`}>
@@ -101,7 +102,7 @@ const ScrollSection = () => {
                                 </span>
 
                                 <div className="relative z-10 max-w-sm">
-                                    <h3 className={`font-display text-4xl font-bold mb-6 transition-colors duration-300 ${i === activeFeature ? 'text-[#FBB429]' : 'text-foreground dark:text-white'}`}>
+                                    <h3 className={`font-['Big_Shoulders_Display'] text-4xl font-bold mb-6 transition-colors duration-300 ${i === activeFeature ? 'text-[#FBB429]' : 'text-foreground dark:text-white'}`}>
                                         {feature.title}
                                     </h3>
                                     <p className={`text-xl leading-relaxed transition-colors duration-300 mb-8 ${i === activeFeature ? 'text-foreground dark:text-gray-200' : 'text-muted-foreground'}`}>
@@ -142,7 +143,7 @@ const ScrollSection = () => {
                 {scrollFeatures.map((feature, i) => (
                     <div key={i} className="flex flex-col items-center text-center relative overflow-hidden">
                         {/* Background Watermark Number (Mobile) */}
-                        <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[15rem] font-display font-medium text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866] opacity-10 select-none z-0 leading-none pointer-events-none whitespace-nowrap">
+                        <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[15rem] font-['Big_Shoulders_Display'] font-medium text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866] opacity-10 select-none z-0 leading-none pointer-events-none whitespace-nowrap">
                             0{i + 1}
                         </span>
 
@@ -155,7 +156,7 @@ const ScrollSection = () => {
                             />
                         </div>
                         <div className="relative z-10 max-w-sm">
-                            <h3 className="font-display text-3xl font-bold mb-4 text-[#FBB429]">{feature.title}</h3>
+                            <h3 className="font-['Big_Shoulders_Display'] text-3xl font-bold mb-4 text-[#FBB429]">{feature.title}</h3>
                             <p className="text-lg text-foreground dark:text-gray-200 mb-8">
                                 {feature.description}
                             </p>

@@ -11,7 +11,7 @@ export const ChatCapabilitiesSection = () => {
 
                     {/* Left Text Content (order-1 on desktop, order-2 on mobile for consistency if desired, but user asked for flip, usually means visual flip) */}
                     <div className="text-center lg:text-left order-2 lg:order-1">
-                        <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground dark:text-white leading-tight mb-6">
+                        <h2 className="font-['Big_Shoulders_Display'] text-3xl lg:text-4xl font-bold text-foreground dark:text-white leading-tight mb-6">
                             Instant Analysis <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866]">& Document Review</span>
                         </h2>
                         <p className="text-xl text-justify lg:text-left text-muted-foreground dark:text-neutral-400 mb-8 leading-relaxed">

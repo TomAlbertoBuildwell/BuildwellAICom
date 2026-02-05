@@ -3,7 +3,7 @@
 import React from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { Button } from "@/components/ui/button"
+import { Button } from "./../ui/button" // Local clone
 import { ArrowRight } from "lucide-react"
 
 export function ChatCTASection() {
@@ -12,7 +12,7 @@ export function ChatCTASection() {
             {/* Background Image */}
             <div className="absolute inset-0">
                 <Image
-                    src="/build.jpg"
+                    src="/chatimg/build.jpg"
                     alt="Construction site"
                     fill
                     className="object-cover"
@@ -26,7 +26,7 @@ export function ChatCTASection() {
             <div className="relative z-10 mx-auto max-w-7xl px-4">
                 <div className="max-w-3xl mx-auto text-center">
                     <div className="space-y-6">
-                        <h2 className="font-display text-3xl font-bold tracking-tight md:text-4xl text-white">
+                        <h2 className="font-['Big_Shoulders_Display'] text-3xl font-bold tracking-tight md:text-4xl text-white">
                             Ready to Build <span className="text-gradient-orange">Safer & Smarter</span>?
                         </h2>
                         <p className="text-lg leading-relaxed text-gray-200">

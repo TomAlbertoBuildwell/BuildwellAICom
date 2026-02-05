@@ -8,9 +8,9 @@ import {
     CarouselContent,
     CarouselItem,
     type CarouselApi,
-} from "@/components/ui/carousel";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+} from "./../ui/carousel"; // Local clone
+import { Button } from "./../ui/button"; // Local clone
+import { Card, CardContent } from "./../ui/card"; // Local clone
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 
 export const ChatCarouselSection = () => {
@@ -35,7 +35,7 @@ export const ChatCarouselSection = () => {
             subtitle: "Deep Understanding",
             desc: "Upload PDFs, drawings, and specs. BuildwellAI analyzes every detail to provide instant, citation-backed answers.",
             video: "https://res.cloudinary.com/drzxliqyz/video/upload/v1763297404/inspectvid_znvtb6.mp4", // Kept existing video as placeholder
-            image: "/analysis.jpg",
+            image: "/chatimg/analysis.jpg",
             link: "https://inspect.buildwellai.com",
             color: "#FBB429"
         },
@@ -44,7 +44,7 @@ export const ChatCarouselSection = () => {
             subtitle: "Always Compliant",
             desc: "Stay aligned with the latest Building Safety Act and local regulations. Real-time updates ensure zero compliance gaps.",
             video: "https://res.cloudinary.com/drzxliqyz/video/upload/v1762797262/showcasenews_peihce.mp4",
-            image: "/news.jpg",
+            image: "/chatimg/news.jpg",
             link: "https://news.buildwellai.com",
             color: "#F87866"
         },
@@ -53,7 +53,7 @@ export const ChatCarouselSection = () => {
             subtitle: "Visual Clarity",
             desc: "Generate professional diagrams and flowcharts instantly to visualize complex workflows and project structures.",
             video: "https://res.cloudinary.com/drzxliqyz/video/upload/v1763297450/chatrec_kfrokc.mp4",
-            image: "/plan.jpg",
+            image: "/chatimg/plan.jpg",
             link: "https://chat.buildwellai.com",
             color: "#FBB429"
         },
@@ -62,7 +62,7 @@ export const ChatCarouselSection = () => {
             subtitle: "Spatial Intelligence",
             desc: "Turn specifications into preliminary 3D models. Visualize spatial relationships and potential conflicts early.",
             video: "https://res.cloudinary.com/drzxliqyz/video/upload/v1763297405/threadvid_oxmkua.mp4",
-            image: "/result.jpg",
+            image: "/chatimg/result.jpg",
             link: "https://thread.buildwellai.com",
             color: "#2196f3"
         },
@@ -71,7 +71,7 @@ export const ChatCarouselSection = () => {
             subtitle: "Natural Interaction",
             desc: "Talk to your project data. Hands-free voice interaction for on-site queries and rapid information retrieval.",
             video: "https://res.cloudinary.com/drzxliqyz/video/upload/v1762606241/WhatsApp_Video_2025-11-07_at_18.14.45_6913d34a_wrpesi.mp4",
-            image: "/chat.jpg",
+            image: "/chatimg/chat.jpg",
             link: "https://eye.buildwellai.com",
             color: "#FBB429"
         }
@@ -81,7 +81,7 @@ export const ChatCarouselSection = () => {
         <section className="py-20 bg-muted/30 dark:bg-[#0d1f33] overflow-hidden">
             <div className="container mx-auto px-4">
                 <div className="text-center mb-16">
-                    <h2 className="font-display text-4xl lg:text-5xl font-bold text-foreground dark:text-white mb-4">
+                    <h2 className="font-['Big_Shoulders_Display'] text-4xl lg:text-5xl font-bold text-foreground dark:text-white mb-4">
                         Explore Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866]">Features</span>
                     </h2>
                     <p className="text-lg text-muted-foreground dark:text-neutral-400">
@@ -112,7 +112,7 @@ export const ChatCarouselSection = () => {
                                                         {item.subtitle}
                                                     </div>
 
-                                                    <h3 className="font-display text-4xl lg:text-5xl font-bold text-foreground dark:text-white mb-6 leading-tight">
+                                                    <h3 className="font-['Big_Shoulders_Display'] text-4xl lg:text-5xl font-bold text-foreground dark:text-white mb-6 leading-tight">
                                                         {item.title}
                                                     </h3>
 

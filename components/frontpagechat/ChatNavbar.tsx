@@ -3,9 +3,9 @@
 import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { Button } from "@/components/ui/button"
+import { Button } from "./ui/button" // Local clone
 import { Menu, X } from "lucide-react"
-import { ThemeToggle } from "@/components/theme-toggle"
+import { ThemeToggle } from "./ui/theme-toggle" // Local clone
 
 export function ChatNavbar() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -17,7 +17,7 @@ export function ChatNavbar() {
             <div className="container mx-auto flex h-16 items-center justify-between px-4">
                 <Link href="/" className="flex items-center gap-2">
                     <Image
-                        src="/logo.png"
+                        src="/chatimg/logo.png"
                         alt="BuildwellAI"
                         width={32}
                         height={32}
@@ -27,16 +27,16 @@ export function ChatNavbar() {
 
                 {/* Desktop Navigation */}
                 <div className="hidden items-center gap-8 md:flex">
-                    <Link href="/application" className="text-sm font-medium transition-colors hover:text-primary">
+                    <Link href="/new-chatpage/mobile-app" className="text-sm font-medium transition-colors hover:text-primary">
                         Mobile App
                     </Link>
-                    <Link href="/features" className="text-sm font-medium transition-colors hover:text-primary">
+                    <Link href="/new-chatpage/features" className="text-sm font-medium transition-colors hover:text-primary">
                         Features
                     </Link>
-                    <Link href="/pricing" className="text-sm font-medium transition-colors hover:text-primary">
+                    <Link href="/new-chatpage/pricing" className="text-sm font-medium transition-colors hover:text-primary">
                         Pricing
                     </Link>
-                    <Link href="/contact" className="text-sm font-medium transition-colors hover:text-primary">
+                    <Link href="/new-chatpage/contact" className="text-sm font-medium transition-colors hover:text-primary">
                         Contact
                     </Link>
                 </div>
@@ -62,28 +62,28 @@ export function ChatNavbar() {
                 <div className="border-t border-border bg-white/95 dark:bg-[#0a1929]/95 backdrop-blur-md md:hidden">
                     <div className="container mx-auto space-y-1 px-4 py-4">
                         <Link
-                            href="/application"
+                            href="/new-chatpage/mobile-app"
                             className="block rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-muted"
                             onClick={() => setMobileMenuOpen(false)}
                         >
                             Mobile App
                         </Link>
                         <Link
-                            href="/features"
+                            href="/new-chatpage/features"
                             className="block rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-muted"
                             onClick={() => setMobileMenuOpen(false)}
                         >
                             Features
                         </Link>
                         <Link
-                            href="/pricing"
+                            href="/new-chatpage/pricing"
                             className="block rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-muted"
                             onClick={() => setMobileMenuOpen(false)}
                         >
                             Pricing
                         </Link>
                         <Link
-                            href="/contact"
+                            href="/new-chatpage/contact"
                             className="block rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-muted"
                             onClick={() => setMobileMenuOpen(false)}
                         >

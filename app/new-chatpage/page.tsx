@@ -1,15 +1,15 @@
 "use client"
 
-import { ChatNavbar } from "@/components/ChatNavbar"
-import { MarketingFooter } from "@/components/marketing-footer"
+import { ChatNavbar } from "@/components/frontpagechat/ChatNavbar"
+import { MarketingFooter } from "@/components/frontpagechat/marketing/marketing-footer"
 import { ChatHeroSection } from "@/components/frontpagechat/homepagechat/ChatHeroSection"
 import { ChatModelsSection } from "@/components/frontpagechat/homepagechat/ChatModelsSection"
 import { ChatCapabilitiesSection } from "@/components/frontpagechat/homepagechat/ChatCapabilitiesSection"
 import { ScrollSection, ChatCarouselSection } from "@/components/frontpagechat/homepagechat"
 import { ChatCTASection } from "@/components/frontpagechat/homepagechat/ChatCTASection"
-import { PartnersSection } from "@/components/PartnersSection"
-import { Testimonials } from "@/components/Testimonials"
-import { SmoothScrollProvider } from "@/components/smooth-scroll-provider"
+import { PartnersSection } from "@/components/frontpagechat/marketing/PartnersSection"
+import { Testimonials } from "@/components/frontpagechat/marketing/Testimonials"
+import { SmoothScrollProvider } from "@/components/frontpagechat/marketing/smooth-scroll-provider"
 
 export default function NewChatPage() {
     return (
@@ -26,7 +26,7 @@ export default function NewChatPage() {
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866] font-semibold tracking-wider uppercase text-sm mb-4 block">
                                 Why BuildwellAI Chat?
                             </span>
-                            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground dark:text-white mb-6">
+                            <h2 className="font-['Big_Shoulders_Display'] text-3xl md:text-4xl lg:text-5xl font-bold text-foreground dark:text-white mb-6">
                                 Complete Project Intelligence <br />
                                 <span className="text-foreground dark:text-white">From Regulations to </span>
                                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866]">Real-Time</span>
