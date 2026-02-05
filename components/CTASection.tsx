@@ -1,59 +1,53 @@
 "use client"
 
-import React from 'react';
-import { Button } from '@/components/ui/button';
-import { ArrowRight, Mail } from 'lucide-react';
+import React from "react"
+import Link from "next/link"
+import Image from "next/image"
+import { Button } from "@/components/ui/button"
+import { ArrowRight } from "lucide-react"
 
 export function CTASection() {
   return (
-    <section className="py-20 border-t border-transparent  relative overflow-hidden">
-      {/* Background Image - Covers entire section */}
-      <div 
-        className="absolute inset-0 w-full h-full opacity-15 dark:opacity-30"
-        style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&q=80')`,
-          backgroundSize: 'cover',
-          backgroundRepeat: 'no-repeat',
-          backgroundPosition: 'center'
-        }}
-      />
+    <section className="w-full py-20 relative overflow-hidden">
+      {/* Background Image */}
+      <div className="absolute inset-0">
+        <Image
+          src="/build.jpg"
+          alt="Construction site"
+          fill
+          className="object-cover"
+          priority
+        />
+        {/* Dark overlay */}
+        <div className="absolute inset-0 bg-black/60 dark:bg-black/70" />
+      </div>
 
-      <div className="container mx-auto px-4 relative z-10">
-          <div className="mx-auto max-w-4xl">
-            <div className="relative overflow-hidden rounded-[5px] bg-gradient-to-br from-primary/10 via-primary/5 to-secondary/10 border-0 p-8 md:p-12 lg:p-16">
-
-            <div className="relative z-10 text-center">
-              <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-gray-900 dark:text-white">
-                Ready to Transform Your{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866]">Construction Projects</span>?
-              </h2>
-              <p className="text-lg md:text-xl text-muted-foreground dark:text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed">
-                Join thousands of construction professionals who are already using BuildwellAI 
-                to streamline compliance, improve safety, and accelerate project delivery.
-              </p>
-              
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="https://chat.buildwellai.com" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
-                  <Button size="lg" className="bg-gradient-to-r from-[#FBB429] to-[#F87866] text-white hover:opacity-90 transition-all shadow-lg w-full">
-                    Get Started Free
-                    <ArrowRight className="ml-2 h-5 w-5" />
-                  </Button>
-                </a>
-                <a href="/contact" className="w-full sm:w-auto">
-                  <Button size="lg" variant="outline" className="border-2 border-neutral-300 dark:border-neutral-700 hover:border-[#FBB429] dark:hover:border-[#FBB429] w-full transition-all">
-                    <Mail className="mr-2 h-5 w-5" />
-                    Contact Sales
-                  </Button>
-                </a>
-              </div>
-
-              <p className="mt-6 text-sm text-muted-foreground dark:text-gray-400">
-                Price of services available on enquiry.
-              </p>
+      {/* Content */}
+      <div className="relative z-10 mx-auto max-w-7xl px-4">
+        <div className="max-w-2xl mx-auto text-center">
+          <div className="space-y-6">
+            <h2 className="font-display text-3xl font-bold tracking-tight md:text-4xl text-white">
+              Ready to Build <span className="text-gradient-orange">Safer & Smarter</span>?
+            </h2>
+            <p className="text-lg leading-relaxed text-gray-200">
+              Book a demo to see how AI-powered monitoring can reduce safety incidents and keep your projects on track.
+            </p>
+            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row pt-4">
+              <Link href="/dashboard" className="w-full md:w-auto">
+                <Button className="group relative inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#FBB429] to-[#F87866] text-white px-8 py-3 rounded-[5px] font-semibold text-base hover:shadow-lg hover:opacity-95 transition-all duration-300 h-auto w-full md:w-auto">
+                  Book a Demo
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
+              <Link href="/video-analysis" className="w-full md:w-auto">
+                <Button className="group relative inline-flex items-center justify-center gap-2 border-2 border-white/30 bg-transparent text-white px-8 py-3 rounded-[5px] font-semibold text-base hover:bg-white/20 backdrop-blur-sm transition-all duration-300 h-auto w-full md:w-auto">
+                  Explore Features
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
       </div>
     </section>
-  );
+  )
 }

@@ -212,12 +212,9 @@ export function SubdomainSection() {
           {/* Desktop: Animated stacked cards */}
           <div className="desktop-cards gap-3 h-[400px] px-4">
             {featureCards.map((card) => (
-              <motion.a
+              <motion.div
                 key={card.id}
-                href={card.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="relative overflow-hidden cursor-pointer rounded-[5px] group flex-shrink-0"
+                className="relative overflow-hidden cursor-default rounded-[5px] group flex-shrink-0"
                 initial={{ width: '20%' }}
                 style={{
                   width: getCardWidth(card.id)
@@ -262,15 +259,20 @@ export function SubdomainSection() {
                     <h3 className="font-display text-2xl font-bold text-white">
                       {card.title}
                     </h3>
-                    <p className="text-gray-200 text-sm leading-relaxed">
+                    <div className="text-gray-200 text-sm leading-relaxed">
                       {card.description}
-                    </p>
-                    <div className="flex items-center text-orange-400 font-medium text-sm group-hover:text-orange-300 transition-colors">
+                    </div>
+                    <a
+                      href={card.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center text-orange-400 font-medium text-sm group-hover:text-orange-300 transition-colors cursor-pointer"
+                    >
                       Learn More
                       <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                       </svg>
-                    </div>
+                    </a>
                   </motion.div>
                 </div>
                 <motion.div
@@ -280,7 +282,7 @@ export function SubdomainSection() {
                   }}
                   transition={{ duration: 0.3 }}
                 />
-              </motion.a>
+              </motion.div>
             ))}
           </div>
 
@@ -301,7 +303,7 @@ export function SubdomainSection() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent rounded-2xl z-10" />
                   <div className="relative z-20 text-left p-6 pt-24 flex flex-col justify-end h-full">
                     <h3 className="font-display text-xl font-bold text-gray-200 mb-1">{card.title}</h3>
-                    <p className="text-gray-300 text-base mb-2">{card.description}</p>
+                    <div className="text-gray-300 text-base mb-2">{card.description}</div>
                     <a
                       href={card.url}
                       target="_blank"

@@ -1,9 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders:opsz,wght@10..72,100..900&display=swap');
 
 html {
   scroll-behavior: auto;
+}
+
+
+.big-shoulders-display {
+  font-family: "Big Shoulders", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: weight;
+  font-style: normal;
 }
 
 html.lenis {
@@ -132,31 +141,38 @@ html.lenis {
     border-color: hsl(var(--border));
     outline-color: hsl(var(--ring) / 0.5);
   }
+
   body {
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));
     font-feature-settings: "rlig" 1, "calt" 1;
   }
+
   /* Brand font utilities */
   .font-display {
     font-family: 'Big Shoulders Display', sans-serif;
   }
+
   .font-data {
     font-family: 'Courier Prime', monospace;
   }
 }
 
 @layer components {
+
   /* Brand gradient utilities */
   .bg-gradient-orange {
     background: linear-gradient(90deg, #FBB429 0%, #F87866 100%);
   }
+
   .bg-gradient-navy {
     background: linear-gradient(180deg, #0a1929 0%, #172b3a 100%);
   }
+
   .bg-gradient-blue {
     background: linear-gradient(135deg, #2196f3 0%, #0d47a1 100%);
   }
+
   /* Text gradient classes */
   .text-gradient-orange {
     background: linear-gradient(90deg, #FBB429 0%, #F87866 100%);
@@ -164,10 +180,39 @@ html.lenis {
     background-clip: text;
     -webkit-text-fill-color: transparent;
   }
+
   .text-gradient-blue {
     background: linear-gradient(135deg, #2196f3 0%, #0d47a1 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
   }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes marquee2 {
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 25s linear infinite;
+}
+
+.animate-marquee2 {
+  animation: marquee2 25s linear infinite;
 }

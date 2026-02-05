@@ -157,10 +157,10 @@ export default function FeaturesPage() {
                 <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">
                   See how AI-powered visual analysis transforms construction site monitoring and ensures safety compliance in real-time.
                 </p>
-                
+
                 <div className="space-y-3 pt-2">
                   <h4 className="font-display text-2xl font-bold">Key Features</h4>
-                  
+
                   <div className="flex items-start gap-3">
                     <div className="w-2 h-2 rounded-full bg-gradient-orange mt-2 flex-shrink-0" />
                     <div>
@@ -170,7 +170,7 @@ export default function FeaturesPage() {
                       </p>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-start gap-3">
                     <div className="w-2 h-2 rounded-full bg-gradient-orange mt-2 flex-shrink-0" />
                     <div>
@@ -180,7 +180,7 @@ export default function FeaturesPage() {
                       </p>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-start gap-3">
                     <div className="w-2 h-2 rounded-full bg-gradient-orange mt-2 flex-shrink-0" />
                     <div>
@@ -429,7 +429,7 @@ export default function FeaturesPage() {
               </div>
             </div>
           </div>
-          
+
           <div className="grid gap-12 lg:grid-cols-2 lg:items-center mb-12">
             <div className="space-y-6">
               <div className="flex items-center gap-4">
@@ -439,11 +439,11 @@ export default function FeaturesPage() {
                 <h3 className="font-display text-3xl font-bold tracking-tight">AI Document Sorting</h3>
               </div>
               <p className="text-lg leading-relaxed text-muted-foreground">
-                Upload hundreds of documents at once and let AI intelligently classify them by type, trade, building zone, 
-                and compliance category. Your team reviews and approves classifications, maintaining full control while 
+                Upload hundreds of documents at once and let AI intelligently classify them by type, trade, building zone,
+                and compliance category. Your team reviews and approves classifications, maintaining full control while
                 eliminating hours of manual sorting work.
               </p>
-              
+
               <div className="space-y-3">
                 <h4 className="font-semibold">Key Capabilities:</h4>
                 <div className="flex items-start gap-3">
@@ -468,7 +468,7 @@ export default function FeaturesPage() {
                 </div>
               </div>
             </div>
-            
+
             <div className="relative">
               <div className="aspect-4/3 overflow-hidden rounded-2xl border-2 border-border bg-muted">
                 <Image
@@ -546,7 +546,7 @@ export default function FeaturesPage() {
               AI Assistant for Building Documentation
             </p>
           </div>
-          
+
           <div className="max-w-6xl mx-auto">
             <div className="grid gap-8 lg:grid-cols-5 items-center mb-12">
               <div className="space-y-6 lg:col-span-2">
@@ -580,16 +580,16 @@ export default function FeaturesPage() {
               </div>
               <div className="relative lg:col-span-3">
                 <div className="aspect-video overflow-hidden rounded-xl border-2 border-border bg-muted shadow-lg">
-                   <video
-                  className="w-full h-auto object-cover aspect-video"
-                  loop
-                  muted
-                  playsInline
-                  autoPlay
-                >
-                  <source src="https://res.cloudinary.com/drzxliqyz/video/upload/v1763297450/chatrec_kfrokc.mp4" type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
+                  <video
+                    className="w-full h-auto object-cover aspect-video"
+                    loop
+                    muted
+                    playsInline
+                    autoPlay
+                  >
+                    <source src="https://res.cloudinary.com/drzxliqyz/video/upload/v1763297450/chatrec_kfrokc.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
                 </div>
               </div>
             </div>
@@ -747,9 +747,9 @@ export default function FeaturesPage() {
                   <source src="https://res.cloudinary.com/drzxliqyz/video/upload/v1762797262/showcasenews_peihce.mp4" type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
-                
+
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-                
+
                 <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
                   <h3 className="font-display text-3xl sm:text-4xl font-bold mb-3">
                     Stay Informed, Stay Compliant
@@ -761,7 +761,7 @@ export default function FeaturesPage() {
               </div>
             </div>
           </div>
-          
+
           <div className="grid gap-12 lg:grid-cols-2 lg:items-center mb-12 max-w-6xl mx-auto">
             <div className="space-y-6">
               <h3 className="font-display text-3xl font-bold tracking-tight">Stay Ahead of Changes</h3>
@@ -797,71 +797,6 @@ export default function FeaturesPage() {
                 />
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Section 6: Platform Overview */}
-      <section className="py-20 border-t border-border bg-white dark:bg-[#0a1929]">
-        <div className="container mx-auto px-4">
-          <div className="mb-16 text-center">
-            <h2 className="font-display text-4xl md:text-5xl font-bold mb-4">
-              One Platform, <span className="text-gradient-orange">Complete Solution</span>
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              All products work together seamlessly for end-to-end compliance
-            </p>
-          </div>
-
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
-            {[
-              { icon: Eye, title: "Visual Monitoring", desc: "BuildwellEYE captures site safety", color: "from-orange-500 to-orange-600" },
-              { icon: FileText, title: "Documentation", desc: "BuildwellTHREAD manages the golden thread", color: "from-orange-500 to-orange-600" },
-              { icon: Users, title: "AI Assistant", desc: "BuildwellCHAT answers questions", color: "from-orange-500 to-orange-600" },
-              { icon: Camera, title: "Site Inspections", desc: "BuildwellINSPECT for mobile reporting", color: "from-orange-500 to-orange-600" },
-              { icon: TrendingUp, title: "Industry Intel", desc: "BuildwellNEWS keeps you informed", color: "from-orange-500 to-orange-600" },
-              { icon: Lock, title: "Secure", desc: "Bank-level encryption & audit trails", color: "from-orange-500 to-orange-600" },
-            ].map((feature, index) => {
-              const IconComponent = feature.icon
-              return (
-                <Card key={index} className="border-border hover:shadow-lg transition-all hover:-translate-y-1">
-                  <CardHeader>
-                    <div className={`flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-r ${feature.color}`}>
-                      <IconComponent className="h-6 w-6 text-white" />
-                    </div>
-                    <CardTitle className="mt-4">{feature.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <CardDescription className="leading-relaxed">{feature.desc}</CardDescription>
-                  </CardContent>
-                </Card>
-              )
-            })}
-          </div>
-        </div>
-      </section>
-
- {/* CTA Section */}
-      <section className="container mx-auto px-4 py-20">
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className="font-display text-3xl font-bold tracking-tight md:text-4xl">
-            Ready to Transform Your Compliance?
-          </h2>
-          <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-            Book a personalized demo to see how BuildwellAI can work for your projects
-          </p>
-          <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Link href="/contact" className="w-full sm:w-auto">
-              <Button size="lg" className="w-full bg-gradient-orange text-white hover:brightness-110">
-                Book a Demo
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-            </Link>
-            <Link href="/pricing" className="w-full sm:w-auto">
-              <Button size="lg" variant="outline" className="w-full">
-                View Pricing
-              </Button>
-            </Link>
           </div>
         </div>
       </section>

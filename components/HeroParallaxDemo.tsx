@@ -68,7 +68,7 @@ export const HeroCarousel = React.forwardRef<HTMLDivElement, HeroCarouselProps>(
               {/* Main Title */}
               <motion.h1
                 variants={itemVariants}
-                className="font-display text-5xl font-bold leading-tight text-white"
+                className="font-display text-5xl font-bold leading-tight text-white mb-6"
               >
                 Building the <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#FBB429] to-[#F87866]">Future</span> of UK Construction
               </motion.h1>
@@ -82,9 +82,9 @@ export const HeroCarousel = React.forwardRef<HTMLDivElement, HeroCarouselProps>(
               {/* Subtitle */}
               <motion.p
                 variants={itemVariants}
-                className="text-base text-gray-200 leading-relaxed"
+                className="text-lg text-gray-200 leading-relaxed"
               >
-                Transform your construction projects with cutting-edge AI technology. From compliance and safety to project management and digital transformation.
+                Transform your construction projects with BuildwellAI&apos;s cutting-edge technology. From compliance and safety to project management and digital transformation.
               </motion.p>
 
               {/* CTA Buttons */}
@@ -120,7 +120,7 @@ export const HeroCarousel = React.forwardRef<HTMLDivElement, HeroCarouselProps>(
               {/* Main Title */}
               <motion.h1
                 variants={itemVariants}
-                className="font-display text-5xl lg:text-6xl font-bold leading-tight text-black dark:text-white"
+                className="font-display text-6xl lg:text-7xl font-bold leading-tight text-black dark:text-white"
               >
                 Building the <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#FBB429] to-[#F87866]">Future</span> of UK Construction
               </motion.h1>
@@ -134,9 +134,9 @@ export const HeroCarousel = React.forwardRef<HTMLDivElement, HeroCarouselProps>(
               {/* Subtitle */}
               <motion.p
                 variants={itemVariants}
-                className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed"
+                className="text-xl text-gray-700 dark:text-gray-300 leading-relaxed"
               >
-                Transform your construction projects with cutting-edge AI technology. From compliance and safety to project management and digital transformation.
+                Transform your construction projects with BuildwellAI&apos;s cutting-edge technology. From compliance and safety to project management and digital transformation.
               </motion.p>
 
               {/* CTA Buttons */}
