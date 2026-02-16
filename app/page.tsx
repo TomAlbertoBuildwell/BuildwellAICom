@@ -106,7 +106,7 @@ export default function NewHomepage() {
                                 >
                                     <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg bg-muted">
                                         <Image
-                                            src="/eyereplace.jpg"
+                                            src="/eyeimg.jpeg"
                                             alt="BuildwellEYE"
                                             fill
                                             className="object-cover group-hover:scale-105 transition-transform duration-500"
