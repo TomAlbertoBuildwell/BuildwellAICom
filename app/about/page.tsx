@@ -386,7 +386,7 @@ export default function AboutPage() {
                     role: "Head Of Operations",
                     description: "An accomplished leader in operational efficiency and strategic planning, optimizing workflows and ensuring seamless project delivery.",
                     // Tech focused professional
-                    image: "/personalimgs/tom.jpg",
+                    image: "/personalimgs/tomm.jpeg",
                     objectPosition: "center 30%"
                   },
                   {
