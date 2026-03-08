@@ -1,807 +1,770 @@
 "use client"
-import React from "react"
-import Link from "next/link"
+
+import React, { useState } from "react"
 import Image from "next/image"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import Link from "next/link"
+import { motion, AnimatePresence } from "framer-motion"
 import { MarketingNav } from "@/components/marketing-nav"
 import { MarketingFooter } from "@/components/marketing-footer"
+import { CTASection } from "@/components/CTASection"
 import {
-  FileText,
-  Eye,
-  Shield,
-  CheckCircle,
-  TrendingUp,
-  Users,
-  Camera,
-  MapPin,
-  Calendar,
-  Download,
-  Search,
-  Bell,
-  Lock,
-  Zap,
-  FileCheck,
-  Award,
-  Link2,
-  ArrowRight,
-  MessageSquare,
-  BarChart3,
-  Lightbulb,
-  Globe,
+    ArrowRight,
+    ChevronDown,
+    Camera,
+    Eye,
+    FileText,
+    Shield,
+    CheckCircle,
+    Bell,
+    Search,
+    Lock,
+    Zap,
+    FileCheck,
+    MessageSquare,
+    BarChart3,
+    MapPin,
+    Users,
+    Download,
+    Link2,
+    Calendar,
+    Lightbulb,
+    Wifi,
+    WifiOff,
+    Globe,
+    Sparkles,
 } from "lucide-react"
 
-export default function FeaturesPage() {
-  return (
-    <div className="flex min-h-screen flex-col bg-white dark:bg-[#0a1929]">
-      <MarketingNav />
+/* ── Animation presets ─────────────────────── */
+const fade = {
+    hidden: { opacity: 0, y: 24 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" as const } },
+}
+const stagger = { visible: { transition: { staggerChildren: 0.08 } } }
 
-      {/* Hero Section */}
-      <section className="relative h-[70vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/build.jpg"
-            alt="Construction site with AI technology"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/70" />
-        </div>
-
-        <div className="container relative z-10 mx-auto px-4">
-          <div className="mx-auto max-w-3xl text-center text-white">
-            <h1 className="font-display text-5xl font-bold leading-tight tracking-tight md:text-6xl">
-              Complete Compliance Platform <span className="text-gradient-orange">Powered by AI</span>
-            </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-white/90">
-              Five integrated products that work together to transform how you manage building safety and compliance
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Quick Overview Cards */}
-      <section className="container mx-auto px-4 py-20">
-        <div className="mx-auto max-w-3xl text-center mb-16">
-          <h2 className="font-display text-3xl font-bold tracking-tight md:text-4xl">
-            AI-Powered Tools for Every Need
-          </h2>
-          <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-            Streamlined solutions that enhance your team's expertise
-          </p>
-        </div>
-
-        <div className="grid gap-6 md:grid-cols-4">
-          <Card className="border-border hover:shadow-lg transition-shadow">
-            <CardHeader>
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-orange mb-4">
-                <Camera className="h-6 w-6 text-white" />
-              </div>
-              <CardTitle className="font-display text-xl">Site Monitoring</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <CardDescription className="leading-relaxed">
-                AI-powered defect detection and safety monitoring in real-time
-              </CardDescription>
-            </CardContent>
-          </Card>
-
-          <Card className="border-border hover:shadow-lg transition-shadow">
-            <CardHeader>
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-orange mb-4">
-                <FileText className="h-6 w-6 text-white" />
-              </div>
-              <CardTitle className="font-display text-xl">Smart Classification</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <CardDescription className="leading-relaxed">
-                AI sorts hundreds of documents instantly by type, trade, and compliance category
-              </CardDescription>
-            </CardContent>
-          </Card>
-
-          <Card className="border-border hover:shadow-lg transition-shadow">
-            <CardHeader>
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-orange mb-4">
-                <CheckCircle className="h-6 w-6 text-white" />
-              </div>
-              <CardTitle className="font-display text-xl">Site Inspections</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <CardDescription className="leading-relaxed">
-                Mobile-first inspection reports with photo evidence and instant PDFs
-              </CardDescription>
-            </CardContent>
-          </Card>
-
-          <Card className="border-border hover:shadow-lg transition-shadow">
-            <CardHeader>
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-orange mb-4">
-                <Bell className="h-6 w-6 text-white" />
-              </div>
-              <CardTitle className="font-display text-xl">Industry Intelligence</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <CardDescription className="leading-relaxed">
-                Stay informed with curated UK construction news and regulatory updates
-              </CardDescription>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      {/* Section 1: BuildwellEYE */}
-      <section className="py-20 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <div className="mb-16 text-center">
-            <div className="inline-flex items-center gap-2 rounded-full bg-gradient-orange/10 px-4 py-2 text-sm font-semibold text-primary border border-primary/20 mb-4">
-              AI-Powered Vision
-            </div>
-            <h2 className="font-display text-4xl md:text-5xl font-bold mb-4">
-              Buildwell<span className="text-gradient-orange">EYE</span>
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Real-time defect detection and safety monitoring with AI-powered computer vision
-            </p>
-          </div>
-
-          {/* Custom Video Showcase - Grid Style */}
-          <div className="mb-16">
-            <div className="grid lg:grid-cols-5 gap-8 lg:gap-12 items-center">
-              {/* Left Column - Text Content (2 columns) */}
-              <div className="lg:col-span-2 space-y-4">
-                <h3 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold">
-                  BuildwellEYE in Action
-                </h3>
-                <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">
-                  See how AI-powered visual analysis transforms construction site monitoring and ensures safety compliance in real-time.
-                </p>
-
-                <div className="space-y-3 pt-2">
-                  <h4 className="font-display text-2xl font-bold">Key Features</h4>
-
-                  <div className="flex items-start gap-3">
-                    <div className="w-2 h-2 rounded-full bg-gradient-orange mt-2 flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold text-sm">Real-time AI Detection</p>
-                      <p className="text-muted-foreground text-sm leading-snug">
-                        Instantly identify safety violations and potential hazards on your construction site
-                      </p>
+/* ── Reusable browser-frame video wrapper ──── */
+function BrowserFrame({ children, url }: { children: React.ReactNode; url?: string }) {
+    return (
+        <div className="rounded-xl border border-neutral-200 dark:border-neutral-700 shadow-2xl overflow-hidden bg-white dark:bg-[#1a1a2e]">
+            {/* Chrome bar */}
+            <div className="flex items-center gap-2 px-4 py-2.5 bg-neutral-100 dark:bg-[#1e1e30] border-b border-neutral-200 dark:border-neutral-700">
+                <div className="flex gap-1.5">
+                    <div className="w-3 h-3 rounded-full bg-[#FF5F57]" />
+                    <div className="w-3 h-3 rounded-full bg-[#FFBD2E]" />
+                    <div className="w-3 h-3 rounded-full bg-[#28C840]" />
+                </div>
+                {url && (
+                    <div className="ml-3 flex-1 max-w-md">
+                        <div className="bg-white dark:bg-[#2a2a3e] rounded-md px-3 py-1 text-xs text-muted-foreground truncate border border-neutral-200 dark:border-neutral-600">
+                            {url}
+                        </div>
                     </div>
-                  </div>
-
-                  <div className="flex items-start gap-3">
-                    <div className="w-2 h-2 rounded-full bg-gradient-orange mt-2 flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold text-sm">Comprehensive Analytics</p>
-                      <p className="text-muted-foreground text-sm leading-snug">
-                        Get instant alerts, detailed reports, and actionable insights through our dashboard
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-3">
-                    <div className="w-2 h-2 rounded-full bg-gradient-orange mt-2 flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold text-sm">24/7 Site Monitoring</p>
-                      <p className="text-muted-foreground text-sm leading-snug">
-                        Continuous surveillance with cloud-based storage and multi-camera support
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Right Column - Video (3 columns - larger) */}
-              <div className="lg:col-span-3 relative">
-                <div className="relative overflow-hidden rounded-lg bg-[#0a1929] shadow-lg">
-                  <video
-                    className="w-full h-auto object-cover aspect-video"
-                    loop
-                    muted
-                    playsInline
-                    autoPlay
-                  >
-                    <source src="https://res.cloudinary.com/drzxliqyz/video/upload/v1762606241/WhatsApp_Video_2025-11-07_at_18.14.45_6913d34a_wrpesi.mp4" type="video/mp4" />
-                    Your browser does not support the video tag.
-                  </video>
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a1929]/20 to-transparent pointer-events-none" />
-                </div>
-              </div>
+                )}
             </div>
-          </div>
-
-          {/* How It Works - Step by Step */}
-          <div className="grid gap-12 lg:gap-16 max-w-6xl mx-auto">
-            {/* Step 1 */}
-            <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
-              <div className="relative md:order-2">
-                <div className="aspect-4/3 overflow-hidden rounded-[5px] border-2 border-gray-300/40 dark:border-gray-700/40 bg-muted">
-                  <Image
-                    src="https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=800&h=600&fit=crop"
-                    alt="Camera integration"
-                    width={800}
-                    height={600}
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-              </div>
-              <div className="space-y-6 md:order-1">
-                <div className="inline-flex items-center gap-2 rounded-full bg-gradient-orange/10 px-4 py-2 text-sm font-semibold text-primary border border-primary/20">
-                  <Camera className="h-4 w-4" />
-                  Step 1: Connect Your Cameras
-                </div>
-                <h3 className="font-display text-2xl md:text-3xl font-bold">
-                  Seamless Integration with Existing Cameras
-                </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  BuildwellEYE integrates with your existing CCTV cameras, drones, or mobile devices. No need to replace infrastructure—our AI works with what you already have.
-                </p>
-                <div className="space-y-3">
-                  <div className="flex items-start gap-3">
-                    <CheckCircle className="h-5 w-5 text-success-green mt-0.5 shrink-0" />
-                    <p className="text-sm">Works with any IP camera, RTSP stream, or uploaded photos/videos</p>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <CheckCircle className="h-5 w-5 text-success-green mt-0.5 shrink-0" />
-                    <p className="text-sm">Cloud-based processing—no expensive on-site hardware required</p>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <CheckCircle className="h-5 w-5 text-success-green mt-0.5 shrink-0" />
-                    <p className="text-sm">Secure data transmission with enterprise-grade encryption</p>
-                  </div>
-                </div>
-              </div>
+            {/* Video content */}
+            <div className="bg-neutral-900">
+                {children}
             </div>
-
-            {/* Step 2 */}
-            <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
-              <div className="relative md:order-1">
-                <div className="aspect-4/3 overflow-hidden rounded-[5px] border-2 border-gray-300/40 dark:border-gray-700/40 bg-muted">
-                  <Image
-                    src="https://images.unsplash.com/photo-1581094271901-8022df4466f9?w=800&h=600&fit=crop"
-                    alt="AI analysis"
-                    width={800}
-                    height={600}
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-              </div>
-              <div className="space-y-6 md:order-2">
-                <div className="inline-flex items-center gap-2 rounded-full bg-gradient-orange/10 px-4 py-2 text-sm font-semibold text-primary border border-primary/20">
-                  <Eye className="h-4 w-4" />
-                  Step 2: AI Analyzes in Real-Time
-                </div>
-                <h3 className="font-display text-2xl md:text-3xl font-bold">
-                  Continuous AI Monitoring & Detection
-                </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  Our computer vision models analyze every frame, detecting safety hazards, quality defects, and progress milestones. AI learns your site's unique conditions for more accurate detection over time.
-                </p>
-                <div className="space-y-3">
-                  <div className="flex items-start gap-3">
-                    <CheckCircle className="h-5 w-5 text-success-green mt-0.5 shrink-0" />
-                    <p className="text-sm">Real-time detection of 50+ safety hazards and quality issues</p>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <CheckCircle className="h-5 w-5 text-success-green mt-0.5 shrink-0" />
-                    <p className="text-sm">Automated alerts sent instantly via SMS, email, or app notification</p>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <CheckCircle className="h-5 w-5 text-success-green mt-0.5 shrink-0" />
-                    <p className="text-sm">Custom detection models trained for your specific project requirements</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Step 3 */}
-            <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
-              <div className="space-y-6">
-                <div className="inline-flex items-center gap-2 rounded-full bg-gradient-orange/10 px-4 py-2 text-sm font-semibold text-primary border border-primary/20">
-                  <BarChart3 className="h-4 w-4" />
-                  Step 3: Act on Insights
-                </div>
-                <h3 className="font-display text-2xl md:text-3xl font-bold">
-                  Actionable Dashboards & Reports
-                </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  Access a centralized dashboard showing all detected issues, safety trends, and progress analytics. Filter by severity, location, or type. Generate compliance reports instantly.
-                </p>
-                <div className="space-y-3">
-                  <div className="flex items-start gap-3">
-                    <CheckCircle className="h-5 w-5 text-success-green mt-0.5 shrink-0" />
-                    <p className="text-sm">Real-time dashboards with photo evidence and exact timestamps</p>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <CheckCircle className="h-5 w-5 text-success-green mt-0.5 shrink-0" />
-                    <p className="text-sm">Automated compliance reports for regulators and stakeholders</p>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <CheckCircle className="h-5 w-5 text-success-green mt-0.5 shrink-0" />
-                    <p className="text-sm">Historical analytics to identify patterns and prevent future issues</p>
-                  </div>
-                </div>
-              </div>
-              <div className="relative">
-                <div className="aspect-4/3 overflow-hidden rounded-[5px] border-2 border-gray-300/40 dark:border-gray-700/40 bg-muted">
-                  <Image
-                    src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop"
-                    alt="Dashboard analytics"
-                    width={800}
-                    height={600}
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Key Stats */}
-          <div className="mx-auto max-w-5xl mt-16 pt-12 border-t border-border">
-            <div className="grid gap-8 md:grid-cols-3">
-              <div className="text-center space-y-2">
-                <div className="font-display text-4xl font-bold text-primary md:text-5xl">60%</div>
-                <p className="text-sm text-muted-foreground">
-                  Reduction in safety incidents with real-time AI monitoring
-                </p>
-              </div>
-              <div className="text-center space-y-2">
-                <div className="font-display text-4xl font-bold text-primary md:text-5xl">24/7</div>
-                <p className="text-sm text-muted-foreground">
-                  Continuous site monitoring with AI-powered defect detection
-                </p>
-              </div>
-              <div className="text-center space-y-2">
-                <div className="font-display text-4xl font-bold text-primary md:text-5xl">3x</div>
-                <p className="text-sm text-muted-foreground">
-                  Faster issue identification with automated visual analysis
-                </p>
-              </div>
-            </div>
-          </div>
         </div>
-      </section>
+    )
+}
 
-      {/* Section 2: BuildwellTHREAD */}
-      <section className="py-20 bg-white dark:bg-[#0a1929]">
-        <div className="container mx-auto px-4">
-          <div className="mb-16 text-center">
-            <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-2 text-sm font-medium mb-4">
-              AI-Powered Documentation
-            </div>
-            <h2 className="font-display text-4xl md:text-5xl font-bold mb-4">
-              Buildwell<span className="text-gradient-orange">THREAD</span>
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Complete Golden Thread Documentation Management
-            </p>
-          </div>
-
-          {/* Custom Video Showcase - Centered Style */}
-          <div className="mb-16 max-w-5xl mx-auto">
-            <div className="space-y-8">
-              <div className="text-center space-y-4">
-                <h3 className="font-display text-3xl sm:text-4xl font-bold">
-                  Smart Document Management
-                </h3>
-                <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-                  See how AI automatically organizes hundreds of construction documents, creating a complete golden thread of building information from design to handover.
-                </p>
-              </div>
-
-              <div className="relative overflow-hidden rounded-xl border-2 border-border shadow-2xl">
-                <video
-                  className="w-full h-auto object-cover aspect-video"
-                  loop
-                  muted
-                  playsInline
-                  autoPlay
-                >
-                  <source src="https://res.cloudinary.com/drzxliqyz/video/upload/v1763297405/threadvid_oxmkua.mp4" type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-              </div>
-
-              <div className="grid md:grid-cols-3 gap-6 pt-4">
-                <div className="text-center space-y-2">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-orange mx-auto">
-                    <FileText className="h-6 w-6 text-white" />
-                  </div>
-                  <h4 className="font-semibold">AI Classification</h4>
-                  <p className="text-sm text-muted-foreground">Automatic document sorting by type and trade</p>
-                </div>
-                <div className="text-center space-y-2">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-orange mx-auto">
-                    <Link2 className="h-6 w-6 text-white" />
-                  </div>
-                  <h4 className="font-semibold">Complete Traceability</h4>
-                  <p className="text-sm text-muted-foreground">Unbroken chain from design to handover</p>
-                </div>
-                <div className="text-center space-y-2">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-orange mx-auto">
-                    <Shield className="h-6 w-6 text-white" />
-                  </div>
-                  <h4 className="font-semibold">Compliance Ready</h4>
-                  <p className="text-sm text-muted-foreground">Building Safety Act requirements</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="grid gap-12 lg:grid-cols-2 lg:items-center mb-12">
-            <div className="space-y-6">
-              <div className="flex items-center gap-4">
-                <div className="flex h-16 w-16 items-center justify-center rounded-xl bg-gradient-orange">
-                  <FileText className="h-8 w-8 text-white" />
-                </div>
-                <h3 className="font-display text-3xl font-bold tracking-tight">AI Document Sorting</h3>
-              </div>
-              <p className="text-lg leading-relaxed text-muted-foreground">
-                Upload hundreds of documents at once and let AI intelligently classify them by type, trade, building zone,
-                and compliance category. Your team reviews and approves classifications, maintaining full control while
-                eliminating hours of manual sorting work.
-              </p>
-
-              <div className="space-y-3">
-                <h4 className="font-semibold">Key Capabilities:</h4>
-                <div className="flex items-start gap-3">
-                  <CheckCircle className="h-5 w-5 text-success-green mt-0.5 shrink-0" />
-                  <p className="text-sm">Intelligent categorization by document type, trade, and building zone</p>
-                </div>
-                <div className="flex items-start gap-3">
-                  <CheckCircle className="h-5 w-5 text-success-green mt-0.5 shrink-0" />
-                  <p className="text-sm">Automatic metadata extraction (dates, revision numbers, approval status)</p>
-                </div>
-                <div className="flex items-start gap-3">
-                  <CheckCircle className="h-5 w-5 text-success-green mt-0.5 shrink-0" />
-                  <p className="text-sm">OCR for scanned documents and handwritten notes</p>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-4 p-4 rounded-lg bg-success-green/10 border border-success-green/20">
-                <TrendingUp className="h-8 w-8 text-success-green" />
-                <div>
-                  <div className="font-semibold">Save 10+ Hours Per Week</div>
-                  <div className="text-sm text-muted-foreground">Eliminate manual document sorting and filing</div>
-                </div>
-              </div>
-            </div>
-
-            <div className="relative">
-              <div className="aspect-4/3 overflow-hidden rounded-2xl border-2 border-border bg-muted">
+/* ═══════════════════════════════════════════════════════
+   HERO — Full-bleed background image with overlay
+   Inspired by Procore's construction-site hero
+   ═══════════════════════════════════════════════════════ */
+function Hero() {
+    return (
+        <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
+            <div className="absolute inset-0 z-0">
                 <Image
-                  src="/sorting.jpg"
-                  alt="Document sorting"
-                  width={800}
-                  height={600}
-                  className="h-full w-full object-cover"
+                    src="/features_hero.jpg"
+                    alt="Construction site"
+                    fill
+                    className="object-cover"
+                    priority
                 />
-              </div>
-            </div>
-          </div>
-
-          {/* Golden Thread Grid */}
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto mt-16">
-            {[
-              {
-                icon: Link2,
-                title: "Document Linking",
-                description: "Connect drawings to specifications, specifications to products, creating an unbroken chain of evidence.",
-              },
-              {
-                icon: MapPin,
-                title: "GPS Tracking",
-                description: "Every photo and document is GPS-tagged and linked to specific building zones for perfect traceability.",
-              },
-              {
-                icon: Calendar,
-                title: "Timeline View",
-                description: "See the complete history from design through construction to handover with timestamps and audit trails.",
-              },
-              {
-                icon: Users,
-                title: "Responsibility Tracking",
-                description: "Log who made every decision, when, and why. Complete accountability for the entire golden thread.",
-              },
-              {
-                icon: Search,
-                title: "Instant Search",
-                description: "Find any document, photo, or certification in seconds. Search by location, date, trade, or metadata.",
-              },
-              {
-                icon: Download,
-                title: "Export Packages",
-                description: "Generate complete golden thread packages for handover, audits, or regulatory submission with one click.",
-              },
-            ].map((feature, index) => (
-              <Card key={index} className="border-border">
-                <CardHeader>
-                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-orange mb-4">
-                    <feature.icon className="h-6 w-6 text-white" />
-                  </div>
-                  <CardTitle className="text-lg">{feature.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="leading-relaxed">{feature.description}</CardDescription>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Section 3: BuildwellCHAT */}
-      <section className="py-20 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <div className="mb-12 text-center">
-            <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-sm font-medium text-primary mb-4">
-              Coming Soon
-            </div>
-            <h2 className="font-display text-4xl md:text-5xl font-bold mb-4">
-              Buildwell<span className="text-gradient-orange">CHAT</span>
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              AI Assistant for Building Documentation
-            </p>
-          </div>
-
-          <div className="max-w-6xl mx-auto">
-            <div className="grid gap-8 lg:grid-cols-5 items-center mb-12">
-              <div className="space-y-6 lg:col-span-2">
-                <h3 className="font-display text-3xl font-bold">Your Building Documentation Expert</h3>
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  Ask questions and get instant answers from your entire building documentation library. Like ChatGPT, but trained on your project data.
-                </p>
-                <div className="space-y-3">
-                  <div className="flex items-start gap-3">
-                    <MessageSquare className="h-5 w-5 text-primary mt-1 shrink-0" />
-                    <div>
-                      <p className="font-semibold">Instant Answers</p>
-                      <p className="text-sm text-muted-foreground">Query your entire project documentation in natural language</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <FileCheck className="h-5 w-5 text-primary mt-1 shrink-0" />
-                    <div>
-                      <p className="font-semibold">Smart Compliance</p>
-                      <p className="text-sm text-muted-foreground">Get regulatory guidance based on Building Safety Act requirements</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <Search className="h-5 w-5 text-primary mt-1 shrink-0" />
-                    <div>
-                      <p className="font-semibold">Document Discovery</p>
-                      <p className="text-sm text-muted-foreground">Find relevant certifications, approvals, and specifications instantly</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="relative lg:col-span-3">
-                <div className="aspect-video overflow-hidden rounded-xl border-2 border-border bg-muted shadow-lg">
-                  <video
-                    className="w-full h-auto object-cover aspect-video"
-                    loop
-                    muted
-                    playsInline
-                    autoPlay
-                  >
-                    <source src="https://res.cloudinary.com/drzxliqyz/video/upload/v1763297450/chatrec_kfrokc.mp4" type="video/mp4" />
-                    Your browser does not support the video tag.
-                  </video>
-                </div>
-              </div>
+                <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/55 to-black/75" />
             </div>
 
-            <div className="text-center p-12 rounded-2xl bg-card border-2 border-border  ">
-              <h3 className="font-display text-2xl font-bold mb-4">Be Among the First to Try It</h3>
-              <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-                BuildwellCHAT is currently in development. Join our waitlist to get early access and help shape the future of AI-powered construction documentation.
-              </p>
-              <Link href="/contact">
-                <Button size="lg" className="bg-gradient-orange text-white hover:brightness-110">
-                  Join the Waitlist
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Section 4: BuildwellINSPECT */}
-      <section className="py-20 bg-white dark:bg-[#0a1929]">
-        <div className="container mx-auto px-4">
-          <div className="mb-16 text-center">
-            <div className="inline-flex items-center gap-2 rounded-full bg-gradient-orange/10 px-4 py-2 text-sm font-semibold text-primary border border-primary/20 mb-4">
-              Mobile-First Inspections
-            </div>
-            <h2 className="font-display text-4xl md:text-5xl font-bold mb-4">
-              Buildwell<span className="text-gradient-orange">INSPECT</span>
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Simple, Powerful Site Inspections
-            </p>
-          </div>
-
-          {/* Custom Video Showcase - Side by Side Style */}
-          <div className="mb-16">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div className="relative overflow-hidden rounded-xl border-2 border-border shadow-2xl order-2 lg:order-1">
-                <video
-                  className="w-full h-auto object-cover aspect-video"
-                  loop
-                  muted
-                  playsInline
-                  autoPlay
+            <div className="relative z-10 container mx-auto px-4 text-center py-32 md:py-40">
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
                 >
-                  <source src="https://res.cloudinary.com/drzxliqyz/video/upload/v1763297404/inspectvid_znvtb6.mp4" type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-              </div>
+                    <div className="inline-flex items-center gap-2 rounded-[5px] bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-2 text-sm font-semibold text-white mb-6">
+                        <Sparkles className="h-4 w-4 text-[#FBB429]" />
+                        The Buildwell Toolkit
+                    </div>
 
-              <div className="space-y-6 order-1 lg:order-2">
-                <h3 className="font-display text-3xl sm:text-4xl font-bold">
-                  Inspections Made Simple
-                </h3>
-                <p className="text-lg text-muted-foreground">
-                  Capture issues with photos, generate professional reports in minutes, and ensure nothing falls through the cracks with our mobile-first platform.
-                </p>
+                    <h1 className="font-['Big_Shoulders_Display'] text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[0.95] tracking-tight mb-6 max-w-4xl mx-auto">
+                        Your workflow,{" "}
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866]">
+                            supercharged
+                        </span>
+                    </h1>
 
-                <div className="space-y-4">
-                  <div className="flex items-start gap-4">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-orange flex-shrink-0">
-                      <Camera className="h-6 w-6 text-white" />
-                    </div>
-                    <div>
-                      <h4 className="font-semibold mb-1">Photo-First Reporting</h4>
-                      <p className="text-sm text-muted-foreground">Automatic GPS tagging, timestamps, and custom metadata for perfect audit trails</p>
-                    </div>
-                  </div>
+                    <p className="text-lg text-white/80 max-w-2xl mx-auto leading-relaxed mb-10">
+                        Five AI-powered products that work together to transform how you manage
+                        projects, compliance, and building safety across every stage of construction.
+                    </p>
 
-                  <div className="flex items-start gap-4">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-orange flex-shrink-0">
-                      <FileCheck className="h-6 w-6 text-white" />
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                        <Link href="/pricing">
+                            <button className="w-full sm:w-auto group inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#FBB429] to-[#F87866] text-white px-8 py-3 rounded-[5px] font-semibold text-base hover:shadow-lg hover:shadow-orange-500/25 hover:opacity-95 transition-all duration-300">
+                                Get Started Today
+                                <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                            </button>
+                        </Link>
+                        <Link href="/contact">
+                            <button className="w-full sm:w-auto inline-flex items-center justify-center gap-2 border-2 border-white/30 bg-white/5 backdrop-blur-sm text-white px-8 py-3 rounded-[5px] font-semibold text-base hover:bg-white/15 transition-all duration-300">
+                                Book a Demo
+                            </button>
+                        </Link>
                     </div>
-                    <div>
-                      <h4 className="font-semibold mb-1">Instant PDF Reports</h4>
-                      <p className="text-sm text-muted-foreground">Generate branded, professional reports in minutes with one-click sharing</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-4">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-orange flex-shrink-0">
-                      <Lock className="h-6 w-6 text-white" />
-                    </div>
-                    <div>
-                      <h4 className="font-semibold mb-1">Offline Mode</h4>
-                      <p className="text-sm text-muted-foreground">Work anywhere without internet—data syncs automatically when you're back online</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                </motion.div>
             </div>
-          </div>
+        </section>
+    )
+}
 
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
-            {[
-              {
-                icon: Camera,
-                title: "360° Capture",
-                description: "Support for 360° cameras, drones, and LiDAR scans to capture complete site context",
-              },
-              {
-                icon: Users,
-                title: "Team Collaboration",
-                description: "Share inspections, assign tasks, and track resolution progress in real-time",
-              },
-              {
-                icon: Shield,
-                title: "Compliance Ready",
-                description: "Meets post-Grenfell requirements with BuildwellTHREAD integration",
-              },
-            ].map((feature, index) => (
-              <Card key={index} className="border-border">
-                <CardHeader>
-                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-orange mb-4">
-                    <feature.icon className="h-6 w-6 text-white" />
-                  </div>
-                  <CardTitle className="text-lg">{feature.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="leading-relaxed">{feature.description}</CardDescription>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
+/* ═══════════════════════════════════════════════════════
+   OVERVIEW CARDS — Quick product overview (4 cols)
+   Inspired by Procore's card sections
+   ═══════════════════════════════════════════════════════ */
+function OverviewCards() {
+    const cards = [
+        { icon: Eye, title: "Site Monitoring", desc: "AI-powered defect detection and safety monitoring in real-time", color: "#FBB429" },
+        { icon: MessageSquare, title: "AI Assistant", desc: "Natural language queries across 40+ UK construction standards", color: "#F87866" },
+        { icon: FileText, title: "Smart Documentation", desc: "AI sorts & classifies hundreds of documents by type and trade", color: "#FBB429" },
+        { icon: CheckCircle, title: "Site Inspections", desc: "Mobile-first reporting with photo evidence and instant PDFs", color: "#F87866" },
+    ]
 
-      {/* Section 5: BuildwellNEWS */}
-      <section className="py-20 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <div className="mb-16 text-center">
-            <div className="inline-flex items-center gap-2 rounded-full bg-gradient-orange/10 px-4 py-2 text-sm font-semibold text-primary border border-primary/20 mb-4">
-              Industry Intelligence
-            </div>
-            <h2 className="font-display text-4xl md:text-5xl font-bold mb-4">
-              Buildwell<span className="text-gradient-orange">NEWS</span>
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              UK Construction Industry Intelligence Hub
-            </p>
-          </div>
-
-          {/* Custom Video Showcase - Overlay Style */}
-          <div className="mb-16 max-w-6xl mx-auto">
-            <div className="relative overflow-hidden rounded-2xl border-2 border-border shadow-2xl">
-              <div className="relative aspect-video">
-                <video
-                  className="w-full h-full object-cover"
-                  loop
-                  muted
-                  playsInline
-                  autoPlay
+    return (
+        <section className="py-16 bg-white dark:bg-[#0a1929]">
+            <div className="container mx-auto px-4">
+                <motion.div
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.2 }}
+                    variants={stagger}
+                    className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5"
                 >
-                  <source src="https://res.cloudinary.com/drzxliqyz/video/upload/v1762797262/showcasenews_peihce.mp4" type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-
-                <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
-                  <h3 className="font-display text-3xl sm:text-4xl font-bold mb-3">
-                    Stay Informed, Stay Compliant
-                  </h3>
-                  <p className="text-lg text-white/90 max-w-3xl">
-                    Your central hub for UK construction news, regulations, and industry updates. Never miss critical compliance changes or material recalls that affect your projects.
-                  </p>
-                </div>
-              </div>
+                    {cards.map((c, i) => (
+                        <motion.div
+                            key={i}
+                            variants={fade}
+                            className="group p-6 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#0d1f33] hover:shadow-lg hover:border-[#FBB429]/30 transition-all duration-300"
+                        >
+                            <div
+                                className="flex h-11 w-11 items-center justify-center rounded-lg mb-4"
+                                style={{ background: `linear-gradient(135deg, ${c.color}20, ${c.color}10)` }}
+                            >
+                                <c.icon className="h-5 w-5" style={{ color: c.color }} />
+                            </div>
+                            <h3 className="font-['Big_Shoulders_Display'] text-xl font-bold text-foreground dark:text-white mb-2">
+                                {c.title}
+                            </h3>
+                            <p className="text-sm text-muted-foreground leading-relaxed">{c.desc}</p>
+                        </motion.div>
+                    ))}
+                </motion.div>
             </div>
-          </div>
+        </section>
+    )
+}
 
-          <div className="grid gap-12 lg:grid-cols-2 lg:items-center mb-12 max-w-6xl mx-auto">
-            <div className="space-y-6">
-              <h3 className="font-display text-3xl font-bold tracking-tight">Stay Ahead of Changes</h3>
-              <p className="text-lg leading-relaxed text-muted-foreground">
-                Access curated construction news, safety alerts, regulatory updates, and material recalls—all in one place. Our AI-powered platform filters the noise to bring you only what matters for your projects.
-              </p>
-              <div className="space-y-4">
-                {[
-                  { icon: Bell, title: "Real-time Updates", desc: "Instant alerts on regulatory changes and safety notices" },
-                  { icon: Search, title: "Intelligent Search", desc: "Find relevant info across all sources with AI-powered search" },
-                  { icon: Shield, title: "Compliance Tracking", desc: "Monitor Building Safety Act updates and industry standards" }
-                ].map((item, idx) => (
-                  <div key={idx} className="flex items-start gap-4">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-orange flex-shrink-0">
-                      <item.icon className="h-5 w-5 text-white" />
-                    </div>
-                    <div>
-                      <p className="font-semibold">{item.title}</p>
-                      <p className="text-sm text-muted-foreground">{item.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="relative">
-              <div className="aspect-4/3 overflow-hidden rounded-2xl border-2 border-border bg-muted shadow-2xl">
-                <Image
-                  src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&h=600&fit=crop"
-                  alt="Industry news and updates"
-                  width={800}
-                  height={600}
-                  className="h-full w-full object-cover"
+/* ═══════════════════════════════════════════════════════
+   ACCORDION ITEM — Reusable feature accordion
+   Inspired by ArchiAdemia's expandable feature lists
+   ═══════════════════════════════════════════════════════ */
+function AccordionFeature({
+    title,
+    description,
+    isActive,
+    onClick,
+    accentColor = "#FBB429",
+}: {
+    title: string
+    description: string
+    isActive: boolean
+    onClick: () => void
+    accentColor?: string
+}) {
+    return (
+        <button
+            onClick={onClick}
+            className={`w-full text-left p-4 rounded-lg border transition-all duration-300 ${isActive
+                ? "border-[#FBB429]/40 bg-gradient-to-r from-[#FBB429]/5 to-[#F87866]/5 shadow-sm"
+                : "border-neutral-200 dark:border-neutral-800 hover:border-neutral-300 dark:hover:border-neutral-700"
+                }`}
+        >
+            <div className="flex items-center justify-between">
+                <h4
+                    className={`font-semibold text-base transition-colors ${isActive ? "text-[#FBB429]" : "text-foreground dark:text-white"
+                        }`}
+                >
+                    {title}
+                </h4>
+                <ChevronDown
+                    className={`h-4 w-4 text-muted-foreground transition-transform duration-300 ${isActive ? "rotate-180" : ""
+                        }`}
                 />
-              </div>
             </div>
-          </div>
-        </div>
-      </section>
+            <AnimatePresence>
+                {isActive && (
+                    <motion.p
+                        initial={{ height: 0, opacity: 0, marginTop: 0 }}
+                        animate={{ height: "auto", opacity: 1, marginTop: 8 }}
+                        exit={{ height: 0, opacity: 0, marginTop: 0 }}
+                        className="text-sm text-muted-foreground leading-relaxed overflow-hidden"
+                    >
+                        {description}
+                    </motion.p>
+                )}
+            </AnimatePresence>
+        </button>
+    )
+}
 
-      <MarketingFooter />
-    </div>
-  )
+/* ═══════════════════════════════════════════════════════
+   PRODUCT: BuildwellEYE
+   Layout: Large video right (60%) + text+accordion left
+   ═══════════════════════════════════════════════════════ */
+function EyeSection() {
+    const [active, setActive] = useState(0)
+    const features = [
+        { title: "Real-time AI Detection", desc: "Instantly identify safety hazards, PPE violations, and quality defects across your site with computer vision that never sleeps." },
+        { title: "Multi-Camera Integration", desc: "Connect existing CCTV, drones, or mobile devices. No new infrastructure required — our AI works with what you already have." },
+        { title: "Smart Analytics Dashboard", desc: "Track trends over time with heatmaps, severity scoring, and automated weekly safety reports delivered to your inbox." },
+        { title: "Instant Alert System", desc: "Get real-time SMS, email, and in-app notifications the moment a critical safety issue is detected on site." },
+    ]
+
+    return (
+        <section className="py-16 bg-white dark:bg-[#0a1929]">
+            <div className="container mx-auto px-4">
+                <motion.div
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.1 }}
+                    variants={stagger}
+                >
+                    {/* Section badge */}
+                    <motion.div variants={fade} className="mb-4">
+                        <span className="inline-flex items-center gap-2 rounded-[5px] bg-gradient-to-r from-[#FBB429]/10 to-[#F87866]/10 px-4 py-2 text-sm font-semibold text-[#FBB429] border border-[#FBB429]/20">
+                            <Eye className="h-4 w-4" /> AI-Powered Vision
+                        </span>
+                    </motion.div>
+
+                    <div className="grid lg:grid-cols-5 gap-10 items-start">
+                        {/* Left col: text + accordion (2 cols) */}
+                        <motion.div variants={fade} className="lg:col-span-2 space-y-5">
+                            <h2 className="font-['Big_Shoulders_Display'] text-4xl lg:text-5xl font-bold text-foreground dark:text-white leading-[1.05] tracking-tight">
+                                Your complete{" "}
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866]">
+                                    AI vision studio
+                                </span>
+                            </h2>
+
+                            <div className="space-y-2">
+                                {features.map((f, i) => (
+                                    <AccordionFeature
+                                        key={i}
+                                        title={f.title}
+                                        description={f.desc}
+                                        isActive={active === i}
+                                        onClick={() => setActive(i)}
+                                    />
+                                ))}
+                            </div>
+
+                            <a href="https://eye.buildwellai.com" target="_blank" rel="noopener noreferrer">
+                                <button className="w-full sm:w-auto group inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#FBB429] to-[#F87866] text-white px-8 py-3 rounded-[5px] font-semibold text-base hover:shadow-lg hover:opacity-95 transition-all duration-300 mt-2">
+                                    Explore EYE <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                                </button>
+                            </a>
+                        </motion.div>
+
+                        {/* Right col: large video (3 cols) */}
+                        <motion.div variants={fade} className="lg:col-span-3">
+                            <BrowserFrame url="eye.buildwellai.com">
+                                <video
+                                    className="w-full h-auto aspect-video object-cover"
+                                    loop muted playsInline autoPlay
+                                >
+                                    <source src="https://res.cloudinary.com/drzxliqyz/video/upload/v1762606241/WhatsApp_Video_2025-11-07_at_18.14.45_6913d34a_wrpesi.mp4" type="video/mp4" />
+                                </video>
+                            </BrowserFrame>
+
+                            {/* Stats row under video */}
+                            <div className="grid grid-cols-3 gap-4 mt-5">
+                                {[
+                                    { value: "60%", label: "Fewer safety incidents" },
+                                    { value: "24/7", label: "Continuous monitoring" },
+                                    { value: "3×", label: "Faster issue detection" },
+                                ].map((s, i) => (
+                                    <div key={i} className="text-center p-3 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-[#0d1f33]">
+                                        <div className="font-['Big_Shoulders_Display'] text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866]">
+                                            {s.value}
+                                        </div>
+                                        <p className="text-xs text-muted-foreground mt-1">{s.label}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </motion.div>
+                    </div>
+                </motion.div>
+            </div>
+        </section>
+    )
+}
+
+/* ═══════════════════════════════════════════════════════
+   PRODUCT: BuildwellCHAT
+   Layout: Video left (60%) + text+accordion right
+   Reversed layout from EYE for visual variety
+   ═══════════════════════════════════════════════════════ */
+function ChatSection() {
+    const [active, setActive] = useState(0)
+    const features = [
+        { title: "Natural Language Queries", desc: "Ask about building regulations, project specs, or compliance requirements in plain English. No technical jargon needed." },
+        { title: "Document Analysis", desc: "Upload PDFs, drawings, and specifications. Get instant summaries, gap analysis, and compliance checks against UK standards." },
+        { title: "Diagram Generation", desc: "Generate professional flowcharts, process diagrams, and project visualizations directly from your conversations." },
+        { title: "Citation-Backed Answers", desc: "Every response references the exact regulation clause, document page, or standard section — verifiable and traceable." },
+    ]
+
+    return (
+        <section className="py-16 bg-white dark:bg-[#0a1929]">
+            <div className="container mx-auto px-4">
+                <motion.div
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.1 }}
+                    variants={stagger}
+                >
+                    <motion.div variants={fade} className="mb-4">
+                        <span className="inline-flex items-center gap-2 rounded-[5px] bg-gradient-to-r from-[#FBB429]/10 to-[#F87866]/10 px-4 py-2 text-sm font-semibold text-[#FBB429] border border-[#FBB429]/20">
+                            <MessageSquare className="h-4 w-4" /> AI Construction Expert
+                        </span>
+                    </motion.div>
+
+                    <div className="grid lg:grid-cols-5 gap-10 items-start">
+                        {/* Left col: large video (3 cols) */}
+                        <motion.div variants={fade} className="lg:col-span-3 order-2 lg:order-1">
+                            <BrowserFrame url="chat.buildwellai.com">
+                                <video
+                                    className="w-full h-auto aspect-video object-cover"
+                                    loop muted playsInline autoPlay
+                                >
+                                    <source src="https://res.cloudinary.com/drzxliqyz/video/upload/v1763297450/chatrec_kfrokc.mp4" type="video/mp4" />
+                                </video>
+                            </BrowserFrame>
+
+                            {/* Feature cards under video */}
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-5">
+                                {[
+                                    { icon: Globe, title: "40+ Standards", desc: "UK building regs trained" },
+                                    { icon: Zap, title: "Instant Answers", desc: "Sub-second response time" },
+                                ].map((c, i) => (
+                                    <div key={i} className="p-4 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-[#0d1f33] flex items-start gap-3">
+                                        <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-r from-[#FBB429]/15 to-[#F87866]/15 flex-shrink-0">
+                                            <c.icon className="h-4 w-4 text-[#FBB429]" />
+                                        </div>
+                                        <div>
+                                            <h4 className="font-semibold text-sm text-foreground dark:text-white">{c.title}</h4>
+                                            <p className="text-xs text-muted-foreground mt-0.5">{c.desc}</p>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </motion.div>
+
+                        {/* Right col: text + accordion (2 cols) */}
+                        <motion.div variants={fade} className="lg:col-span-2 space-y-5 order-1 lg:order-2">
+                            <h2 className="font-['Big_Shoulders_Display'] text-4xl lg:text-5xl font-bold text-foreground dark:text-white leading-[1.05] tracking-tight">
+                                Your construction{" "}
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866]">
+                                    expert, 24/7
+                                </span>
+                            </h2>
+
+                            <div className="space-y-2">
+                                {features.map((f, i) => (
+                                    <AccordionFeature
+                                        key={i}
+                                        title={f.title}
+                                        description={f.desc}
+                                        isActive={active === i}
+                                        onClick={() => setActive(i)}
+                                    />
+                                ))}
+                            </div>
+
+                            <a href="https://chat.buildwellai.com" target="_blank" rel="noopener noreferrer">
+                                <button className="w-full sm:w-auto group inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#FBB429] to-[#F87866] text-white px-8 py-3 rounded-[5px] font-semibold text-base hover:shadow-lg hover:opacity-95 transition-all duration-300 mt-2">
+                                    Try CHAT <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                                </button>
+                            </a>
+                        </motion.div>
+                    </div>
+                </motion.div>
+            </div>
+        </section>
+    )
+}
+
+/* ═══════════════════════════════════════════════════════
+   PRODUCT: BuildwellINSPECT
+   Layout: Full-width video with overlay text, then
+   3g feature cards below (Procore "keep projects
+   moving forward" style)
+   ═══════════════════════════════════════════════════════ */
+function InspectSection() {
+    const [active, setActive] = useState(0)
+    const features = [
+        { title: "Photo-First Snagging", desc: "Capture defects with GPS-tagged, timestamped photos. AI auto-categorizes issues by severity and trade for instant triage." },
+        { title: "One-Click PDF Reports", desc: "Generate branded, professional inspection reports in minutes. Customizable templates with your company logo and formatting." },
+        { title: "Full Offline Support", desc: "Works anywhere without internet — data syncs automatically when you're back online. Zero downtime on remote sites." },
+        { title: "Task Assignment & Tracking", desc: "Assign issues to contractors, set deadlines, and track resolution progress. Automated reminders ensure nothing slips." },
+    ]
+
+    return (
+        <section className="py-16 bg-white dark:bg-[#0a1929]">
+            <div className="container mx-auto px-4">
+                <motion.div
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.1 }}
+                    variants={stagger}
+                >
+                    <motion.div variants={fade} className="mb-4">
+                        <span className="inline-flex items-center gap-2 rounded-[5px] bg-gradient-to-r from-[#FBB429]/10 to-[#F87866]/10 px-4 py-2 text-sm font-semibold text-[#FBB429] border border-[#FBB429]/20">
+                            <CheckCircle className="h-4 w-4" /> Mobile-First Inspections
+                        </span>
+                    </motion.div>
+
+                    <div className="grid lg:grid-cols-5 gap-10 items-start">
+                        {/* Left col: text + accordion */}
+                        <motion.div variants={fade} className="lg:col-span-2 space-y-5">
+                            <h2 className="font-['Big_Shoulders_Display'] text-4xl lg:text-5xl font-bold text-foreground dark:text-white leading-[1.05] tracking-tight">
+                                Keep projects{" "}
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866]">
+                                    moving forward
+                                </span>
+                            </h2>
+
+                            <div className="space-y-2">
+                                {features.map((f, i) => (
+                                    <AccordionFeature
+                                        key={i}
+                                        title={f.title}
+                                        description={f.desc}
+                                        isActive={active === i}
+                                        onClick={() => setActive(i)}
+                                    />
+                                ))}
+                            </div>
+
+                            <a href="https://inspect.buildwellai.com" target="_blank" rel="noopener noreferrer">
+                                <button className="w-full sm:w-auto group inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#FBB429] to-[#F87866] text-white px-8 py-3 rounded-[5px] font-semibold text-base hover:shadow-lg hover:opacity-95 transition-all duration-300 mt-2">
+                                    Explore INSPECT <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                                </button>
+                            </a>
+                        </motion.div>
+
+                        {/* Right col: video + feature cards */}
+                        <motion.div variants={fade} className="lg:col-span-3">
+                            <BrowserFrame url="inspect.buildwellai.com">
+                                <video
+                                    className="w-full h-auto aspect-video object-cover"
+                                    loop muted playsInline autoPlay
+                                >
+                                    <source src="https://res.cloudinary.com/drzxliqyz/video/upload/v1763297404/inspectvid_znvtb6.mp4" type="video/mp4" />
+                                </video>
+                            </BrowserFrame>
+
+                            {/* Capability cards under video */}
+                            <div className="grid grid-cols-3 gap-4 mt-5">
+                                {[
+                                    { icon: Camera, title: "360° Capture", desc: "Drones & LiDAR" },
+                                    { icon: WifiOff, title: "Works Offline", desc: "Auto-syncs later" },
+                                    { icon: Shield, title: "Compliance", desc: "BSA ready" },
+                                ].map((c, i) => (
+                                    <div key={i} className="p-3 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-[#0d1f33] text-center">
+                                        <c.icon className="h-5 w-5 text-[#FBB429] mx-auto mb-2" />
+                                        <h4 className="font-semibold text-sm text-foreground dark:text-white">{c.title}</h4>
+                                        <p className="text-xs text-muted-foreground mt-0.5">{c.desc}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </motion.div>
+                    </div>
+                </motion.div>
+            </div>
+        </section>
+    )
+}
+
+/* ═══════════════════════════════════════════════════════
+   PRODUCT: BuildwellTHREAD
+   Layout: Video left + text right with card grid below
+   ═══════════════════════════════════════════════════════ */
+function ThreadSection() {
+    const [active, setActive] = useState(0)
+    const features = [
+        { title: "AI Document Classification", desc: "Upload hundreds of documents at once. AI instantly classifies them by type, trade, building zone, and compliance category." },
+        { title: "Automated Metadata Extraction", desc: "Automatically extract dates, revision numbers, approval status, and author information from every document." },
+        { title: "Complete Traceability", desc: "Connect drawings to specifications, specifications to products, and products to certifications — an unbroken golden thread." },
+        { title: "One-Click Handover Packages", desc: "Generate complete golden thread packages for handover, audits, or regulatory submission with a single click." },
+    ]
+
+    return (
+        <section className="py-16 bg-white dark:bg-[#0a1929]">
+            <div className="container mx-auto px-4">
+                <motion.div
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.1 }}
+                    variants={stagger}
+                >
+                    <motion.div variants={fade} className="mb-4">
+                        <span className="inline-flex items-center gap-2 rounded-[5px] bg-gradient-to-r from-[#FBB429]/10 to-[#F87866]/10 px-4 py-2 text-sm font-semibold text-[#FBB429] border border-[#FBB429]/20">
+                            <FileText className="h-4 w-4" /> Golden Thread Compliance
+                        </span>
+                    </motion.div>
+
+                    <div className="grid lg:grid-cols-5 gap-10 items-start">
+                        {/* Left col: video */}
+                        <motion.div variants={fade} className="lg:col-span-3 order-2 lg:order-1">
+                            <BrowserFrame url="thread.buildwellai.com">
+                                <video
+                                    className="w-full h-auto aspect-video object-cover"
+                                    loop muted playsInline autoPlay
+                                >
+                                    <source src="https://res.cloudinary.com/drzxliqyz/video/upload/v1763297405/threadvid_oxmkua.mp4" type="video/mp4" />
+                                </video>
+                            </BrowserFrame>
+
+                            {/* Golden thread capability cards */}
+                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-5">
+                                {[
+                                    { icon: Link2, title: "Document Linking", desc: "Full traceability chain" },
+                                    { icon: MapPin, title: "GPS Tracking", desc: "Zone-tagged documents" },
+                                    { icon: Download, title: "Export Packages", desc: "One-click handover" },
+                                ].map((c, i) => (
+                                    <div key={i} className="p-3 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-[#0d1f33] text-center">
+                                        <c.icon className="h-5 w-5 text-[#FBB429] mx-auto mb-2" />
+                                        <h4 className="font-semibold text-sm text-foreground dark:text-white">{c.title}</h4>
+                                        <p className="text-xs text-muted-foreground mt-0.5">{c.desc}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </motion.div>
+
+                        {/* Right col: text + accordion */}
+                        <motion.div variants={fade} className="lg:col-span-2 space-y-5 order-1 lg:order-2">
+                            <h2 className="font-['Big_Shoulders_Display'] text-4xl lg:text-5xl font-bold text-foreground dark:text-white leading-[1.05] tracking-tight">
+                                Handle the{" "}
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866]">
+                                    compliance side
+                                </span>{" "}
+                                with ease
+                            </h2>
+
+                            <div className="space-y-2">
+                                {features.map((f, i) => (
+                                    <AccordionFeature
+                                        key={i}
+                                        title={f.title}
+                                        description={f.desc}
+                                        isActive={active === i}
+                                        onClick={() => setActive(i)}
+                                    />
+                                ))}
+                            </div>
+
+                            <a href="https://thread.buildwellai.com" target="_blank" rel="noopener noreferrer">
+                                <button className="w-full sm:w-auto group inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#FBB429] to-[#F87866] text-white px-8 py-3 rounded-[5px] font-semibold text-base hover:shadow-lg hover:opacity-95 transition-all duration-300 mt-2">
+                                    Explore THREAD <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                                </button>
+                            </a>
+                        </motion.div>
+                    </div>
+                </motion.div>
+            </div>
+        </section>
+    )
+}
+
+/* ═══════════════════════════════════════════════════════
+   PRODUCT: BuildwellNEWS
+   Layout: Full-width video with gradient overlay text,
+   then feature list below (Procore wide-shot style)
+   ═══════════════════════════════════════════════════════ */
+function NewsSection() {
+    const [active, setActive] = useState(0)
+    const features = [
+        { title: "Real-time Regulatory Alerts", desc: "Get instant notifications when Building Safety Act amendments, material recalls, or safety notices are published that affect your projects." },
+        { title: "AI-Curated Intelligence", desc: "Our AI filters thousands of sources daily, surfacing only the news, trends, and updates relevant to your specific project types and regions." },
+        { title: "Compliance Tracking", desc: "Monitor Building Safety Act updates, NHBC standards changes, and local authority requirements in a single unified feed." },
+        { title: "Trending Topics Analysis", desc: "See what the industry is talking about. AI identifies emerging trends, risks, and opportunities across UK construction." },
+    ]
+
+    return (
+        <section className="py-16 bg-white dark:bg-[#0a1929]">
+            <div className="container mx-auto px-4">
+                <motion.div
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.1 }}
+                    variants={stagger}
+                >
+                    <motion.div variants={fade} className="mb-4">
+                        <span className="inline-flex items-center gap-2 rounded-[5px] bg-gradient-to-r from-[#FBB429]/10 to-[#F87866]/10 px-4 py-2 text-sm font-semibold text-[#FBB429] border border-[#FBB429]/20">
+                            <Bell className="h-4 w-4" /> Industry Intelligence
+                        </span>
+                    </motion.div>
+
+                    {/* Full-width video with overlay */}
+                    <motion.div variants={fade} className="mb-10">
+                        <div className="rounded-xl border border-neutral-200 dark:border-neutral-700 shadow-2xl overflow-hidden bg-white dark:bg-[#1a1a2e]">
+                            {/* Chrome bar for NEWS video */}
+                            <div className="flex items-center gap-2 px-4 py-2.5 bg-neutral-100 dark:bg-[#1e1e30] border-b border-neutral-200 dark:border-neutral-700">
+                                <div className="flex gap-1.5">
+                                    <div className="w-3 h-3 rounded-full bg-[#FF5F57]" />
+                                    <div className="w-3 h-3 rounded-full bg-[#FFBD2E]" />
+                                    <div className="w-3 h-3 rounded-full bg-[#28C840]" />
+                                </div>
+                                <div className="ml-3 flex-1 max-w-md">
+                                    <div className="bg-white dark:bg-[#2a2a3e] rounded-md px-3 py-1 text-xs text-muted-foreground truncate border border-neutral-200 dark:border-neutral-600">
+                                        news.buildwellai.com
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="relative aspect-video bg-neutral-900">
+                                <video
+                                    className="w-full h-full object-cover"
+                                    loop muted playsInline autoPlay
+                                >
+                                    <source src="https://res.cloudinary.com/drzxliqyz/video/upload/v1762797262/showcasenews_peihce.mp4" type="video/mp4" />
+                                </video>
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+                                <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
+                                    <h2 className="font-['Big_Shoulders_Display'] text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 tracking-tight">
+                                        Stay informed.{" "}
+                                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866]">
+                                            Stay compliant.
+                                        </span>
+                                    </h2>
+                                    <p className="text-base md:text-lg text-white/85 max-w-2xl leading-relaxed">
+                                        Your central hub for curated UK construction news, safety alerts, and regulatory updates. AI filters the noise so you see only what matters.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </motion.div>
+
+                    {/* Accordion + stat cards */}
+                    <div className="grid lg:grid-cols-2 gap-10 items-start">
+                        <motion.div variants={fade} className="space-y-2">
+                            {features.map((f, i) => (
+                                <AccordionFeature
+                                    key={i}
+                                    title={f.title}
+                                    description={f.desc}
+                                    isActive={active === i}
+                                    onClick={() => setActive(i)}
+                                />
+                            ))}
+
+                            <div className="pt-3">
+                                <a href="https://news.buildwellai.com" target="_blank" rel="noopener noreferrer">
+                                    <button className="w-full sm:w-auto group inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#FBB429] to-[#F87866] text-white px-8 py-3 rounded-[5px] font-semibold text-base hover:shadow-lg hover:opacity-95 transition-all duration-300">
+                                        Explore NEWS <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                                    </button>
+                                </a>
+                            </div>
+                        </motion.div>
+
+                        {/* Info cards grid */}
+                        <motion.div variants={fade} className="grid grid-cols-2 gap-4">
+                            {[
+                                { icon: Bell, title: "Live Alerts", desc: "Instant push notifications for critical regulatory changes and safety notices", stat: "Real-time" },
+                                { icon: Search, title: "Smart Search", desc: "AI-powered search across every UK construction news source", stat: "1000+ sources" },
+                                { icon: Shield, title: "BSA Tracker", desc: "Building Safety Act amendments monitored and explained in plain English", stat: "Always current" },
+                                { icon: BarChart3, title: "Trend Analysis", desc: "AI identifies emerging risks and opportunities across the industry", stat: "Daily insights" },
+                            ].map((c, i) => (
+                                <div key={i} className="p-5 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-[#0d1f33]">
+                                    <c.icon className="h-5 w-5 text-[#FBB429] mb-3" />
+                                    <h4 className="font-semibold text-sm text-foreground dark:text-white mb-1">{c.title}</h4>
+                                    <p className="text-xs text-muted-foreground leading-relaxed mb-3">{c.desc}</p>
+                                    <span className="inline-block text-xs font-bold text-[#FBB429] bg-[#FBB429]/10 px-2 py-0.5 rounded-[5px]">
+                                        {c.stat}
+                                    </span>
+                                </div>
+                            ))}
+                        </motion.div>
+                    </div>
+                </motion.div>
+            </div>
+        </section>
+    )
+}
+
+/* ═══════════════════════════════════════════════════════
+   STATS BANNER — Bold numbers in a horizontal row
+   ═══════════════════════════════════════════════════════ */
+function StatsBanner() {
+    const stats = [
+        { value: "40+", label: "UK standards trained" },
+        { value: "5", label: "Integrated products" },
+        { value: "60%", label: "Faster compliance" },
+        { value: "24/7", label: "Continuous monitoring" },
+    ]
+
+    return (
+        <section className="py-14 bg-white dark:bg-[#0a1929] border-y border-neutral-200 dark:border-neutral-800">
+            <div className="container mx-auto px-4">
+                <motion.div
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.3 }}
+                    variants={stagger}
+                    className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center"
+                >
+                    {stats.map((s, i) => (
+                        <motion.div key={i} variants={fade}>
+                            <div className="font-['Big_Shoulders_Display'] text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866] mb-1">
+                                {s.value}
+                            </div>
+                            <p className="text-sm text-muted-foreground dark:text-neutral-400">{s.label}</p>
+                        </motion.div>
+                    ))}
+                </motion.div>
+            </div>
+        </section>
+    )
+}
+
+/* ═══════════════════════════════════════════════════════
+   PAGE ASSEMBLY
+   ═══════════════════════════════════════════════════════ */
+export default function NewFeaturesPage() {
+    return (
+        <div className="min-h-screen bg-white dark:bg-[#0a1929]">
+            <MarketingNav />
+            <main>
+                <Hero />
+                <OverviewCards />
+                <EyeSection />
+                <ChatSection />
+                <InspectSection />
+                <StatsBanner />
+                <ThreadSection />
+                <NewsSection />
+                <CTASection />
+            </main>
+            <MarketingFooter />
+        </div>
+    )
 }
