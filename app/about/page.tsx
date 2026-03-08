@@ -390,7 +390,7 @@ export default function AboutPage() {
                     objectPosition: "center 30%"
                   },
                   {
-                    name: "Jad El Tounsi",
+                    name: "Jad Tounsi",
                     role: "AI Engineer",
                     description: "AI Engineer with expertise in scalable cloud platforms, ensuring BuildwellAI delivers reliable enterprise solutions.",
                     // Corporate professional

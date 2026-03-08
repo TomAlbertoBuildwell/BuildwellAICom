@@ -166,7 +166,7 @@ export default function NewHomepage() {
                                         BuildwellCHAT
                                     </h3>
                                     <p className="text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed font-medium">
-                                        AI assistant trained on 40+ UK building regulations including BSA 2022, CDM 2015, and Building Regulations.
+                                        More than Instant, reliable answers to your construction questions. Find technical diagrams and access BuildwellTOOLS to get the job done.
                                     </p>
                                 </div>
                             </motion.div>
