@@ -4,61 +4,119 @@ import { Resend } from 'resend';
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 function generateEmailHtml(name: string, email: string, company?: string, phone?: string, message?: string) {
+    const firstName = name?.split(' ')[0] || 'there';
+
     return `
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>New Contact Form Submission</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@400;700&family=Inter:wght@400;600&family=Courier+Prime&display=swap');
+    </style>
 </head>
-<body style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 0;">
-    <div style="background-color: #FBB429; padding: 20px; text-align: center;">
-        <h1 style="color: #ffffff; margin: 0; font-size: 24px;">New Contact Form Submission</h1>
-    </div>
-    
-    <div style="padding: 30px; background-color: #f9f9f9;">
-        <h2 style="color: #333; margin-top: 0;">Contact Details</h2>
-        
-        <table style="width: 100%; border-collapse: collapse;">
-            <tbody>
-                <tr>
-                    <td style="padding: 10px 0; border-bottom: 1px solid #eee; font-weight: bold; width: 120px;">Name:</td>
-                    <td style="padding: 10px 0; border-bottom: 1px solid #eee;">${name}</td>
-                </tr>
-                <tr>
-                    <td style="padding: 10px 0; border-bottom: 1px solid #eee; font-weight: bold;">Email:</td>
-                    <td style="padding: 10px 0; border-bottom: 1px solid #eee;">
-                        <a href="mailto:${email}" style="color: #FBB429;">${email}</a>
-                    </td>
-                </tr>
-                ${company ? `
-                <tr>
-                    <td style="padding: 10px 0; border-bottom: 1px solid #eee; font-weight: bold;">Company:</td>
-                    <td style="padding: 10px 0; border-bottom: 1px solid #eee;">${company}</td>
-                </tr>
-                ` : ''}
-                ${phone ? `
-                <tr>
-                    <td style="padding: 10px 0; border-bottom: 1px solid #eee; font-weight: bold;">Phone:</td>
-                    <td style="padding: 10px 0; border-bottom: 1px solid #eee;">
-                        <a href="tel:${phone}" style="color: #FBB429;">${phone}</a>
-                    </td>
-                </tr>
-                ` : ''}
-            </tbody>
-        </table>
-        
-        <h2 style="color: #333; margin-top: 30px;">Message</h2>
-        <div style="background-color: #ffffff; padding: 20px; border-radius: 8px; border: 1px solid #eee;">
-            <p style="margin: 0; white-space: pre-wrap; line-height: 1.6;">${message}</p>
-        </div>
-    </div>
-    
-    <div style="background-color: #0a1929; padding: 20px; text-align: center;">
-        <p style="color: #888; margin: 0; font-size: 12px;">
-            This email was sent from the BuildwellAI contact form.
-        </p>
-    </div>
+<body style="margin: 0; padding: 0; background-color: #f4f4f4; font-family: Inter, Helvetica, Arial, sans-serif;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color: #f4f4f4;">
+        <tr>
+            <td align="center" style="padding: 20px 0;">
+                <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width: 600px; width: 100%; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                    
+                    <!-- HEADER -->
+                    <tr>
+                        <td style="background-color: #0a1929; padding: 30px 40px; text-align: center;">
+                            <img src="https://buildwellai.com/logo.png" alt="BuildwellAI" style="max-height: 40px; display: inline-block;" />
+                        </td>
+                    </tr>
+
+                    <!-- HERO SECTION -->
+                    <tr>
+                        <td style="padding: 40px 40px 20px 40px; text-align: center;">
+                            <h1 style="font-family: 'Big Shoulders Display', Impact, 'Arial Narrow', sans-serif; font-size: 38px; font-weight: 400; text-transform: uppercase; color: #0a1929; margin: 0 0 8px 0; letter-spacing: 1px;">
+                                NEW <span style="color: #ff8a00;">MESSAGE</span>
+                            </h1>
+                            <p style="font-family: Inter, Helvetica, Arial, sans-serif; font-size: 16px; color: #607d8b; line-height: 1.6; margin: 12px 0 0 0;">
+                                You've received a new contact form submission from <strong style="color: #0a1929;">${name}</strong>.
+                            </p>
+                        </td>
+                    </tr>
+
+                    <!-- CONTACT DETAILS CARD -->
+                    <tr>
+                        <td style="padding: 0 40px 20px 40px;">
+                            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color: #f8f9fa; border-left: 4px solid #FBB429; border-radius: 0 6px 6px 0;">
+                                <tr>
+                                    <td style="padding: 20px 24px;">
+                                        <p style="font-family: Inter, Helvetica, Arial, sans-serif; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #0a1929; margin: 0 0 16px 0;">
+                                            CONTACT DETAILS:
+                                        </p>
+                                        <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                                            <tr>
+                                                <td style="padding: 4px 0; font-family: Inter, Helvetica, Arial, sans-serif; font-size: 13px; color: #607d8b; width: 110px;">Name</td>
+                                                <td style="padding: 4px 0; font-family: Inter, Helvetica, Arial, sans-serif; font-size: 13px; color: #0a1929; font-weight: 600;">${name}</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding: 4px 0; font-family: Inter, Helvetica, Arial, sans-serif; font-size: 13px; color: #607d8b;">Email</td>
+                                                <td style="padding: 4px 0; font-family: Inter, Helvetica, Arial, sans-serif; font-size: 13px; color: #0a1929; font-weight: 600;">
+                                                    <a href="mailto:${email}" style="color: #FBB429; text-decoration: none;">${email}</a>
+                                                </td>
+                                            </tr>
+                                            ${company ? `<tr>
+                                                <td style="padding: 4px 0; font-family: Inter, Helvetica, Arial, sans-serif; font-size: 13px; color: #607d8b;">Company</td>
+                                                <td style="padding: 4px 0; font-family: Inter, Helvetica, Arial, sans-serif; font-size: 13px; color: #0a1929; font-weight: 600;">${company}</td>
+                                            </tr>` : ''}
+                                            ${phone ? `<tr>
+                                                <td style="padding: 4px 0; font-family: Inter, Helvetica, Arial, sans-serif; font-size: 13px; color: #607d8b;">Phone</td>
+                                                <td style="padding: 4px 0; font-family: Inter, Helvetica, Arial, sans-serif; font-size: 13px; color: #0a1929; font-weight: 600;">
+                                                    <a href="tel:${phone}" style="color: #FBB429; text-decoration: none;">${phone}</a>
+                                                </td>
+                                            </tr>` : ''}
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                    <!-- MESSAGE CARD -->
+                    <tr>
+                        <td style="padding: 0 40px 20px 40px;">
+                            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color: #f8f9fa; border-left: 4px solid #2196f3; border-radius: 0 6px 6px 0;">
+                                <tr>
+                                    <td style="padding: 20px 24px;">
+                                        <p style="font-family: 'Courier Prime', 'Courier New', monospace; font-size: 14px; font-weight: 700; color: #0a1929; margin: 0 0 12px 0;">
+                                            MESSAGE:
+                                        </p>
+                                        <p style="font-family: Inter, Helvetica, Arial, sans-serif; font-size: 14px; color: #607d8b; line-height: 1.7; margin: 0; white-space: pre-wrap;">${message}</p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                    <!-- CTA -->
+                    <tr>
+                        <td style="padding: 10px 40px 40px 40px; text-align: center;">
+                            <a href="mailto:${email}" style="display: inline-block; background: linear-gradient(135deg, #FBB429, #F87866); background-color: #ff8a00; color: #ffffff; text-decoration: none; font-family: Inter, Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 600; padding: 14px 40px; border-radius: 5px; width: 260px; text-align: center; box-shadow: 0 4px 6px rgba(255, 138, 0, 0.2);">
+                                REPLY TO ${firstName.toUpperCase()}
+                            </a>
+                        </td>
+                    </tr>
+
+                    <!-- FOOTER -->
+                    <tr>
+                        <td style="background-color: #0a1929; padding: 30px 40px; text-align: center;">
+                            <p style="font-family: Inter, Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 700; color: #ffffff; margin: 0 0 4px 0;">BuildwellAI</p>
+                            <p style="font-family: Inter, Helvetica, Arial, sans-serif; font-size: 12px; color: #607d8b; margin: 0 0 12px 0;">AI-powered solutions for UK construction.</p>
+                            <p style="font-family: Inter, Helvetica, Arial, sans-serif; font-size: 11px; color: #607d8b; margin: 0;">&copy; 2026 BuildwellAI. All rights reserved.</p>
+                        </td>
+                    </tr>
+
+                </table>
+            </td>
+        </tr>
+    </table>
 </body>
 </html>
     `;

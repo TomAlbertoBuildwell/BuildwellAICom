@@ -1,8 +1,9 @@
-﻿"use client"
+"use client"
 
 import type React from "react"
 
 import { useState } from "react"
+import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -129,7 +130,7 @@ export default function ContactPage() {
         <div className="grid gap-12 lg:grid-cols-3">
           {/* Why Book a Meeting */}
           <div className="space-y-6 lg:col-span-1">
-            <Card className="border-border">
+            <Card className="border-2 border-neutral-300 dark:border-neutral-600 shadow-[0_4px_24px_-4px_rgba(0,0,0,0.1)] dark:shadow-[0_4px_24px_-4px_rgba(0,0,0,0.3)] bg-white dark:bg-[#0d1f33] rounded-[5px]">
               <CardHeader>
                 <CardTitle className="text-xl">Why Contact Us?</CardTitle>
               </CardHeader>
@@ -150,7 +151,7 @@ export default function ContactPage() {
               </CardContent>
             </Card>
 
-            <Card className="border-border">
+            <Card className="border-2 border-neutral-300 dark:border-neutral-600 shadow-[0_4px_24px_-4px_rgba(0,0,0,0.1)] dark:shadow-[0_4px_24px_-4px_rgba(0,0,0,0.3)] bg-white dark:bg-[#0d1f33] rounded-[5px]">
               <CardHeader>
                 <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-orange">
                   <Mail className="h-6 w-6 text-white" />
@@ -165,7 +166,7 @@ export default function ContactPage() {
               </CardContent>
             </Card>
 
-            <Card className="border-border">
+            <Card className="border-2 border-neutral-300 dark:border-neutral-600 shadow-[0_4px_24px_-4px_rgba(0,0,0,0.1)] dark:shadow-[0_4px_24px_-4px_rgba(0,0,0,0.3)] bg-white dark:bg-[#0d1f33] rounded-[5px]">
               <CardHeader>
                 <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-orange">
                   <Phone className="h-6 w-6 text-white" />
@@ -183,7 +184,7 @@ export default function ContactPage() {
 
           {/* Contact Form */}
           <div className="lg:col-span-2">
-            <Card className="border-border h-full flex flex-col">
+            <Card className="border-2 border-neutral-300 dark:border-neutral-600 shadow-[0_4px_24px_-4px_rgba(0,0,0,0.1)] dark:shadow-[0_4px_24px_-4px_rgba(0,0,0,0.3)] bg-white dark:bg-[#0d1f33] rounded-[5px] h-full flex flex-col">
               <CardHeader>
                 <CardTitle className="text-2xl">Send Us a Message</CardTitle>
                 <CardDescription>
@@ -319,7 +320,7 @@ export default function ContactPage() {
 
           <div className="space-y-3">
             {faqs.map((faq, index) => (
-              <Card key={index} className="border-border overflow-hidden">
+              <Card key={index} className="border-2 border-neutral-300 dark:border-neutral-600 shadow-[0_4px_24px_-4px_rgba(0,0,0,0.1)] dark:shadow-[0_4px_24px_-4px_rgba(0,0,0,0.3)] bg-white dark:bg-[#0d1f33] rounded-[5px] overflow-hidden hover:border-[#FBB429] transition-all duration-300">
                 <button
                   onClick={() => toggleFaq(index)}
                   className="w-full text-left px-6 py-4 flex items-center justify-between transition-colors hover:bg-muted/50"
@@ -330,16 +331,21 @@ export default function ContactPage() {
                       }`}
                   />
                 </button>
-                <div
-                  className={`grid transition-all duration-300 ease-in-out ${openFaq === index ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
-                    }`}
-                >
-                  <div className="overflow-hidden">
-                    <div className="px-6 pb-4 pt-0">
-                      <p className="text-sm text-muted-foreground leading-relaxed">{faq.answer}</p>
-                    </div>
-                  </div>
-                </div>
+                <AnimatePresence>
+                  {openFaq === index && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                      className="overflow-hidden"
+                    >
+                      <div className="px-6 pb-4 pt-0">
+                        <p className="text-sm text-muted-foreground leading-relaxed">{faq.answer}</p>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </Card>
             ))}
           </div>
