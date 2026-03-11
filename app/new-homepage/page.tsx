@@ -602,7 +602,7 @@ export default function NewHomepage() {
                                             title: "BuildwellCHAT",
                                             subtitle: "Smart Communication",
                                             desc: "Instant, AI-powered team communication and project coordination. Keep everyone on the same page with real-time updates.",
-                                            video: "https://res.cloudinary.com/drzxliqyz/video/upload/v1763297450/chatrec_kfrokc.mp4",
+                                            video: "https://player.vimeo.com/video/1172719472?badge=0&autopause=0&player_id=0&app_id=58479&background=1",
                                             image: "/screenshots/im1.png",
                                             link: "https://chat.buildwellai.com"
                                         },
@@ -610,7 +610,7 @@ export default function NewHomepage() {
                                             title: "BuildwellNEWS",
                                             subtitle: "Industry Updates",
                                             desc: "Stay ahead with curated construction news and regulatory updates. Never miss a critical compliance change again.",
-                                            video: "https://res.cloudinary.com/drzxliqyz/video/upload/v1762797262/showcasenews_peihce.mp4",
+                                            video: "https://player.vimeo.com/video/1172727046?badge=0&autopause=0&player_id=0&app_id=58479&background=1",
                                             image: "/screenshots/im2.png",
                                             link: "https://news.buildwellai.com"
                                         },
@@ -618,7 +618,7 @@ export default function NewHomepage() {
                                             title: "BuildwellINSPECT",
                                             subtitle: "Visual Inspections",
                                             desc: "Streamlined inspection workflows with automated reporting. Capture defects and generate reports in seconds.",
-                                            video: "https://res.cloudinary.com/drzxliqyz/video/upload/v1763297404/inspectvid_znvtb6.mp4",
+                                            video: "https://player.vimeo.com/video/1172725306?badge=0&autopause=0&player_id=0&app_id=58479&background=1",
                                             image: "/screenshots/im3.png",
                                             link: "https://inspect.buildwellai.com"
                                         },
@@ -626,7 +626,7 @@ export default function NewHomepage() {
                                             title: "BuildwellTHREAD",
                                             subtitle: "Seamless Connectivity",
                                             desc: "Connect every stakeholder in a single, unified conversation thread. From architect to contractor, everyone is aligned.",
-                                            video: "https://res.cloudinary.com/drzxliqyz/video/upload/v1763297405/threadvid_oxmkua.mp4",
+                                            video: "https://player.vimeo.com/video/1172726799?badge=0&autopause=0&player_id=0&app_id=58479&background=1",
                                             image: "/screenshots/im4.png",
                                             link: "https://thread.buildwellai.com"
                                         },
@@ -634,7 +634,7 @@ export default function NewHomepage() {
                                             title: "BuildwellEYE",
                                             subtitle: "Site Monitoring",
                                             desc: "Advanced visual monitoring and AI-driven site safety analytics. Keep your site safe and secure 24/7.",
-                                            video: "https://res.cloudinary.com/drzxliqyz/video/upload/v1762606241/WhatsApp_Video_2025-11-07_at_18.14.45_6913d34a_wrpesi.mp4",
+                                            video: "https://player.vimeo.com/video/1172720769?badge=0&autopause=0&player_id=0&app_id=58479&background=1",
                                             image: "/screenshots/im5.png",
                                             link: "https://eye.buildwellai.com"
                                         }
@@ -647,16 +647,13 @@ export default function NewHomepage() {
                                                     <div className="absolute inset-0 z-0">
                                                         <div className="absolute inset-0 bg-black/30 z-10" /> {/* Dark overlay for text readability */}
                                                         <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/25 to-transparent z-10" /> {/* Gradient from left */}
-                                                        <video
-                                                            autoPlay
-                                                            loop
-                                                            muted
-                                                            playsInline
-                                                            poster={item.image}
-                                                            className="w-full h-full object-cover"
-                                                        >
-                                                            <source src={item.video} type="video/mp4" />
-                                                        </video>
+                                                        <iframe
+                                                            src={item.video}
+                                                            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                                                            className="w-full h-full object-cover scale-[1.15]"
+                                                            style={{ pointerEvents: 'none' }}
+                                                            frameBorder="0"
+                                                        ></iframe>
                                                     </div>
 
                                                     {/* Content Overlay (Text Left) */}

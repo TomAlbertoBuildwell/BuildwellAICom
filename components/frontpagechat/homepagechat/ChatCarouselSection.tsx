@@ -34,7 +34,7 @@ export const ChatCarouselSection = () => {
             title: <>Advanced Document <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866]">Analysis</span></>,
             subtitle: "Deep Understanding",
             desc: "Upload PDFs, drawings, and specs. BuildwellAI analyzes every detail to provide instant, citation-backed answers.",
-            video: "https://res.cloudinary.com/drzxliqyz/video/upload/v1763297404/inspectvid_znvtb6.mp4", // Kept existing video as placeholder
+            video: "https://player.vimeo.com/video/1172725306?badge=0&autopause=0&player_id=0&app_id=58479&background=1",
             image: "/chatimg/analysis.jpg",
             link: "https://inspect.buildwellai.com",
             color: "#FBB429"
@@ -43,7 +43,7 @@ export const ChatCarouselSection = () => {
             title: <>Up to Date Regulations <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866]">Compliance</span></>,
             subtitle: "Always Compliant",
             desc: "Stay aligned with the latest Building Safety Act and local regulations. Real-time updates ensure zero compliance gaps.",
-            video: "https://res.cloudinary.com/drzxliqyz/video/upload/v1762797262/showcasenews_peihce.mp4",
+            video: "https://player.vimeo.com/video/1172727046?badge=0&autopause=0&player_id=0&app_id=58479&background=1",
             image: "/chatimg/news.jpg",
             link: "https://news.buildwellai.com",
             color: "#F87866"
@@ -52,7 +52,7 @@ export const ChatCarouselSection = () => {
             title: <>Modern Diagram <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866]">Generation</span></>,
             subtitle: "Visual Clarity",
             desc: "Generate professional diagrams and flowcharts instantly to visualize complex workflows and project structures.",
-            video: "https://res.cloudinary.com/drzxliqyz/video/upload/v1763297450/chatrec_kfrokc.mp4",
+            video: "https://player.vimeo.com/video/1172719472?badge=0&autopause=0&player_id=0&app_id=58479&background=1",
             image: "/chatimg/plan.jpg",
             link: "https://chat.buildwellai.com",
             color: "#FBB429"
@@ -61,7 +61,7 @@ export const ChatCarouselSection = () => {
             title: <>3D Model <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866]">Generation</span></>,
             subtitle: "Spatial Intelligence",
             desc: "Turn specifications into preliminary 3D models. Visualize spatial relationships and potential conflicts early.",
-            video: "https://res.cloudinary.com/drzxliqyz/video/upload/v1763297405/threadvid_oxmkua.mp4",
+            video: "https://player.vimeo.com/video/1172726799?badge=0&autopause=0&player_id=0&app_id=58479&background=1",
             image: "/chatimg/result.jpg",
             link: "https://thread.buildwellai.com",
             color: "#2196f3"
@@ -70,7 +70,7 @@ export const ChatCarouselSection = () => {
             title: <>Voice to Voice <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866]">Communication</span></>,
             subtitle: "Natural Interaction",
             desc: "Talk to your project data. Hands-free voice interaction for on-site queries and rapid information retrieval.",
-            video: "https://res.cloudinary.com/drzxliqyz/video/upload/v1762606241/WhatsApp_Video_2025-11-07_at_18.14.45_6913d34a_wrpesi.mp4",
+            video: "https://player.vimeo.com/video/1172720769?badge=0&autopause=0&player_id=0&app_id=58479&background=1",
             image: "/chatimg/chat.jpg",
             link: "https://eye.buildwellai.com",
             color: "#FBB429"
@@ -147,16 +147,13 @@ export const ChatCarouselSection = () => {
                                         <div className="lg:col-span-7 h-[400px] lg:h-[600px] order-1 lg:order-2">
                                             <div className="w-full h-full rounded-[2rem] overflow-hidden relative bg-black border border-neutral-200 dark:border-neutral-800">
                                                 <div className="absolute inset-0 bg-neutral-900 z-0">
-                                                    <video
-                                                        autoPlay
-                                                        loop
-                                                        muted
-                                                        playsInline
-                                                        poster={item.image}
-                                                        className="w-full h-full object-cover opacity-80"
-                                                    >
-                                                        <source src={item.video} type="video/mp4" />
-                                                    </video>
+                                                    <iframe
+                                                        src={item.video}
+                                                        allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                                                        className="w-full h-full object-cover opacity-80 scale-[1.15]"
+                                                        style={{ pointerEvents: 'none' }}
+                                                        frameBorder="0"
+                                                    ></iframe>
                                                 </div>
 
                                                 {/* Gradient Overlay for integration */}

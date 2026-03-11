@@ -51,19 +51,15 @@ export function FeatureVideoHero() {
                             <div className="w-3 h-3 rounded-full bg-green-500/80" />
                         </div>
                         <div className="pt-8">
-                            <video
-                                ref={videoRef}
-                                className="w-full h-auto aspect-video object-cover"
-                                loop
-                                muted
-                                playsInline
-                                autoPlay
-                                poster="/chatimg/build.jpg"
-                            >
-                                {/* Using a placeholder video, intended replaced with actual screen recording */}
-                                <source src="https://res.cloudinary.com/drzxliqyz/video/upload/v1762606241/WhatsApp_Video_2025-11-07_at_18.14.45_6913d34a_wrpesi.mp4" type="video/mp4" />
-                                Your browser does not support the video tag.
-                            </video>
+                            <div style={{ padding: '56.25% 0 0 0', position: 'relative', overflow: 'hidden' }}>
+                                <iframe 
+                                    src="https://player.vimeo.com/video/1172719472?badge=0&autopause=0&player_id=0&app_id=58479&background=1" 
+                                    frameBorder="0" 
+                                    allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
+                                    style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }} className="scale-[1.15]"
+                                    title="chat_diagram_retriever"
+                                />
+                            </div>
                             <div className="absolute inset-0 bg-gradient-to-t from-[#0a1929]/20 to-transparent pointer-events-none" />
                         </div>
                     </div>

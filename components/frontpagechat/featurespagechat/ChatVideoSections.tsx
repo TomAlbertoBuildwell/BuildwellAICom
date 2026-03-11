@@ -13,16 +13,15 @@ export function ChatVideoSections() {
                         <div className="space-y-6 order-2 md:order-1 relative">
                             {/* Video Container 1 */}
                             <div className="relative rounded-[5px] overflow-hidden shadow-lg border border-neutral-200 dark:border-neutral-800 bg-neutral-900 aspect-video">
-                                <video
-                                    className="w-full h-full object-cover"
-                                    loop
-                                    muted
-                                    playsInline
-                                    autoPlay
-                                >
-                                    <source src="https://res.cloudinary.com/drzxliqyz/video/upload/v1763297450/chatrec_kfrokc.mp4" type="video/mp4" />
-                                    Your browser does not support the video tag.
-                                </video>
+                                <div style={{ padding: '56.25% 0 0 0', position: 'relative', overflow: 'hidden', width: '100%', height: '100%' }}>
+                                    <iframe 
+                                        src="https://player.vimeo.com/video/1172719472?badge=0&autopause=0&player_id=0&app_id=58479&background=1" 
+                                        frameBorder="0" 
+                                        allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
+                                        style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }} className="scale-[1.15]"
+                                        title="chat_diagram_retriever"
+                                    />
+                                </div>
                             </div>
                         </div>
                         <div className="space-y-6 order-1 md:order-2">
@@ -86,16 +85,15 @@ export function ChatVideoSections() {
                         <div className="space-y-6 order-2 relative">
                             {/* Video Container 2 */}
                             <div className="relative rounded-[5px] overflow-hidden shadow-lg border border-neutral-200 dark:border-neutral-800 bg-neutral-900 aspect-video">
-                                <video
-                                    className="w-full h-full object-cover"
-                                    loop
-                                    muted
-                                    playsInline
-                                    autoPlay
-                                >
-                                    <source src="https://res.cloudinary.com/drzxliqyz/video/upload/v1763297405/threadvid_oxmkua.mp4" type="video/mp4" />
-                                    Your browser does not support the video tag.
-                                </video>
+                                <div style={{ padding: '56.25% 0 0 0', position: 'relative', overflow: 'hidden', width: '100%', height: '100%' }}>
+                                    <iframe 
+                                        src="https://player.vimeo.com/video/1172726799?badge=0&autopause=0&player_id=0&app_id=58479&background=1" 
+                                        frameBorder="0" 
+                                        allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
+                                        style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }} className="scale-[1.15]"
+                                        title="threadvid_oxmkua"
+                                    />
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -107,16 +105,15 @@ export function ChatVideoSections() {
                         <div className="space-y-6 order-2 md:order-1 relative">
                             {/* Video Container 3 */}
                             <div className="relative rounded-[5px] overflow-hidden shadow-lg border border-neutral-200 dark:border-neutral-800 bg-neutral-900 aspect-video">
-                                <video
-                                    className="w-full h-full object-cover"
-                                    loop
-                                    muted
-                                    playsInline
-                                    autoPlay
-                                >
-                                    <source src="https://res.cloudinary.com/drzxliqyz/video/upload/v1762797262/showcasenews_peihce.mp4" type="video/mp4" />
-                                    Your browser does not support the video tag.
-                                </video>
+                                <div style={{ padding: '56.25% 0 0 0', position: 'relative', overflow: 'hidden', width: '100%', height: '100%' }}>
+                                    <iframe 
+                                        src="https://player.vimeo.com/video/1172727046?badge=0&autopause=0&player_id=0&app_id=58479&background=1" 
+                                        frameBorder="0" 
+                                        allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
+                                        style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }} className="scale-[1.15]"
+                                        title="showcasenews_peihce"
+                                    />
+                                </div>
                             </div>
                         </div>
                         <div className="space-y-6 order-1 md:order-2">
