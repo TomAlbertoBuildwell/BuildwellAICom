@@ -1,6 +1,7 @@
-﻿"use client"
+"use client"
 
 import { useState } from "react"
+import { motion, AnimatePresence } from "framer-motion"
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
@@ -123,10 +124,10 @@ export default function PricingPage() {
           {plans.map((plan, index) => (
             <Card
               key={index}
-              className={`relative flex flex-col border-2 rounded-[5px] shadow-lg transition-all duration-300 ${
+              className={`relative flex flex-col border-2 rounded-[5px] transition-all duration-300 ${
                 plan.popular 
-                  ? "border-[#FBB429] lg:scale-105 shadow-2xl hover:shadow-[0_20px_60px_-15px_rgba(251,180,41,0.3)]" 
-                  : "border-neutral-200 dark:border-neutral-700/50 hover:border-[#FBB429] hover:shadow-2xl hover:scale-105"
+                  ? "border-[#FBB429] lg:scale-105 shadow-[0_8px_40px_-8px_rgba(251,180,41,0.25)] bg-white dark:bg-[#0d1f33] hover:shadow-[0_20px_60px_-15px_rgba(251,180,41,0.35)]" 
+                  : "border-neutral-300 dark:border-neutral-600 shadow-[0_4px_24px_-4px_rgba(0,0,0,0.1)] dark:shadow-[0_4px_24px_-4px_rgba(0,0,0,0.3)] bg-white dark:bg-[#0d1f33] hover:border-[#FBB429] hover:shadow-[0_12px_40px_-8px_rgba(0,0,0,0.15)] hover:scale-105"
               }`}
             >
               {plan.popular && (
@@ -188,7 +189,7 @@ export default function PricingPage() {
               {/* Title for mobile */}
               <div className="lg:hidden space-y-4">
                 <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight text-foreground dark:text-white">
-                  Complete <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866]">BuildwellAI Suite</span>
+                  Complete <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866]">BuildwellAI</span> Suite
                 </h2>
                 <p className="text-lg leading-relaxed text-muted-foreground">
                   All plans include human-in-the-loop AI across our product range
@@ -213,7 +214,7 @@ export default function PricingPage() {
                 {/* Title for desktop */}
                 <div className="hidden lg:block">
                   <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight text-foreground dark:text-white">
-                    Complete <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866]">BuildwellAI Suite</span>
+                    Complete <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FBB429] to-[#F87866]">BuildwellAI</span> Suite
                   </h2>
                   <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
                     All plans include human-in-the-loop AI across our product range
@@ -243,10 +244,8 @@ export default function PricingPage() {
                       description: "Real-time alerts on regulations, safety, and industry updates",
                     },
                   ].map((feature, index) => (
-                    <div key={index} className="flex gap-4">
-                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[5px] bg-gradient-to-r from-[#FBB429] to-[#F87866]">
-                        <CheckCircle className="h-6 w-6 text-white" />
-                      </div>
+                    <div key={index} className="flex gap-3 items-start">
+                      <div className="w-2 h-2 shrink-0 rounded-full bg-gradient-to-r from-[#FBB429] to-[#F87866] mt-2" />
                       <div>
                         <h3 className="font-display text-lg font-bold text-foreground dark:text-white mb-1">{feature.title}</h3>
                         <p className="text-sm text-muted-foreground dark:text-neutral-300 leading-relaxed">{feature.description}</p>
@@ -280,11 +279,21 @@ export default function PricingPage() {
                     }`}
                   />
                 </button>
-                {openFaq === index && (
-                  <div className="px-6 pb-6 pt-0">
-                    <p className="text-sm text-muted-foreground leading-relaxed">{faq.answer}</p>
-                  </div>
-                )}
+                <AnimatePresence>
+                  {openFaq === index && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                      className="overflow-hidden"
+                    >
+                      <div className="px-6 pb-6 pt-0">
+                        <p className="text-sm text-muted-foreground leading-relaxed">{faq.answer}</p>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </Card>
             ))}
           </div>
