@@ -1,10 +1,20 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
+import he from 'he';
+
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 function generateEmailHtml(name: string, email: string, company?: string, phone?: string, message?: string) {
     const firstName = name?.split(' ')[0] || 'there';
+
+    // Sanitize user inputs to prevent HTML injection
+    const safeName = he.encode(name || '');
+    const safeEmail = he.encode(email || '');
+    const safeCompany = company ? he.encode(company) : undefined;
+    const safePhone = phone ? he.encode(phone) : undefined;
+    const safeMessage = message ? he.encode(message) : '';
+    const safeFirstName = he.encode(firstName);
 
     return `
 <!DOCTYPE html>
@@ -37,7 +47,7 @@ function generateEmailHtml(name: string, email: string, company?: string, phone?
                                 NEW <span style="color: #ff8a00;">MESSAGE</span>
                             </h1>
                             <p style="font-family: Inter, Helvetica, Arial, sans-serif; font-size: 16px; color: #607d8b; line-height: 1.6; margin: 12px 0 0 0;">
-                                You've received a new contact form submission from <strong style="color: #0a1929;">${name}</strong>.
+                                You've received a new contact form submission from <strong style="color: #0a1929;">${safeName}</strong>.
                             </p>
                         </td>
                     </tr>
@@ -54,22 +64,22 @@ function generateEmailHtml(name: string, email: string, company?: string, phone?
                                         <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
                                             <tr>
                                                 <td style="padding: 4px 0; font-family: Inter, Helvetica, Arial, sans-serif; font-size: 13px; color: #607d8b; width: 110px;">Name</td>
-                                                <td style="padding: 4px 0; font-family: Inter, Helvetica, Arial, sans-serif; font-size: 13px; color: #0a1929; font-weight: 600;">${name}</td>
+                                                <td style="padding: 4px 0; font-family: Inter, Helvetica, Arial, sans-serif; font-size: 13px; color: #0a1929; font-weight: 600;">${safeName}</td>
                                             </tr>
                                             <tr>
                                                 <td style="padding: 4px 0; font-family: Inter, Helvetica, Arial, sans-serif; font-size: 13px; color: #607d8b;">Email</td>
                                                 <td style="padding: 4px 0; font-family: Inter, Helvetica, Arial, sans-serif; font-size: 13px; color: #0a1929; font-weight: 600;">
-                                                    <a href="mailto:${email}" style="color: #FBB429; text-decoration: none;">${email}</a>
+                                                    <a href="mailto:${safeEmail}" style="color: #FBB429; text-decoration: none;">${safeEmail}</a>
                                                 </td>
                                             </tr>
-                                            ${company ? `<tr>
+                                            ${safeCompany ? `<tr>
                                                 <td style="padding: 4px 0; font-family: Inter, Helvetica, Arial, sans-serif; font-size: 13px; color: #607d8b;">Company</td>
-                                                <td style="padding: 4px 0; font-family: Inter, Helvetica, Arial, sans-serif; font-size: 13px; color: #0a1929; font-weight: 600;">${company}</td>
+                                                <td style="padding: 4px 0; font-family: Inter, Helvetica, Arial, sans-serif; font-size: 13px; color: #0a1929; font-weight: 600;">${safeCompany}</td>
                                             </tr>` : ''}
-                                            ${phone ? `<tr>
+                                            ${safePhone ? `<tr>
                                                 <td style="padding: 4px 0; font-family: Inter, Helvetica, Arial, sans-serif; font-size: 13px; color: #607d8b;">Phone</td>
                                                 <td style="padding: 4px 0; font-family: Inter, Helvetica, Arial, sans-serif; font-size: 13px; color: #0a1929; font-weight: 600;">
-                                                    <a href="tel:${phone}" style="color: #FBB429; text-decoration: none;">${phone}</a>
+                                                    <a href="tel:${safePhone}" style="color: #FBB429; text-decoration: none;">${safePhone}</a>
                                                 </td>
                                             </tr>` : ''}
                                         </table>
@@ -88,7 +98,7 @@ function generateEmailHtml(name: string, email: string, company?: string, phone?
                                         <p style="font-family: 'Courier Prime', 'Courier New', monospace; font-size: 14px; font-weight: 700; color: #0a1929; margin: 0 0 12px 0;">
                                             MESSAGE:
                                         </p>
-                                        <p style="font-family: Inter, Helvetica, Arial, sans-serif; font-size: 14px; color: #607d8b; line-height: 1.7; margin: 0; white-space: pre-wrap;">${message}</p>
+                                        <p style="font-family: Inter, Helvetica, Arial, sans-serif; font-size: 14px; color: #607d8b; line-height: 1.7; margin: 0; white-space: pre-wrap;">${safeMessage}</p>
                                     </td>
                                 </tr>
                             </table>
@@ -98,8 +108,8 @@ function generateEmailHtml(name: string, email: string, company?: string, phone?
                     <!-- CTA -->
                     <tr>
                         <td style="padding: 10px 40px 40px 40px; text-align: center;">
-                            <a href="mailto:${email}" style="display: inline-block; background: linear-gradient(135deg, #FBB429, #F87866); background-color: #ff8a00; color: #ffffff; text-decoration: none; font-family: Inter, Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 600; padding: 14px 40px; border-radius: 5px; width: 260px; text-align: center; box-shadow: 0 4px 6px rgba(255, 138, 0, 0.2);">
-                                REPLY TO ${firstName.toUpperCase()}
+                            <a href="mailto:${safeEmail}" style="display: inline-block; background: linear-gradient(135deg, #FBB429, #F87866); background-color: #ff8a00; color: #ffffff; text-decoration: none; font-family: Inter, Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 600; padding: 14px 40px; border-radius: 5px; width: 260px; text-align: center; box-shadow: 0 4px 6px rgba(255, 138, 0, 0.2);">
+                                REPLY TO ${safeFirstName.toUpperCase()}
                             </a>
                         </td>
                     </tr>
