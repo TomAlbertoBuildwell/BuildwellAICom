@@ -40,17 +40,15 @@ export function VideoShowcase({
           {/* Video - Shows after description on mobile only */}
           <div className="lg:hidden relative">
             <div className="relative overflow-hidden rounded-lg bg-[#0a1929] shadow-lg">
-              <video
-                ref={videoRef}
-                className="w-full h-auto object-cover aspect-video"
-                loop
-                muted
-                playsInline
-                autoPlay
-              >
-                <source src={videoUrl} type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
+              <div style={{ padding: '56.25% 0 0 0', position: 'relative', overflow: 'hidden' }}>
+                <iframe 
+                    src="https://player.vimeo.com/video/1172720769?badge=0&autopause=0&player_id=0&app_id=58479&background=1" 
+                    frameBorder="0" 
+                    allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
+                    style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }} className="scale-[1.15]"
+                    title="eye_demo"
+                />
+              </div>
               <div className="absolute inset-0 bg-gradient-to-t from-[#0a1929]/20 to-transparent pointer-events-none" />
             </div>
           </div>
@@ -112,16 +110,15 @@ export function VideoShowcase({
         {/* Right Column - Video (3 columns on desktop - larger) - Desktop only */}
         <div className="lg:col-span-3 relative lg:order-2 hidden lg:block">
           <div className="relative overflow-hidden rounded-lg bg-[#0a1929] shadow-lg">
-            <video
-              className="w-full h-auto object-cover aspect-video"
-              loop
-              muted
-              playsInline
-              autoPlay
-            >
-              <source src={videoUrl} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
+            <div style={{ padding: '56.25% 0 0 0', position: 'relative' }}>
+              <iframe 
+                  src="https://player.vimeo.com/video/1172720769?badge=0&autopause=0&player_id=0&app_id=58479&background=1" 
+                  frameBorder="0" 
+                  allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
+                  style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }} className="scale-[1.15]"
+                  title="eye_demo"
+              />
+            </div>
             <div className="absolute inset-0 bg-gradient-to-t from-[#0a1929]/20 to-transparent pointer-events-none" />
           </div>
         </div>

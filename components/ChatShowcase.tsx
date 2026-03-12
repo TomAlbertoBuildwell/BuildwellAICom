@@ -59,17 +59,15 @@ export function ChatShowcase() {
             {/* Video - Takes 3 columns on desktop, full width on mobile */}
             <div className="lg:col-span-3 lg:order-1">
               <div className="relative aspect-video rounded-xl overflow-hidden shadow-2xl border-2 border-[#FBB429]/20">
-                <video
-                  ref={videoRef}
-                  className="w-full h-full object-cover"
-                  loop
-                  muted
-                  playsInline
-                  autoPlay
-                >
-                  <source src="https://res.cloudinary.com/drzxliqyz/video/upload/v1763297450/chatrec_kfrokc.mp4" type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
+                <div style={{ padding: '56.25% 0 0 0', position: 'relative', overflow: 'hidden' }}>
+                  <iframe 
+                      src="https://player.vimeo.com/video/1172719472?badge=0&autopause=0&player_id=0&app_id=58479&background=1" 
+                      frameBorder="0" 
+                      allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
+                      style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }} className="scale-[1.15]"
+                      title="chat_diagram_retriever"
+                  />
+                </div>
                 {/* Mobile-only gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent lg:hidden" />
               </div>

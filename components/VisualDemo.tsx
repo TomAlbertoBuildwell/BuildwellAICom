@@ -71,32 +71,17 @@ export function VisualDemo() {
               </div>
             </div>
 
-            <div className="relative">
               <div className="relative overflow-hidden rounded-xl bg-[#0a1929] shadow-2xl">
-                <video
-                  ref={videoRef}
-                  className="w-full h-auto object-cover aspect-video"
-                  loop
-                  muted
-                  playsInline
-                  poster="/screenshots/im1.png"
-                >
-                  <source src="https://res.cloudinary.com/drzxliqyz/video/upload/v1762606241/WhatsApp_Video_2025-11-07_at_18.14.45_6913d34a_wrpesi.mp4" type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0a1929]/20 to-transparent pointer-events-none" />
-                
-                <button
-                  onClick={togglePlay}
-                  className="absolute inset-0 flex items-center justify-center bg-black/20 hover:bg-black/30 transition-colors"
-                >
-                  <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
-                    {isPlaying ? <Pause className="h-8 w-8 text-white" /> : <Play className="h-8 w-8 text-white ml-1" />}
-                  </div>
-                </button>
+                <div style={{ padding: '56.25% 0 0 0', position: 'relative', overflow: 'hidden', width: '100%', height: '100%' }}>
+                  <iframe 
+                      src="https://player.vimeo.com/video/1172720769?badge=0&autopause=0&player_id=0&app_id=58479&background=1" 
+                      frameBorder="0" 
+                      allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
+                      style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }} className="scale-[1.15]"
+                      title="eye_demo"
+                  />
+                </div>
               </div>
-            </div>
           </div>
         </div>
       </div>

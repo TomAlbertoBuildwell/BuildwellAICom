@@ -288,12 +288,15 @@ function EyeSection() {
                         {/* Right col: large video (3 cols) */}
                         <motion.div variants={fade} className="lg:col-span-3">
                             <BrowserFrame url="eye.buildwellai.com">
-                                <video
-                                    className="w-full h-auto aspect-video object-cover"
-                                    loop muted playsInline autoPlay
-                                >
-                                    <source src="https://res.cloudinary.com/drzxliqyz/video/upload/v1762606241/WhatsApp_Video_2025-11-07_at_18.14.45_6913d34a_wrpesi.mp4" type="video/mp4" />
-                                </video>
+                                <div style={{ padding: '56.25% 0 0 0', position: 'relative', overflow: 'hidden' }}>
+                                    <iframe 
+                                        src="https://player.vimeo.com/video/1172720769?badge=0&autopause=0&player_id=0&app_id=58479&background=1" 
+                                        frameBorder="0" 
+                                        allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
+                                        style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }} className="scale-[1.05]"
+                                        title="eye_demo"
+                                    />
+                                </div>
                             </BrowserFrame>
 
                             {/* Stats row under video */}
@@ -352,12 +355,15 @@ function ChatSection() {
                         {/* Left col: large video (3 cols) */}
                         <motion.div variants={fade} className="lg:col-span-3 order-2 lg:order-1">
                             <BrowserFrame url="chat.buildwellai.com">
-                                <video
-                                    className="w-full h-auto aspect-video object-cover"
-                                    loop muted playsInline autoPlay
-                                >
-                                    <source src="https://res.cloudinary.com/drzxliqyz/video/upload/v1763297450/chatrec_kfrokc.mp4" type="video/mp4" />
-                                </video>
+                                <div style={{ padding: '56.25% 0 0 0', position: 'relative', overflow: 'hidden' }}>
+                                    <iframe 
+                                        src="https://player.vimeo.com/video/1172719472?badge=0&autopause=0&player_id=0&app_id=58479&background=1" 
+                                        frameBorder="0" 
+                                        allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
+                                        style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }} className="scale-[1.05]"
+                                        title="chat_diagram_retriever"
+                                    />
+                                </div>
                             </BrowserFrame>
 
                             {/* Feature cards under video */}
@@ -475,12 +481,15 @@ function InspectSection() {
                         {/* Right col: video + feature cards */}
                         <motion.div variants={fade} className="lg:col-span-3">
                             <BrowserFrame url="inspect.buildwellai.com">
-                                <video
-                                    className="w-full h-auto aspect-video object-cover"
-                                    loop muted playsInline autoPlay
-                                >
-                                    <source src="https://res.cloudinary.com/drzxliqyz/video/upload/v1763297404/inspectvid_znvtb6.mp4" type="video/mp4" />
-                                </video>
+                                <div style={{ padding: '56.25% 0 0 0', position: 'relative', overflow: 'hidden' }}>
+                                    <iframe 
+                                        src="https://player.vimeo.com/video/1172725306?badge=0&autopause=0&player_id=0&app_id=58479&background=1" 
+                                        frameBorder="0" 
+                                        allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
+                                        style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }} className="scale-[1.05]"
+                                        title="inspectvid_znvtb6"
+                                    />
+                                </div>
                             </BrowserFrame>
 
                             {/* Capability cards under video */}
@@ -537,12 +546,15 @@ function ThreadSection() {
                         {/* Left col: video */}
                         <motion.div variants={fade} className="lg:col-span-3 order-2 lg:order-1">
                             <BrowserFrame url="thread.buildwellai.com">
-                                <video
-                                    className="w-full h-auto aspect-video object-cover"
-                                    loop muted playsInline autoPlay
-                                >
-                                    <source src="https://res.cloudinary.com/drzxliqyz/video/upload/v1763297405/threadvid_oxmkua.mp4" type="video/mp4" />
-                                </video>
+                                <div style={{ padding: '56.25% 0 0 0', position: 'relative', overflow: 'hidden' }}>
+                                    <iframe 
+                                        src="https://player.vimeo.com/video/1172726799?badge=0&autopause=0&player_id=0&app_id=58479&background=1" 
+                                        frameBorder="0" 
+                                        allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
+                                        style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }} className="scale-[1.05]"
+                                        title="threadvid_oxmkua"
+                                    />
+                                </div>
                             </BrowserFrame>
 
                             {/* Golden thread capability cards */}
@@ -642,12 +654,15 @@ function NewsSection() {
                                 </div>
                             </div>
                             <div className="relative aspect-video bg-neutral-900">
-                                <video
-                                    className="w-full h-full object-cover"
-                                    loop muted playsInline autoPlay
-                                >
-                                    <source src="https://res.cloudinary.com/drzxliqyz/video/upload/v1762797262/showcasenews_peihce.mp4" type="video/mp4" />
-                                </video>
+                                <div style={{ padding: '56.25% 0 0 0', position: 'relative', overflow: 'hidden' }}>
+                                    <iframe 
+                                        src="https://player.vimeo.com/video/1172727046?badge=0&autopause=0&player_id=0&app_id=58479&background=1" 
+                                        frameBorder="0" 
+                                        allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
+                                        style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }} className="scale-[1.05]"
+                                        title="showcasenews_peihce"
+                                    />
+                                </div>
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
                                 <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
                                     <h2 className="font-['Big_Shoulders_Display'] text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 tracking-tight">
