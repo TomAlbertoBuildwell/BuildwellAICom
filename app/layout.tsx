@@ -36,6 +36,14 @@ export const metadata: Metadata = {
     description: 'Transform your construction projects with AI-powered compliance, safety, and digital tools for the modern building industry.',
     url: 'https://buildwellai.com',
     siteName: 'BuildwellAI',
+    images: [
+      {
+        url: 'https://buildwellai.com/logo.png',
+        width: 1200,
+        height: 630,
+        alt: 'BuildwellAI Logo',
+      },
+    ],
     type: 'website',
     locale: 'en_GB',
   },
@@ -43,6 +51,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'BuildwellAI - AI-Powered Construction Solutions',
     description: 'Advanced AI tools for construction compliance and building safety.',
+    images: ['https://buildwellai.com/logo.png'],
     creator: '@buildwellai',
   },
   robots: {
